@@ -79,4 +79,32 @@ print("-----------------------")
 
 """----------------------------------------------------------------------"""
 
+#esercizio 3-2. Greetings: Start with the list you used in Exercise 3-1, but instead of just printing each person’s name, print a message to them. The text of each message should be the same, but each message should be personalized with the person’s name.
+
+nomi : list = ["marco","luigi","leonardo","valerio"]
+
+mes : str = " come stai? ti saluto "
+for i in range (len(nomi)):
+
+    print(f"ciao,{nomi[i]}{mes}")
+
+print("-----------------------")
+
+
+"""----------------------------------------------------------------------"""
+
+#esercizio 3-3. Your Own List: Think of your favorite mode of transportation, such as a motorcycle or a car, and make a list that stores several examples. Use your list to print a series of statements about these items, such as “I would like to own a Honda motorcycle.”
+
+nomi : list = ["Rolls-Royce ","Lamborghini ","Ferrari" ,"Aston Martin ","Bentley"]
+
+mes : str = " ma sono povero "
+for i in range (len(nomi)):
+
+    print(f"vorrei una {nomi[i]}{mes}")
+
+print("-----------------------")
+
+
+
+
 
