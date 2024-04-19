@@ -10,6 +10,10 @@ def subtrack(a : int,b : int) -> int:
 
     return a - b
 
-print(subtrack(15,5))
+print(subtrack(67,4))
 print("-----------------------------")
 print("\n")
+
+
+"""------------------------------------------------"""
+
