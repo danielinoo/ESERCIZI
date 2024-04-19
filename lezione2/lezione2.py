@@ -113,7 +113,7 @@ print("-----------------------")
 nomi : list = ["snoop dog ","Miriam Leone ","Ludovica Pagani "]
 
 #creazione messaggio
-mes : set = {" vieni a cena "}
+mes : str = " vieni a cena "
 for i in range (len(nomi)):
     
     print(f"ciao {nomi[i]}{mes}")
@@ -151,7 +151,7 @@ print("\n")
 
 #inserimento altri nomi
 nomi.insert(0,"The rock")
-nomi.insert(4,"gigi proietti")
+nomi.insert(2,"gigi proietti")
 nomi.append("max verstappen")
 
 
