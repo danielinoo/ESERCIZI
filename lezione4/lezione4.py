@@ -32,6 +32,26 @@ def cv(n : int) -> int:
 
 cv(2)
 
+print("-----------------------------")
+
+
+
+"""------------------------------------------------"""
+
+#ESERCIZIO 3
+
+def cs(s : str) -> str:
+
+    if  len(s)== 10:
+        print(f"il testo {s} è uguale a 10")
+    elif len(s) < 10:
+        print(f"il testo {s} è minore a 10")
+        
+
+    else: 
+        print(f"il testo {s}  è maggiore di 10")
+
+cs(s = "DAJEROMADAJE")
 
 
 
