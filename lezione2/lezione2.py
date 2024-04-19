@@ -111,7 +111,7 @@ print("-----------------------")
 
 nomi : list = ["snoop dog ","Miriam Leone ","Ludovica Pagani "]
 
-mes : str = "vieni a cena "
+mes : set = {"vieni a cena "}
 for i in range (len(nomi)):
     
     print(f"ciao {nomi[i]}{mes}")
@@ -132,6 +132,13 @@ nomi[0] = "Angelina Mango "
 for i in range (len(nomi)):
     
     print(f"ciao {nomi[i]}{mes}")
+
+
+print("\n")
+print("trovato un tavolo più grande ")
+print("\n")
+
+
 
 print("-----------------------")
 
