@@ -10,8 +10,9 @@ def length_of_last_word(s : str) -> int:
     #rovescio la frase
     rev ="".join(reversed(s))
 
-    n = 0
+    n : int = 0
 
+    #conto(con N) quanto è lunga l'ultima parola fino al primo spazio
     for i in range(len(rev)):
 
         if rev[i] == " ":
@@ -23,4 +24,4 @@ def length_of_last_word(s : str) -> int:
     return n
     
    
-print(length_of_last_word(" HELLO WORLD"))
+print(length_of_last_word(" HELLO   WORLD"))
