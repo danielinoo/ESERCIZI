@@ -172,10 +172,10 @@ print("\n")
 
 
 #messaggio disdetta tavolo ed eliminazione persone nella lista
-for i in range (len(nomi[0:5])):
+while len(nomi) > 2:
     
-    print(f"ciao {nomi[i]} mi dispiace ma il tavolo è stato annullato")
-    nomi.pop(i)
+    print(f"ciao {nomi[0]} mi dispiace ma il tavolo è stato annullato",nomi.pop(0))
+    
 
 print("\n")
 
