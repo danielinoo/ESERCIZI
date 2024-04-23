@@ -307,6 +307,37 @@ print("\nlista originale trasformata in un set per l' eliminazione di duplicati:
 
 print("-----------------------")
 print("\n")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+
+#esercizio 6-1. Person: Use a dictionary to store information about a person you know. Store their first name, last name, age, and the city in which they live. You should have keys such as first_name, last_name, age, and city. Print each piece of information stored in your dictionary.
+
+d : dict = {"nome": "marco", "cognome" :"rossi","eta": 19 , "citta": "roma"}
+print(d)
+
+
+print("-----------------------")
+print("\n")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+
+#esercizio 6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. Think of five names, and use them as keys in your dictionary. Think of a favorite number for each person, and store each as a value in your dictionary. Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
+
+#dizionario numeri fortunati
+d : dict = {"marco" : 69, "riccardo" : 4, "gaia" : 3, "daniele" : 23, "gianmarco": 9}
+
+for k, v in d.items():
+    print(f"{k} {v}")
+
+
+
+
+print("-----------------------")
+print("\n")
 
 
 """----------------------------------------------------------------------"""
+
+print("\n")
