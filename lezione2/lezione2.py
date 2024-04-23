@@ -305,8 +305,8 @@ print("\nlista originale trasformata in un set per l' eliminazione di duplicati:
 
 
 
-print("-----------------------")
 print("\n")
+print("-----------------------")
 """----------------------------------------------------------------------"""
 print("\n")
 
@@ -317,8 +317,8 @@ d : dict = {"nome": "marco", "cognome" :"rossi","eta": 19 , "citta": "roma"}
 print(d)
 
 
-print("-----------------------")
 print("\n")
+print("-----------------------")
 """----------------------------------------------------------------------"""
 print("\n")
 
@@ -333,11 +333,30 @@ for k, v in d.items():
 
 
 
-
+print("\n")
 print("-----------------------")
+"""----------------------------------------------------------------------"""
 print("\n")
 
+#esercizio 6-3. Glossary: A Python dictionary can be used to model an actual dictionary. However, to avoid confusion, let’s call it a glossary.
+#• Think of five programming words you’ve learned about in the previous chapters. Use these words as the keys in your glossary, and store their meanings as values.
+#• Print each word and its meaning as neatly formatted output. You might print the word followed by a colon and then its meaning, or print the word on one line and then print its meaning indented on a second line. Use the newline character (\n) to insert a blank line between each word-meaning pair in your output.
 
+
+#dizionario con parole e significato
+d : dict = {"tuple:" : "sono elementi sequenziali costituiti da una concatenazione di valori di qualsiasi tipo, ognuno memorizzato per posizione.Permettono la presenza di duplicati ma non sono modificabili.", "lista:" : "è una struttura dati sequenziale che memorizza gli elementi in un determinato ordine, ammette duplicati e permette di modificare gli oggetti che contiene.", "stringhe:":"valori di tipo testuale, cioè un insieme di caratteri inseriti tra apici o doppi apici, numeri e simboli compresi.", "int:" : "sono i numeri a virgola mobile, i numeri decimali. Ad esempio, 5.7 o 5.4", "boolean:": "calcolano un valore booleano, ossia un valore che può essere solo vero o falso"}
+
+for k, v in d.items():
+
+    print(f"{k}\n{v}")
+    print("\n")
+
+
+
+
+
+
+print("\n")
+print("-----------------------")
 """----------------------------------------------------------------------"""
-
 print("\n")
