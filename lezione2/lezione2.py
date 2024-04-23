@@ -247,3 +247,66 @@ print("\n")
 
 """----------------------------------------------------------------------"""
 
+#esercizio 3-9. Dinner Guests: Working with one of the programs from Exercises 3, use len() to print a message indicating the number of people you’re inviting to dinner.
+
+#numero di invitati alla cena(risulta zero perchè la lista èstata azzerata)
+print(len(nomi))
+
+
+print("-----------------------")
+print("\n")
+
+
+"""----------------------------------------------------------------------"""
+
+
+#esercizio 3-10. Every Function: Think of things you could store in a list. For example, you could make a list of mountains, rivers, countries, cities, languages, or anything else you’d like. Write a program that creates a list containing these items and then uses each function introduced in this chapter at least once.
+
+#lista di paesi
+p : list = ["italia","francia","germania","inghilterra","francia","giappone","croazia","spagna"]
+
+print("lista di paesi: ",p)
+
+#inserimento di un elemento alla fine,all inizio, in un punto a caso
+p.append("irlanda")
+p.insert(0,"messico")
+p.insert(4,"grecia")
+
+print("\nlista di paesi con l' inserimento di un elemento alla fine,all inizio, in un punto a caso: ",p)
+
+
+# copia della lista di paesi ma senza gli ultimi 4 paesi
+
+import copy
+p2 : list = copy.deepcopy(p) #p2--> copia della lista P
+c : int = 0#c --> contatore
+p2 = p2[::-1]#inverto ordine lista
+print(f"Lista: {p2}")
+for i in range(len(p2)):
+
+    print(f"\n{p2.pop(0)} eliminato dalla lista")
+    c += 1
+
+    if c == 4:
+        break
+
+#riposizionare l ' ordine della copia della lista nella versione originale 
+p2.sort(reverse=True) 
+
+print("\ncopia lista paesi P2 senza gli ultimi 4 paesi: ",p2)
+
+#mettere la lista originale in ordine alfabetico
+sorted(p)
+print("\nmettere la lista originale in ordine alfabetico: ",p)
+
+#eliminare i duplicati cambiando la lista in un set
+p = set(p)
+print("\nlista originale trasformata in un set per l' eliminazione di duplicati:",p)
+
+
+
+print("-----------------------")
+print("\n")
+
+
+"""----------------------------------------------------------------------"""
