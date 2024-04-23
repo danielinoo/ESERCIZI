@@ -171,29 +171,78 @@ print("\n")
 #• Use del to remove the last two names from your list, so you have an empty list. Print your list to make sure you actually have an empty list at the end of your program.
 
 
+
+
 #messaggio disdetta tavolo ed eliminazione persone nella lista
 while len(nomi) > 2:
-    
-    print(f"ciao {nomi[0]} mi dispiace ma il tavolo è stato annullato",nomi.pop(0))
-    
+    print(f"ciao {nomi.pop(0)},mi dispiace ma il tavolo è stato annullato",)
 
 print("\n")
 
+
+
 #messaggio di conferma dei due invitati ed eliminazione dalla lista
-for i in range(len(nomi)):
-    print(f"ciao {nomi[i]} voi siente ancora invitati")
-    del(nomi[i])
+while len(nomi) > 0:
+    print(f"ciao {nomi[0]} voi siente ancora invitati")
+    del(nomi[0])
 print(nomi)
 
 
 print("tavolo annullato")
+
+print("-----------------------")
 print("\n")
 
 
+"""----------------------------------------------------------------------"""
 
 
+#esercizio 3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
+#• Store the locations in a list. Make sure the list is not in alphabetical order.
+#• Print your list in its original order. Don’t worry about printing the list neatly; just print it as a raw Python list.
+#• Use sorted() to print your list in alphabetical order without modifying the actual list.
+#• Show that your list is still in its original order by printing it.
+#• Use sorted() to print your list in reverse-alphabetical order without changing the order of the original list.
+#• Show that your list is still in its original order by printing it again.
+#• Use reverse()  to change the order of your list. Print the list to show that its order has changed.
+#• Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
+#• Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
+#• Use sort() to change your list so it’s stored in reverse-alphabetical order.
+#Print the list to show that its order has changed.
 
 
+#lista posti da visitare
+
+v : list = ["cuba", "porto rico", "grecia","maldive", "costa del sol"]
+print("lista originale: ",v)
+
+#lista ordinata
+v1  : list= sorted(v) #v1--> variabile di supporto
+print("\nlista ordinata: ",v1)
+
+#lista con ordine originale
+print("\nlista originale: ",v)
+v2 : list = v  #v2 --> seconda variabile di supporto
+
+#lista modifica ordine inverso
+v = v1 
+v.reverse()
+print("\nlista con ordine alfabetico inverso: ",v)
+
+#lista ritorno ordine originale
+print("\nlista con ritorno ad ordine originale: ",v2)
+
+#lista con ordine alfabetico con SORT
+v2.sort(reverse=False)
+print("\nlista con ordine alfabetico con SORT: ",v2)
+
+#lista con ordine alfabetico inverso con SORT
+v2.sort(reverse=True)
+print("\nlista con ordine alfabetico inverso con SORT: ",v2)
+
+
+print("-----------------------")
+print("\n")
 
 
 """----------------------------------------------------------------------"""
