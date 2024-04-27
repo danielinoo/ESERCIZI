@@ -450,6 +450,42 @@ print("\n")
 
 #esercizio 6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys in your dictionary. Create a dictionary of information about each city and include the country that the city is in, its approximate population, and one fact about that city. The keys for each city’s dictionary should be something like country, population, and fact. Print the name of each city and all of the information you have stored about it.
 
+roma : dict = {"Paese" : "Italia", "popolazione" : "2,873 milioni", "fatto sulla citta": "Roma detiene una serie di record imbattibili: oltre ai monumenti storici, la città ha più di 2.000 fontane di varie forme e dimensioni. Da alcune, ma non tutte, esce acqua fresca e buona, ma non bere senza avere la certezza che l'acqua sia potabile."}
+
+barcellona : dict = {"Paese" : "Spagna", "popolazione" : "1,62 milioni", "fatto sulla citta": "Fino al 1992, la costa di Barcellona era completamente invasa da fabbriche e capannoni, mentre gli abitanti non avevano alcuna spiaggia in cui andare. Per fortuna, tutto è cambiato quando la città è stata scelta per ospitare i Giochi Olimpici e le autorità hanno deciso di spostare gli stabilimenti industriali altrove. Il lungomare si è così trasformato in una zona dedicata al tempo libero, con ristoranti, bar e, naturalmente, delle nuove spiagge."}
+
+amsterdam : dict = {"Paese" : "Olanda", "popolazione" : "821.752", "fatto sulla citta": "La maggior parte degli edifici di Amsterdam è costruita su pali di fondazione in legno, che vanno da 15 a 20 metri di lunghezza. Una tipica casa del centro poggia su circa 10 pali, mentre sono oltre 13.500 i pali in legno che supportano il Palazzo Reale di Amsterdam."}
+
+citta : dict = {"Roma" : roma, "Barcellona" : barcellona, "Amsterdam" : amsterdam}
+
+print(citta)
+
+
+print("\n")
+print("---------------------------------")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 6-12. Extensions: We’re now working with examples that are complex enough that they can be extended in any number of ways. Use one of the example programs from this chapter, and extend it by adding new keys and values, changing the context of the program, or improving the formatting of the output.
+
+#modifica dizionario delle citta
+
+napoli : dict = {"Paese" : "Italia", "popolazione" : "3,085 milioni", "fatto sulla citta" : "La metropolitana di Napoli si sviluppa su tre linee. La linea 1 conta 18 fermate sulla tratta Garibaldi.Piscinola ed è famosa per essere teatro delle cosiddette stazioni dell’arte. Infatti, sono state progettate da architetti internazionali e ospitano circa 200 opere d’arte di vario genere, come installazioni, murales, mosaici e molto altro."}
+
+citta.update({"Napoli" : napoli})
+
+for k, v in citta.items(): 
+    print(f"{k}:\n")
+
+    for j,va in v.items():
+
+        print(f"\n{j}:\n{va}")
+
+    print("---")
+
+
+
+
 
 
 
