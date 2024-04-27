@@ -1,6 +1,8 @@
 #Pietropaolo Daniele
 #18/04/24
 
+import copy
+
 print("-----------------------")
 print("hello word")
 print("-----------------------")
@@ -110,7 +112,7 @@ print("-----------------------")
 #esercizio 3-4. Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite? Make a list that includes at least three people you’d like to invite to dinner. Then use your list to print a message to each person, inviting them to dinner.
 
 #creazione lista
-nomi : list = ["snoop dog ","Miriam Leone ","Ludovica Pagani "]
+nomi : list = ["snoop dog ","Paolo Bonolis ","Francesco Totti "]
 
 #creazione messaggio
 mes : str = " vieni a cena "
@@ -277,11 +279,10 @@ print("\nlista di paesi con l' inserimento di un elemento alla fine,all inizio, 
 
 # copia della lista di paesi ma senza gli ultimi 4 paesi
 
-import copy
+
 p2 : list = copy.deepcopy(p) #p2--> copia della lista P
 c : int = 0#c --> contatore
 p2 = p2[::-1]#inverto ordine lista
-print(f"Lista: {p2}")
 for i in range(len(p2)):
 
     print(f"\n{p2.pop(0)} eliminato dalla lista")
@@ -296,7 +297,7 @@ p2.sort(reverse=True)
 print("\ncopia lista paesi P2 senza gli ultimi 4 paesi: ",p2)
 
 #mettere la lista originale in ordine alfabetico
-sorted(p)
+p.sort()
 print("\nmettere la lista originale in ordine alfabetico: ",p)
 
 #eliminare i duplicati cambiando la lista in un set
@@ -316,6 +317,7 @@ print("\n")
 d : dict = {"nome": "marco", "cognome" :"rossi","eta": 19 , "citta": "roma"}
 print(d)
 
+dc6_7 : dict = copy.deepcopy(d)
 
 print("\n")
 print("-----------------------")
@@ -326,9 +328,9 @@ print("\n")
 #esercizio 6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. Think of five names, and use them as keys in your dictionary. Think of a favorite number for each person, and store each as a value in your dictionary. Print each person’s name and their favorite number. For even more fun, poll a few friends and get some actual data for your program.
 
 #dizionario numeri fortunati
-d : dict = {"marco" : 69, "riccardo" : 4, "gaia" : 3, "daniele" : 23, "gianmarco": 9}
+dii : dict = {"marco" : 69, "riccardo" : 4, "gaia" : 3, "daniele" : 23, "gianmarco": 9}
 
-for k, v in d.items():
+for k, v in dii.items():
     print(f"{k} {v}")
 
 
@@ -344,9 +346,9 @@ print("\n")
 
 
 #dizionario con parole e significato
-d : dict = {"tuple:" : "sono elementi sequenziali costituiti da una concatenazione di valori di qualsiasi tipo, ognuno memorizzato per posizione.Permettono la presenza di duplicati ma non sono modificabili.", "lista:" : "è una struttura dati sequenziale che memorizza gli elementi in un determinato ordine, ammette duplicati e permette di modificare gli oggetti che contiene.", "stringhe:":"valori di tipo testuale, cioè un insieme di caratteri inseriti tra apici o doppi apici, numeri e simboli compresi.", "int:" : "sono i numeri a virgola mobile, i numeri decimali. Ad esempio, 5.7 o 5.4", "boolean:": "calcolano un valore booleano, ossia un valore che può essere solo vero o falso"}
+dii2 : dict = {"tuple:" : "sono elementi sequenziali costituiti da una concatenazione di valori di qualsiasi tipo, ognuno memorizzato per posizione.Permettono la presenza di duplicati ma non sono modificabili.", "lista:" : "è una struttura dati sequenziale che memorizza gli elementi in un determinato ordine, ammette duplicati e permette di modificare gli oggetti che contiene.", "stringhe:":"valori di tipo testuale, cioè un insieme di caratteri inseriti tra apici o doppi apici, numeri e simboli compresi.", "int:" : "sono i numeri a virgola mobile, i numeri decimali. Ad esempio, 5.7 o 5.4", "boolean:": "calcolano un valore booleano, ossia un valore che può essere solo vero o falso"}
 
-for k, v in d.items():
+for k, v in dii2.items():
 
     print(f"{k}\n{v}")
     print("\n")
@@ -360,3 +362,87 @@ print("\n")
 print("-----------------------")
 """----------------------------------------------------------------------"""
 print("\n")
+
+
+#esercizio 6-7. People: Start with the program you wrote for Exercise 6-1. Make two new dictionaries representing different people, and store all three dictionaries in a list called people. Loop through your list of people. As you loop through the list, print everything you know about each person.
+
+d1 : dict = {"nome": "giuseppe", "cognome" :"bianchi","eta": 22 , "citta": "genova"}
+
+d2 : dict = {"nome": "riccardo", "cognome" :"proietti","eta": 23 , "citta": "milano"}
+
+person : list = [dc6_7, d1, d2] #lista con i tre dizionari dentro
+
+
+for i in person:
+
+    print(f"{i} \n")
+
+
+print("\n")
+print("-----------------------")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. In each dictionary, include the kind of animal and the owner’s name. Store these dictionaries in a list called pets. Next, loop through your list and as
+#you do, print everything you know about each pet. 
+
+
+dp1: dict = {"tipo" :"gatto" , "specie" :"siamese" , "proprietario": "Marco"}
+
+dp2 : dict = {"tipo" :"cane" , "specie" :"pitbull" , "proprietario": "Francesco"}
+
+dp3 : dict = {"tipo" :"cane" , "specie" :"carlino" , "proprietario": "Roberto"}
+
+dp4 : dict = {"tipo" :"gatto" , "specie" :"persiano" , "proprietario": "Maria"}
+
+dp5 : dict = {"tipo" :"uccello" , "specie" :"ara" , "proprietario": "Giada"}
+
+pets :  list = [dp1, dp2,dp3,dp4,dp5] #lista con i dizionari dentro
+
+for i in pets:
+
+    print(f"{i} \n")
+
+
+print("\n")
+print("-----------------------")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 6-9. Favorite Places: Make a dictionary called favorite_places. Think of three names to use as keys in the dictionary, and store one to three favorite places for each person. To make this exercise a bit more interesting, ask some friends to name a few of their favorite places. Loop through the dictionary, and print each person’s name and their favorite places.
+
+favorite_places : dict = {"Aldo" : "Rambla, central park, fotana di trevi ", "Giovanni" : "Courmayeur", "Giacomo" : "Copagabana, time square"}
+
+for k, v in favorite_places.items():
+
+    print(f"{k}: {v} \n")
+
+
+
+print("\n")
+print("-----------------------")
+"""----------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have more than one favorite number. Then print each person’s name along with their favorite numbers.
+
+
+#.update--> modica valori dentro il dizionario
+dii.update({"marco" : "34,7"})
+
+dii.update({"riccardo" : "4,30"})
+
+dii.update({"gianmarco" : "9,21"})
+
+dii.update({"daniele" : "23,30,9"})
+
+dii.update({"gaia" : "3,56,2"})
+
+for k, v in dii.items():
+
+    print(f"{k}: {v} \n")
+
+
+
+
+
