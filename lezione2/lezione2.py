@@ -474,6 +474,8 @@ napoli : dict = {"Paese" : "Italia", "popolazione" : "3,085 milioni", "fatto sul
 
 citta.update({"Napoli" : napoli})
 
+#modifica output del dizionario "citta" per leggerlo più ordinato
+
 for k, v in citta.items(): 
     print(f"{k}:\n")
 
