@@ -325,35 +325,6 @@ if macchina5 != "nike":
     print(False,"\n")
 
 
-
-
-print("\n")
-print("|-----------------------------------------------------------------------------|")
-"""-----------------------------------------------------------------------------------------------------------------------------------"""
-print("\n")  
-
-#esercizio 5-2. More Conditional Tests: You don’t have to limit the number of tests you cre-
-#ate to 10. If you want to try more comparisons, write more tests and add them
-
-#to conditional_tests.py. Have at least one True and one False result for each of
-#the following:
-#• Tests for equality and inequality with strings
-#• Tests using the lower() method
-#• Numerical tests involving equality and inequality, greater than and less
-#than, greater than or equal to, and less than or equal to
-#• Tests using the and keyword and the or keyword
-#• Test whether an item is in a list
-#• Test whether an item is not in a list
-
-
-
-
-
-
-
-
-
-
 print("\n")
 print("|-----------------------------------------------------------------------------|")
 """-----------------------------------------------------------------------------------------------------------------------------------"""
@@ -363,13 +334,11 @@ print("\n")
 #• Write an if statement to test whether the alien’s color is green. If it is, print a message that the player just earned 5 points.
 #• Write one version of this program that passes the if test and another that fails. (The version that fails will have no output.)
 
-giocatore1 : int = 0
 
 alien_color = "verde"
 
 if alien_color == "verde":
 
-    giocatore1 = giocatore1 + 5
     print("il giocatore1 ha appena ottenuto 5 punti")
 
 if alien_color == "rosso":
@@ -390,18 +359,113 @@ print("\n")
 alien_color2 : str = "rosso"
 
 if alien_color2 == "verde":
-    giocatore1 = giocatore1 + 5
+
     print("complimenti hai guadagnato 5 punti per aver sparato all' alieno")
 
 else:
 
-    giocatore1 = giocatore1 + 5
     print("complimenti hai guadagnato 10 punti")
 
 print("\n")
 print("|-----------------------------------------------------------------------------|")
 """-----------------------------------------------------------------------------------------------------------------------------------"""
 print("\n") 
+
+
+
+#esercizio 5-5. Alien Colors #3: Turn your if-else chain from Exercise 5-4 into an if-elif-else chain.
+#• If the alien is green, print a message that the player earned 5 points.
+#• If the alien is yellow, print a message that the player earned 10 points.
+#• If the alien is red, print a message that the player earned 15 points.
+#• Write three versions of this program, making sure each message is printed for the appropriate color alien.
+
+alien_color2 : str = "rosso"
+
+if alien_color2 == "verde":
+    
+    print("complimenti hai guadagnato 5 punti")
+
+elif alien_color2 == "giallo":
+
+    print("complimenti hai guadagnato 10 punti")
+
+else:
+
+    print("complimenti hai guadagnato 15 punti")
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n") 
+
+# esercizio 5-6. Stages of Life: Write an if-elif-else chain that determines a person’s stage of life. Set a value for the variable age, and then:
+#• If the person is less than 2 years old, print a message that the person is a baby.
+#• If the person is at least 2 years old but less than 4, print a message that the person is a toddler.
+#• If the person is at least 4 years old but less than 13, print a message that the person is a kid.
+#• If the person is at least 13 years old but less than 20, print a message that the person is a teenager.
+#• If the person is at least 20 years old but less than 65, print a message that the person is an adult.
+#• If the person is age 65 or older, print a message that the person is an elder.
+
+eta : int = 17
+
+if eta < 2:
+    print("la persona è un neonato")
+
+elif eta > 2 and eta < 4:
+
+    print("la persona è un bambino piccolo")
+
+elif eta >= 4 and eta < 13:
+
+    print("la persona è un bambino")
+
+elif eta >= 13 and eta < 20:
+
+    print("la persona è un adolescente")
+
+elif eta >= 20 and eta < 65:
+
+    print("la persona è maggiorenne")
+
+else:
+
+    print("la persona è un anziano") 
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 5-7. Favorite Fruit: Make a list of your favorite fruits, and then write a series of independent if statements that check for certain fruits in your list.
+#• Make a list of your three favorite fruits and call it favorite_fruits.
+#• Write five if statements. Each should check whether a certain kind of fruit is in your list. If the fruit is in your list, the if block should print a statement, such as You really like Apples!
+
+favorite_fruit : list = ["mela","fragola","lampone"]
+
+if "mele" in favorite_fruit:
+    print("mi piacciono davvero le mele")
+
+if "pere" in favorite_fruit:
+    print("buone le pere")
+
+if "arance" in favorite_fruit:
+    print("buone le arance")
+
+if "fragole" in favorite_fruit:
+    print("le fragole sono davvero ottime")
+
+if "lamponi" in favorite_fruit:
+    print("i lamponi sono davvero buoni")
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")
+
+
+
+
 
 
 
