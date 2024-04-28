@@ -233,4 +233,117 @@ print("\n")
 #esercizio 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 
 
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")  
+
+
+#5-1. Conditional Tests: Write a series of conditional tests. Print a statement
+#describing each test and your prediction for the results of each test. Your code
+#should look something like this:
+#car = 'subaru'
+#print("Is car == 'subaru'? I predict True.")
+#print(car == 'subaru')
+#print("\nIs car == 'audi'? I predict False.")
+#print(car == 'audi')
+#• Look closely at your results, and make sure you understand why each line
+#evaluates to True or False.
+#• Create at least 10 tests. Have at least 5 tests evaluate to True and another
+#5 tests evaluate to False.
+
+macchina1 : str = "audi"
+print("audi è un marchio di un auto?")
+if macchina1 == "audi":
+    print(True,"\n")
+
+print("balocco è un marchio di un auto?")
+if macchina1 != "balocco":
+
+    print(False,"\n")
+
+print("---")
+
+
+macchina2 : str = "bmw"
+print("bmw è un marchio di un auto?")
+if macchina2 == "bmw":
+    print(True,"\n")
+
+print("feltrinelli è un marchio di un auto?")
+if macchina2 != "feltrinelli":
+
+    print(False,"\n")
+
+print("---")
+
+macchina3 : str = "fiat"
+print("fiat è un marchio di un auto?")
+if macchina3 == "fiat":
+    print(True,"\n")
+
+print("lenovo è un marchio di un auto?")
+if macchina3 != "lenovo":
+
+    print(False,"\n")
+
+print("---")
+
+
+macchina4 : str = "mercedes"
+
+print("mercedes è un marchio di un auto?")
+if macchina4 == "mercedes":
+    print(True,"\n")
+
+print("lavazza è un marchio di un auto?")
+if macchina4 != "lavazza":
+
+    print(False,"\n")
+
+print("---")
+
+
+macchina5 : str = "maserati"
+print("maserati è un marchio di un auto?")
+if macchina5 == "maserati":
+    print(True,"\n")
+
+print("nike è un marchio di un auto?")
+if macchina5 != "nike":
+
+    print(False,"\n")
+
+
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")  
+
+#esercizio 5-2. More Conditional Tests: You don’t have to limit the number of tests you cre-
+#ate to 10. If you want to try more comparisons, write more tests and add them
+
+#to conditional_tests.py. Have at least one True and one False result for each of
+#the following:
+#• Tests for equality and inequality with strings
+#• Tests using the lower() method
+#• Numerical tests involving equality and inequality, greater than and less
+#than, greater than or equal to, and less than or equal to
+#• Tests using the and keyword and the or keyword
+#• Test whether an item is in a list
+#• Test whether an item is not in a list
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n") 
+
+
+
+
+
+
 
