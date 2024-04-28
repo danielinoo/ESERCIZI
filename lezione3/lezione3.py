@@ -197,6 +197,22 @@ pizza.append("capricciosa")
 friend_pizzas.append("diavola")
 
 #stampa della lista originale ("pizza")
+print("le mie pizze preferite sono: \n",pizza)
+
+print("---")
+
+#stampa della copia della lista("friend_pizzas")
+print("le pizze preferite dei miei amici sono:\n ",friend_pizzas)
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")  
+
+#esercizio 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
+
+#stampa della lista originale ("pizza")
 print("le mie pizze preferite sono: \n")
 for i in pizza:
     print(i)
@@ -209,20 +225,6 @@ print("le pizze preferite dei miei amici sono:\n ")
 for i in friend_pizzas:
     print(i)
 
-print("\n")
-print("|-----------------------------------------------------------------------------|")
-"""-----------------------------------------------------------------------------------------------------------------------------------"""
-print("\n")  
-
-#esercizio 4-12. More Loops: All versions of foods.py in this section have avoided using for loops when printing, to save space. Choose a version of foods.py, and write two for loops to print each list of foods.
-
-
-
-
-
-
-
-
 
 print("\n")
 print("|-----------------------------------------------------------------------------|")
@@ -231,6 +233,14 @@ print("\n")
 
 
 #esercizio 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
+
+
+
+
+
+
+
+
 
 
 print("\n")
