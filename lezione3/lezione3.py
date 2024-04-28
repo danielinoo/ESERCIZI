@@ -83,23 +83,71 @@ print("\n")
 #esercizio 4-5. Summing a Million: Make a list of the numbers from one to one million, and then use min() and max() to make sure your list actually starts at one and ends at one million. Also, use the sum() function to see how quickly Python can add a million numbers.
 
 
-num : list = []
-for i in range(1,10000001):
-    num.append(i)
+num : list =list(range(1,1000001))
 
+#numero minimo e numero massimo
 print(min(num))
 print(max(num))
 
-print("\n---\n")
 
-a : int = 1000000 #a --> variabile di supporto
-num = sum(a)
-print(num)
+#aggiunge un milione con sum()
+sm = sum(num)
+print(sm)
 
 print("\n")
 print("|-----------------------------------------------------------------------------|")
 """-----------------------------------------------------------------------------------------------------------------------------------"""
 print("\n")   
+
+
+#esercizio 4-6. Odd Numbers: Use the third argument of the range() function to make a list of the odd numbers from 1 to 20. Use a for loop to print each number.
+
+#lista di numeri dispari
+x = list(range(1, 20, 2))
+
+for n in x:
+  print(n)
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")  
+
+
+#esercizio 4-7. Threes: Make a list of the multiples of 3, from 3 to 30. Use a for loop to print the numbers in your list.
+
+x = list(range(3,31,3))
+
+for i in x:
+    print(i)
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")  
+
+
+#esercizio 4-8. Cubes: A number raised to the third power is called a cube. For example, the cube of 2 is written as 2**3 in Python. Make a list of the first 10 cubes (that is, the cube of each integer from 1 through 10), and use a for loop to print out the value of each cube.
+
+cubo = list(range(1,11))
+
+for i in cubo:
+
+    i**3
+    cubo.append(i)
+
+for i in cubo:
+
+    print(i)
+
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n") 
+
 
 
 
