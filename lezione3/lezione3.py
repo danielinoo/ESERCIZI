@@ -441,20 +441,26 @@ print("\n")
 #• Make a list of your three favorite fruits and call it favorite_fruits.
 #• Write five if statements. Each should check whether a certain kind of fruit is in your list. If the fruit is in your list, the if block should print a statement, such as You really like Apples!
 
-favorite_fruit : list = ["mela","fragola","lampone"]
+favorite_fruit : list = ["mela","fragola","lamponi"]
 
-if "mele" in favorite_fruit:
+if "mela" in favorite_fruit:
     print("mi piacciono davvero le mele")
+    print("---")
 
-if "pere" in favorite_fruit:
+if "pera" in favorite_fruit:
     print("buone le pere")
+    print("---")
 
 if "arance" in favorite_fruit:
     print("buone le arance")
+    print("---")
 
-if "fragole" in favorite_fruit:
+
+
+if "fragola" in favorite_fruit:
     print("le fragole sono davvero ottime")
-
+    print("---")
+    
 if "lamponi" in favorite_fruit:
     print("i lamponi sono davvero buoni")
 
@@ -463,14 +469,78 @@ print("|------------------------------------------------------------------------
 """-----------------------------------------------------------------------------------------------------------------------------------"""
 print("\n")
 
+#esercizio 5-8. Hello Admin: Make a list of five or more usernames, including the name 'admin'. Imagine you are writing code that will print a greeting to each user after they log in to a website. Loop through the list, and print a greeting to each user.
+#• If the username is 'admin', print a special greeting, such as Hello admin, would you like to see a status report?
+# Otherwise, print a generic greeting, such as Hello Jaden, thank you for logging in again.
+
+
+utenti : list = ["utente1","utente2","utente3","utente4","admin","utente5"]
+
+for i in utenti:
+
+    if i == "admin":
+
+        print("CIAO AMMINISTRATORE,desideri visualizzare un rapposto sullo stato?\n")
+        print("---")
+
+    else:
+
+        print(f"ciao {i} grazie per avere effetuato l'accesso oggi!\n")
+        print("---")
 
 
 
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")
+
+#esercizio 5-9. No Users: Add an if test to hello_admin.py to make sure the list of users is not empty.
+#• If the list is empty, print the message We need to find some users!
+#• Remove all of the usernames from your list, and make sure the correct message is printed
+
+utenti.clear()
+
+if not utenti:
+    print("dobbiamo trovare altri utenti")
+
+print("\n")
+print("|-----------------------------------------------------------------------------|")
+"""-----------------------------------------------------------------------------------------------------------------------------------"""
+print("\n")
 
 
 
+#esercizio 5-10. Checking Usernames: Do the following to create a program that simulates how websites ensure that everyone has a unique username.
+#• Make a list of five or more usernames called current_users.
+#• Make another list of five usernames called new_users. Make sure one or two of the new usernames are also in the current_users list.
+#• Loop through the new_users list to see if each new username has already been used. If it has, print a message that the person will need to enter a new username. If a username has not been used, print a message saying that the username is available.
+#• Make sure your comparison is case insensitive. If 'John' has been used, 'JOHN' should not be accepted. (To do this, you’ll need to make a copy of current_users containing the lowercase versions of all existing users.)
 
+current_user : list = ["marcolino98","giggi","Mario_77","AnDreaaa11","steFano88"]
 
+new_users : list = ["deadly_combination","TRUCEBOIZ","GIggi","Concetta33","giovanni0139"]
 
+#copia delle liste in minuscolo
+copiaC : list = []
+for i in current_user:
 
+    copiaC.append(i.lower())
 
+copiaN : list = []
+for i in new_users:
+
+    copiaN.append(i.lower())
+
+#verifica disponibilità del nome
+for i in range(len(new_users)):
+
+    if copiaN[i] in copiaC:
+
+        print(f"{new_users[i]} nome non disponibile,scegliere un altro nome \n")
+        print("---")
+    
+    else:
+
+        print(f"{new_users[i]} nome disponibile\n")
+        print("---")
