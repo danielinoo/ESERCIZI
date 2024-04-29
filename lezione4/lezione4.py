@@ -103,18 +103,76 @@ print("\n|--------------------------------------|\n")
 
 #esercizio 8-7. Album: Write a function called make_album() that builds a dictionary describing a music album. The function should take in an artist name and an album title, and it should return a dictionary containing these two pieces of information. Use the function to make three dictionaries representing different albums. Print each return value to show that the  dictionaries are storing the album information correctly. Use None to add an optional parameter to make_album() that allows you to store the number of songs on an album. If the calling line includes a value for the number of songs, add that value to the album’s dictionary. Make at least one new function call that includes the number of songs on an album.
 
-def  make_album(artista : str,nomA : str,numero_brani = None)-> dict:
+def  make_album(artista : str,nomA : str,numero_brani : None = None)-> dict:
     
     album = {"artista": artista,"album": nomA}
 
     if numero_brani:
         album["numero brani"] = numero_brani
 
-        return album
+    return album
     
-print(make_album("Pink Floyd","the wall"))
+
+album1 = make_album("Pink Floyd","the wall")
+print(album1)
 print("-----")
-print(make_album("Bob marley","Love songs",8))
+album2 =make_album("Bob marley","Love songs",8)
+print(album2)
+
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+
+#esercizio 8-8. User Albums:Start with your program from Exercise 8-7. Write a while loop that allows users to enter an album’s artist and title. Once you have that information, call make_album() with the user’s input and print the dictionary that’s created. Be sure to include a quit value in the while loop.
+
+while True:
+
+    artista = input("inserisci il nome dell'artista\n")
+    nomA = input("inserisci il nome dell' album\n")
+    numero_brani = input("inserisci il numero di brani dell' album (non obbligatorio premere invio per saltare)\n")
+
+    print("\n",make_album(artista,nomA),"\n")
+
+    print("-----")
+    risposta : str= input("\n vuoi terminare? (scrivi si)\n")
+    print("-----")
+    if risposta == "si":
+        break
+
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+
+#esercizio 8-9. Messages: Make a list containing a series of short text messages. Pass the list to a function called show_messages(), which prints each text message.
+
+lisMes = ["ciao","come va","tutto bene","io sto andando a lavoro"]
+
+def show_messages(lisMes : list) -> list:
+
+    for i in lisMes:
+        print(i,"\n")
+
+
+show_messages(lisMes)
+
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+
+#esercizio 8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. Write a function called send_messages() that prints each text message and moves each message to a new list called sent_messages as it’s printed. After calling the function, print both of your lists to make sure the messages were moved correctly
+
+
+def  send_messages(lisMes : list) -> list:
+
+    send_messages : list = []
+    for i in lisMes:
+        print(i,"\n")
+        send_messages.append(i)
+
+    print("-----")   
+    print(send_messages,lisMes)
+
+send_messages(lisMes)
 
 
 
