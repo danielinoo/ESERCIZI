@@ -127,7 +127,6 @@ else:
 print("\n|||||||||\n")
 
 if n1 == n2:
-
     print(True)
 
 else:
