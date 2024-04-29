@@ -141,7 +141,7 @@ print("\n|-----------|\n")
 #verifica utilizzando la parola chiave
 
 if n1 < 35 and n1 > 10:
-    
+
     print(True)
 
 else:
