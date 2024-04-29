@@ -42,7 +42,10 @@ else:
 print("\n|-----------|\n")
 
 #test che utilizzano il metodo lower()
-if stringa1 == stringa1.lower():
+stringa1 : str = "CIAO"
+stringa2 : str = "ciao"
+
+if stringa1 == stringa2.lower():
 
     print(True)
 
@@ -53,7 +56,7 @@ else:
 
 print("\n|||||||||\n")
 
-if stringa2 == stringa2.lower():
+if stringa2 == stringa1.lower():
 
     print(True)
 
@@ -132,16 +135,25 @@ else:
     print(False)
 
 
-print("\n|||||||||\n")
-
 print("\n|-----------|\n")
 
 
 #verifica utilizzando la parola chiave
 
+if n1 < 35 and n1 > 10:
 
+    print(True)
 
+else:
+    print(False)
 
+print("\n|||||||||\n")
+
+if n2 <= 5 and n2 > 30:
+    print(True)
+else:
+    print(False)
+print("\n|-----------|\n")
 #verifica se un elemento è o non è in un elenco
 
 macchina : list = ["mercedes","maserati","fiat"]
