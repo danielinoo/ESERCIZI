@@ -160,19 +160,25 @@ print("\n|--------------------------------------|\n")
 """---------------------------------------------------------------------------------------------------------------------------"""
 
 #esercizio 8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. Write a function called send_messages() that prints each text message and moves each message to a new list called sent_messages as it’s printed. After calling the function, print both of your lists to make sure the messages were moved correctly
-
+#esercizio 8-11. Archived Messages: Start with your work from Exercise 8-10. Call the function send_messages() with a copy of the list of messages. After calling the function, print both of your lists to show that the original list has retained its messages.
 
 def  send_messages(lisMes : list) -> list:
 
-    send_messages : list = []
+    copiaMes : list = []
     for i in lisMes:
         print(i,"\n")
-        send_messages.append(i)
-
+        copiaMes.append(i)
+    
+    print(copiaMes,lisMes)
     print("-----")   
-    print(send_messages,lisMes)
+    
 
 send_messages(lisMes)
+
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+#esercizio 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. Call the function three times, using a different number of arguments each time.
 
 
 
