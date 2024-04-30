@@ -113,11 +113,9 @@ def  make_album(artista : str,nomA : str,numero_brani : None = None)-> dict:
     return album
     
 
-album1 = make_album("Pink Floyd","the wall")
-print(album1)
+print( make_album("Pink Floyd","the wall"))
 print("-----")
-album2 =make_album("Bob marley","Love songs",8)
-print(album2)
+print(make_album("Bob marley","Love songs",8))
 
 
 print("\n|--------------------------------------|\n")
@@ -178,15 +176,118 @@ send_messages(lisMes)
 
 print("\n|--------------------------------------|\n")
 """---------------------------------------------------------------------------------------------------------------------------"""
+
 #esercizio 8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. The function should have one parameter that collects as many items as the function call provides, and it should print a summary of the sandwich that’s being ordered. Call the function three times, using a different number of arguments each time.
 
 
+def sandwiches(ni : int) -> list:
+
+    panino : list = []
+    for i in range(ni):
+        ing : str = input("\ninserire un ingradiente:\n")
+        panino.append(ing)
+
+    print("\npanino finito ,il tuo panino è:\n",panino)
+
+sandwiches(2)
+print("-----")
+sandwiches(3)
+print("-----")
+sandwiches(4)
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+# esercizio 8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first and last names and three other key-value pairs that describe you. All the values must be passed to the function as parameters. The function then must return a string such as "Eric Crow, age 45, hair brown, weight 67"
+
+def  build_profile(nome : str,cognome : str,eta : int,colore_capelli : str,peso : int):
+    profile : str =f"{nome} {cognome},eta {eta}, capelli {colore_capelli},peso {peso}"
+
+    print(profile)
+
+build_profile("Daniele","Pietropaolo",19, "neri",55)
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+
+#esercizio 8-14. Cars: Write a function that stores information about a car in a dictionary. The function should always receive a manufacturer and a model name. It should then accept an arbitrary number of keyword arguments. Call the function with the required information and two other name-value pairs, such as a color or an optional feature. Your function should work for a call like this one: car = make_car('subaru', 'outback', color='blue', tow_package=True) Print the dictionary that’s returned to make sure all the information was stored correctly. 
+
+def auto(produttore : str,modello : str, **altreInfo) -> dict:
+
+    car : dict = {"produttore" : produttore,"modello" : modello}
+
+    car.update(altreInfo)
+
+    print(car)
+
+auto("toyota","fuoristrada",colore = "blu")
+
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+
+#esercizio 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
 
 
 
 
 
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+#8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. Import the function into your main program file, and call the function using each of these approaches:
+#import module_name
+#from module_name import function_name
+#from module_name import function_name as fn
+#import module_name as mn
+#from module_name import *
 
 
 
 
+
+print("\n|--------------------------------------|\n")
+"""---------------------------------------------------------------------------------------------------------------------------"""
+#esercizio 8-17. Styling Functions: Choose any three programs you wrote for this chapter, and make sure they follow the styling guidelines described in this section.
+
+#Styling Functions es 8-14
+def auto(produttore : str,modello : str, **altreInfo) -> dict:
+
+    car : dict = {"produttore" : produttore,"modello" : modello}
+
+    car.update(altreInfo)
+
+    for k,v in car: print(k,v,"\n")
+
+auto("toyota","fuoristrada",colore = "blu")
+
+print("\n||||||||||||||\n")
+
+#Styling Functions es 8-13
+
+def  build_profile(nome : str,cognome : str,eta : int,colore_capelli : str,peso : int):
+    profile : str =f"{nome} {cognome}\neta {eta}\ncapelli {colore_capelli}\npeso {peso}"
+
+    print("profilo",profile)
+
+build_profile("Daniele","Pietropaolo",19, "neri",55)
+
+
+print("\n||||||||||||||\n")
+
+#Styling Functions es 8-13
+def sandwiches(ni : int) -> list:
+
+    panino : list = []
+    for i in range(ni):
+        ing : str = input("\ninserire un ingradiente:\n")
+        panino.append(ing)
+
+    print("\npanino finito ,il tuo panino è:\n")
+
+    for i in panino:
+        print(i)
+
+sandwiches(2)
+print("-----")
+sandwiches(3)
+print("-----")
+sandwiches(4)
