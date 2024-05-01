@@ -282,7 +282,7 @@ build_profile("Daniele","Pietropaolo",19, "neri",55)
 
 print("\n||||||||||||||\n")
 
-#Styling Functions es 8-13
+#Styling Functions es 8-12
 def sandwiches(ni : int) -> list:
 
     panino : list = []
