@@ -221,16 +221,6 @@ def auto(produttore : str,modello : str, **altreInfo) -> dict:
 
 auto("toyota","fuoristrada",colore = "blu")
 
-
-print("\n|--------------------------------------|\n")
-"""---------------------------------------------------------------------------------------------------------------------------"""
-
-#esercizio 8-15. Printing Models: Put the functions for the example printing_models.py in a separate file called printing_functions.py. Write an import statement at the top of printing_models.py, and modify the file to use the imported functions.
-
-
-
-
-
 print("\n|--------------------------------------|\n")
 """---------------------------------------------------------------------------------------------------------------------------"""
 #8-16. Imports: Using a program you wrote that has one function in it, store that function in a separate file. Import the function into your main program file, and call the function using each of these approaches:
@@ -240,7 +230,25 @@ print("\n|--------------------------------------|\n")
 #import module_name as mn
 #from module_name import *
 
+import module_name
+print(module_name.fra("marco"))
+print("-----")
 
+from module_name import fra
+print(fra("francesco"))
+print("-----")
+
+from module_name import fra as ns
+print(ns("giggi"))
+print("-----")
+
+import module_name as mn
+print(mn.fra("peppe"))
+print("-----")
+
+from module_name import*
+print(fra("antonio"))
+print("-----")
 
 
 
@@ -255,7 +263,8 @@ def auto(produttore : str,modello : str, **altreInfo) -> dict:
 
     car.update(altreInfo)
 
-    for k,v in car: print(k,v,"\n")
+    for k,v in car.items(): 
+        print(f"{k} {v}\n")
 
 auto("toyota","fuoristrada",colore = "blu")
 
@@ -266,7 +275,7 @@ print("\n||||||||||||||\n")
 def  build_profile(nome : str,cognome : str,eta : int,colore_capelli : str,peso : int):
     profile : str =f"{nome} {cognome}\neta {eta}\ncapelli {colore_capelli}\npeso {peso}"
 
-    print("profilo",profile)
+    print("profilo:\n",profile)
 
 build_profile("Daniele","Pietropaolo",19, "neri",55)
 
