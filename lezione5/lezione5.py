@@ -138,11 +138,35 @@ def count_isolated(l : list = [int]) -> int:
     
     return c
 
-print(count_isolated(l = [1, 1, 4, 5]))
+#print(count_isolated(l = [1, 1, 4, 5]))
 
 #da rivedere
 
 print("\n----------------------------------\n")
 #Scrivi una funzione che, dato un insieme e una lista di numeri interi da rimuovere, ritorni un nuovo insieme senza i numeri specificati nella lista.
+
+def remove_elements(original_set: set[int], elements_to_remove: list[int]) -> set[int]:
+    return original_set - set(elements_to_remove)
+
+#print(remove_elements([1,2,3],[3,4,5]))
+
+print("\n----------------------------------\n")
+#Scrivi una funzione che unisce due dizionari. Se una chiave è presente in entrambi, somma i loro valori.
+
+def merge_dictionaries(dict1: dict, dict2: dict) -> dict:
+    dict3 = dict1|dict2
+
+    for i in dict3:
+        if i in dict1 and i in dict2:
+            dict3[i] = dict1[i] + dict2[i]
+
+    return dict3
+
+print(merge_dictionaries({'x': 5}, {'x': -5}))
+
+	
+
+
+
 
 
