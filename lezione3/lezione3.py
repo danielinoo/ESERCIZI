@@ -234,7 +234,20 @@ print("\n")
 
 #esercizio 4-15. Code Review: Choose three of the programs you’ve written in this chapter and modify each one to comply with PEP 8.
 
+#es4-1
+pizza : list = ["margherita", "margherita con wustel",
+                "boscaiola"]
+mes : str = "mi piace davvero la pizza"
 
+for i in pizza:
+    print(i,"\n")
+
+print("\n---\n")
+
+for i in pizza:
+    print(f"{mes} {i}\n")
+
+print("adoro la pizza")
 
 
 
