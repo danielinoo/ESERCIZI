@@ -14,7 +14,7 @@ class resturant:
     def des_resturant(self):
 
         print(f"nome ristorante: {self.ris} co cucina di tipo {self.cuc}\n")
-
+        
 
     def open_resturant(self):
         print(f"il nuovo ristorante {self.ris} è aperto!")
