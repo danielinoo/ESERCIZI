@@ -4,27 +4,19 @@
 
 #-------------------------------#
 
-class zoo_keepers:
-
-    def __init__(self,n : str,c : str,idi : str):
-
-        self.nome = n
-        self.cognome = c
-        self.id = idi
-
-
-#-------------------------------#
-
 class animal:
 
     def __init__(self,name : str,spieces: str,eta : int,alt : float,larg : float,habitat : str):
 
         self.name_a = name
         self.spieces = spieces
-        self.age_s = eta
+        self.age = eta
         self.height = alt
         self.width = larg
         self.prefer_habitat = habitat
+
+
+        self.health = round(100 * (1 /self.age), 3)
 
 
 #-------------------------------#
@@ -38,6 +30,16 @@ class fence:
 
 
 #-------------------------------#
+
+#-------------------------------#
+
+class zoo_keepers:
+
+    def __init__(self,n : str,c : str,idi : str):
+
+        self.nome = n
+        self.cognome = c
+        self.id = idi
 
 
 class zoo:
