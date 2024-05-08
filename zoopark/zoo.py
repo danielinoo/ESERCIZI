@@ -22,8 +22,9 @@ class animal:
 #-------------------------------#
 
 class fence:
-    def __init__(self,area : float,temperature :float,habitat : str):
+    def __init__(self,animals : list[animal],area : float,temperature :float,habitat : str):
 
+        self.animals = animals
         self.area = area
         self.temperature = temperature
         self.habitat = habitat
