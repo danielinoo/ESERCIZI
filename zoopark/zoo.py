@@ -91,6 +91,28 @@ class zoo_keepers:
             animal.width = animal.width * 1.02
 
             return animal.health,animal.height
+        
+
+    def clean(fence: Fence) -> float:
+
+        if fence.area == 0:
+            return "area occupata"
+
+        #area occupata dagli animali
+        area_animali : float = 0
+
+        for i in fence.animals:
+            area_animali = fence.animals.height * fence.animals.width
+
+        if fence.area / area_animali <= 0:
+            return "area occupata"
+        else:
+            return fence.area / area_animali
+
+
+
+
+
 
         
 
@@ -114,6 +136,19 @@ class zoo:
 
         self.fence = fence
         self.zoo_keepers = zoo_keepers
+
+
+    def describe_zoo(self):
+
+        print("\nGuardians:\n")
+        print(f"{self.zoo_keepers}\n")
+
+
+        for i in self.fence:
+            print("Fence:\n")
+            print(f"{self.fence}")
+
+
 
 
 
