@@ -104,7 +104,10 @@ prof1  : professore = professore( nome = "daniele",
                    ore_lezione = 40)
 
 
+
+
 print(prof1.ore_lezione)
+
 
 
 
