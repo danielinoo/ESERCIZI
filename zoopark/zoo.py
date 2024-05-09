@@ -44,11 +44,11 @@ class zoo_keepers:
         self.cognome = cognome
         self.id = id
 
-    def add_animal(animal: Animal, fence: Fence):
+    def add_animal(self,animal: Animal, fence: Fence):
 
         if animal.prefer_habitat != fence.habitat and fence.area < animal.height*animal.width:
             pass
-
+            
         
         else: 
             #lista degli animali del recinto aggiunge un nuovo animale
@@ -57,8 +57,17 @@ class zoo_keepers:
             #sottraggo all' area del recinto l'area del nuovo animale
             fence.area = fence.area - (animal.height * animal.width)
 
+        
+        
+        
 
-    def remove_animal(animal: Animal, fence: Fence):
+    
+        
+
+
+
+
+    def remove_animal(self,animal: Animal, fence: Fence):
 
         #lista degli animali del recinto rimuove l animale
         fence.animals.remove(animal)
@@ -66,23 +75,37 @@ class zoo_keepers:
         #aggiungo all'area del recinto l'area dell'animale appena uscito
         fence.area = fence.area + (animal.height*animal.width)
 
+        
 
 
-    def feed(animal: Animal):    
+    def feed(self,animal: Animal): 
 
-        while Fence.area >= animal.height * animal.width:
+
+        while Fence >= animal.height * animal.width:
 
             #aumento salute animale del 1%
             animal.health = animal.health * 1.01
 
             #aumento altezza e larghezza del 2%
             animal.height = animal.height * 1.02
-            animal.width : float = animal.width * 1.02
+            animal.width = animal.width * 1.02
+
+            return animal.health,animal.height
 
         
 
 
+
+
 #######################TEST PRINT######################
+
+c1 = Animal("pippo", "lupo",20,4,5,"bosco")
+c2 = Fence(animals= ["francesco"],area= 50, temperature= 20,habitat="bosco")
+c3 = zoo_keepers("franco","rossi","1234")
+
+print(c3.feed(c1))
+
+
 
 
 
