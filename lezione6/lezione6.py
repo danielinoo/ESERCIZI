@@ -37,11 +37,25 @@ class dipendente(persona):
         super().__init__(nome, cognome, data, genere)
 
 
+    def calcola_stipendio(self) -> float:
+        return 500.0
+
+
+
+
+
+
+
+
+
+
+
 
 ##########################################
 
 print(persona1.calcola_eta())
 
+print("\n-------------\n")
 
 dipendente1 : dipendente= dipendente(nome = "daniele",
                    cognome = "pietropaolo", 
@@ -49,8 +63,10 @@ dipendente1 : dipendente= dipendente(nome = "daniele",
                    genere = "maschio")
 
 print(dipendente1.name)
+print(dipendente1.calcola_eta())
+print(dipendente1.calcola_stipendio())
 
-
+print("\n-------------\n")
 
 
 
