@@ -101,8 +101,18 @@ class zoo_keepers:
         #area occupata dagli animali
         area_animali : float = 0
 
-        for i in fence.animals:
-            area_animali = fence.animals.height * fence.animals.width
+        #totale della altezza degli animali
+        tot_height : int = 0
+
+        #totale larghezza degli animali
+        tot_width : int = 0 
+        
+        for i in range(len(fence.animals)):
+            tot_height = tot_height + fence.animals[i]
+            tot_width = tot_width + fence.animals[i]
+
+            area_animali = tot_height * tot_width
+
 
         if fence.area / area_animali <= 0:
             return "area occupata"
