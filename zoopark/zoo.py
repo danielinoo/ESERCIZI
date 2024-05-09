@@ -81,6 +81,10 @@ class zoo_keepers:
     def feed(self,animal: Animal): 
 
 
+        
+        
+
+
         while Fence >= animal.height * animal.width:
 
             #aumento salute animale del 1%
