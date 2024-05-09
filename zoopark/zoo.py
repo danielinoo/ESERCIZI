@@ -46,7 +46,7 @@ class zoo_keepers:
 
     def add_animal(animal: Animal, fence: Fence):
 
-        if animal.prefer_habitat != fence.habitat and fence.area > animal.height*animal.width:
+        if animal.prefer_habitat != fence.habitat and fence.area < animal.height*animal.width:
             pass
 
         
@@ -54,14 +54,35 @@ class zoo_keepers:
             #lista degli animali del recinto aggiunge un nuovo animale
             fence.animals.append(animal)
 
+            #sottraggo all' area del recinto l'area del nuovo animale
+            fence.area = fence.area - (animal.height * animal.width)
+
+
     def remove_animal(animal: Animal, fence: Fence):
 
         #lista degli animali del recinto rimuove l animale
         fence.animals.remove(animal)
 
-        fence.area = fence.area - (animal.height*animal.width)
+        #aggiungo all'area del recinto l'area dell'animale appena uscito
+        fence.area = fence.area + (animal.height*animal.width)
 
 
+
+    def feed(animal: Animal):    
+
+        while Fence.area >= animal.height * animal.width:
+
+            #aumento salute animale del 1%
+            animal.health = animal.health * 1.01
+
+            #aumento altezza e larghezza del 2%
+            animal.height = animal.height * 1.02
+            animal.width : float = animal.width * 1.02
+
+        
+
+
+#######################TEST PRINT######################
 
 
 
