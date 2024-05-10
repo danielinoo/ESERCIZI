@@ -4,26 +4,26 @@
 #esercizio 9-1. Restaurant: Make a class called Restaurant. The __init__() method for Restaurant should store two attributes: a restaurant_name and a cuisine_type. Make a method called describe_restaurant() that prints these two pieces of information, and a method called open_restaurant() that prints a message indicating that the restaurant is open. Make an instance called restaurant from your class. Print the two attributes individually, and then call both methods.
 
 	
-class resturant:
+class restaurant:
 
     def __init__(self,ristorante : str,cucina : str) -> None:
         
         self.ris : str = ristorante
         self.cuc : str = cucina
 
-    def des_resturant(self):
+    def des_restaurant(self):
 
         print(f"nome ristorante: {self.ris} co cucina di tipo {self.cuc}\n")
 
 
-    def open_resturant(self):
+    def open_restaurant(self):
         print(f"il nuovo ristorante {self.ris} è aperto!")
 
 
-r1 = resturant(ristorante= "Da Baffo",cucina="romana")
+r1 = restaurant(ristorante= "Da Baffo",cucina="romana")
 
-r1.des_resturant()
-r1.open_resturant()
+r1.des_restaurant()
+r1.open_resaturant()
 
 
 print("\n----------------------------------------------\n")
@@ -83,7 +83,7 @@ print("\n----------------------------------------------\n")
 
 #esercizio 9-4. Number Served: Start with your program from Exercise 9-1. Add an attribute called number_served with a default value of 0. Create an instance called restaurant from this class. Print the number of customers the restaurant has served, and then change this value and print it again. Add a method called set_number_served() that lets you set the number of customers that have been served. Call this method with a new number and print the value again. Add a method called increment_number_served() that lets you increment the number of customers who’ve been served. Call this method with any number you like that could represent how many customers were served in, say, a day of business. 
 	
-class resturant:
+class Restaurant:
 
     def __init__(self,ristorante : str,cucina : str, num : int) -> None:
         
@@ -91,12 +91,12 @@ class resturant:
         self.cuc : str = cucina
         self.num_served = num
 
-    def des_resturant(self):
+    def des_Restaurant(self):
 
         print(f"nome ristorante: {self.ris} co cucina di tipo {self.cuc}\n")
 
 
-    def open_resturant(self):
+    def open_Restaurant(self):
         print(f"il nuovo ristorante {self.ris} è aperto!")
 
     def set_numer_served(self,new_number_served : int):
@@ -107,7 +107,7 @@ class resturant:
         self.num_served += 1
     
 
-r3 = resturant(ristorante= "Da Baffo",cucina="romana",num= 2)
+r3 = Restaurant(ristorante= "Da Baffo",cucina="romana",num= 2)
 
 
 
@@ -124,7 +124,7 @@ print("\n----------------------------------------------\n")
 #esercizio 9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. Write a class called IceCreamStand that inherits from the Restaurant class you wrote in Exercise 9-1  or Exercise 9-4. Either version of the class will work; just pick the one you like better. Add an attribute called flavors that stores a list of ice cream flavors. Write a method that displays these flavors. Create an instance of IceCreamStand, and call this method. 
 
 
-class IceCreamStand(resturant):
+class IceCreamStand(Restaurant):
     def __init__(self, ristorante: str, cucina: str, num: int,sapori : list [str]) -> None:
 
         super().__init__(ristorante, cucina, num)
@@ -213,9 +213,18 @@ ad1.priv.privilegio = ["può aggiungere post", "può eliminare post", "può bloc
 ad1.show_privilege()
 
 print("\n----------------------------------------------\n")
+#9-10. Imported Restaurant: Using your latest Restaurant class, store it in a module. Make a separate file that imports Restaurant. Make a Restaurant instance, and call one of Restaurant’s methods to show that the import statement is working properly.
 
 
 
+
+
+
+
+
+
+
+print("\n----------------------------------------------\n")
 
 
 
