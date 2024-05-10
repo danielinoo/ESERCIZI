@@ -213,11 +213,20 @@ ad1.priv.privilegio = ["può aggiungere post", "può eliminare post", "può bloc
 ad1.show_privilege()
 
 print("\n----------------------------------------------\n")
-#9-10. Imported Restaurant: Using your latest Restaurant class, store it in a module. Make a separate file that imports Restaurant. Make a Restaurant instance, and call one of Restaurant’s methods to show that the import statement is working properly.
+#9-13. Dice: Make a class Die with one attribute called sides, which has a default value of 6. Write a method called roll_die() that prints a random number between 1 and the number of sides the die has. Make a 6-sided die and roll it 10 times. Make a 10-sided die and a 20-sided die. Roll each die 10 times.
 
 
+import random
+class die:
+    def __init__(self,lati : int = 6) -> None:
+        self.lati = lati
 
+    def roll_die(self):
+        self.lati = random.random(1,6)
+        print(self.lati)
+        
 
+        
 
 
 
