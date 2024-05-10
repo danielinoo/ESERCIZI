@@ -57,9 +57,8 @@ class user:
 
     def increment_login_attempts(self):
         self.login_attempts += 1
-        print()
 
-    def eset_login_attempts(self):
+    def reset_login_attempts(self):
         self.login_attempts = 0
 
 
@@ -69,16 +68,20 @@ r2.great_user()
 print(r2)
 
 print("---") #es9-5
-print(r2.increment_login_attempts())
-print(r2.increment_login_attempts())
-print(r2.increment_login_attempts())
 
+#incremento numero di accessi dell'utente
+r2.increment_login_attempts()
+r2.increment_login_attempts()
+r2.increment_login_attempts()
+print("tentativi di accesso:\n",r2.login_attempts)
+
+#resetto il numero di acessi
+r2.reset_login_attempts()
+print("tentativi di accesso:\n",r2.login_attempts)
 print("\n----------------------------------------------\n")
 
+
 #esercizio 9-4. Number Served: Start with your program from Exercise 9-1. Add an attribute called number_served with a default value of 0. Create an instance called restaurant from this class. Print the number of customers the restaurant has served, and then change this value and print it again. Add a method called set_number_served() that lets you set the number of customers that have been served. Call this method with a new number and print the value again. Add a method called increment_number_served() that lets you increment the number of customers who’ve been served. Call this method with any number you like that could represent how many customers were served in, say, a day of business. 
-
-
-
 	
 class resturant:
 
@@ -124,13 +127,32 @@ print(r3.num_served)
 
 print("\n----------------------------------------------\n")
 
-#esercizio 9-5. Login Attempts: Add an attribute called login_attempts to your User class from Exercise 9-3. Write a method called increment_login_attempts() that increments the value of login_attempts by 1. Write another method called reset_login_attempts() that resets the value of login_attempts to 0. Make an instance of the User class and call increment_login_attempts() several times. Print the value of login_attempts to make sure it was incremented properly, and then call reset_login_attempts(). Print login_attempts again to make sure it was reset to 0.
+#esercizio 9-6. Ice Cream Stand: An ice cream stand is a specific kind of restaurant. Write a class called IceCreamStand that inherits from the Restaurant class you wrote in Exercise 9-1  or Exercise 9-4. Either version of the class will work; just pick the one you like better. Add an attribute called flavors that stores a list of ice cream flavors. Write a method that displays these flavors. Create an instance of IceCreamStand, and call this method. 
+
+
+class IceCreamStand(resturant):
+    def __init__(self, ristorante: str, cucina: str, num: int,sapori : list [str]) -> None:
+
+        super().__init__(ristorante, cucina, num)
+        self.sapori = sapori
+
+    def gelato(self):
+
+        for i in self.sapori:
+            print(i)
 
 
 
 
+ic = IceCreamStand(ristorante="bruno",
+                   cucina="romana",
+                   num= 10,
+                   sapori=["cioccolato","fiordilatte","crema","fragola"])
+
+ic.gelato()
 
 
+print("\n----------------------------------------------\n")
 
 
 
