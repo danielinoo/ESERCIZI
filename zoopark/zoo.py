@@ -32,17 +32,24 @@ class Fence:
 
 
 
+
+
 #-------------------------------#
 
 
 
 class zoo_keepers:
 
+
+    
     def __init__(self,nome : str,cognome : str,id : str):
 
         self.nome = nome
         self.cognome = cognome
         self.id = id
+        
+
+
 
     def add_animal(self,animal: Animal, fence: Fence):
 
@@ -73,20 +80,13 @@ class zoo_keepers:
         
 
 
+
+    
+
     def feed(self,animal: Animal): 
 
 
-
-        class Fence1(Fence):
-
-            def __init__(self, animals: list[Animal], area: float, temperature: float, habitat: str):
-
-                super().__init__(animals, area, temperature, habitat)
-
-        f1 = Fence1
-
-
-        while f1.area >= animal.height * animal.width:
+        while   >= animal.height * animal.width:
 
             #aumento salute animale del 1%
             animal.health = animal.health * 1.01
