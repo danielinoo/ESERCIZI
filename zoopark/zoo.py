@@ -58,11 +58,6 @@ class zoo_keepers:
             fence.area = fence.area - (animal.height * animal.width)
 
         
-        
-        
-
-    
-        
 
 
 
@@ -81,11 +76,17 @@ class zoo_keepers:
     def feed(self,animal: Animal): 
 
 
-        
-        
+
+        class Fence1(Fence):
+
+            def __init__(self, animals: list[Animal], area: float, temperature: float, habitat: str):
+
+                super().__init__(animals, area, temperature, habitat)
+
+        f1 = Fence1
 
 
-        while Fence >= animal.height * animal.width:
+        while f1.area >= animal.height * animal.width:
 
             #aumento salute animale del 1%
             animal.health = animal.health * 1.01
@@ -144,7 +145,6 @@ print(c3.feed(c1))
 
 
 
-
 class zoo:
     def __init__(self,fence : list[Fence],zoo_keepers : list[zoo_keepers]):
 
@@ -160,7 +160,7 @@ class zoo:
 
         for i in self.fence:
             print("Fence:\n")
-            print(f"{self.fence}")
+            print(f"{self.fence[i.animals[i]]}")
 
 
 
