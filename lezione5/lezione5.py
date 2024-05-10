@@ -105,12 +105,6 @@ class resturant:
 
     def increment_number(self):
         self.num_served += 1
-
-    
-
-    
-
-
     
 
 r3 = resturant(ristorante= "Da Baffo",cucina="romana",num= 2)
@@ -153,6 +147,74 @@ ic.gelato()
 
 
 print("\n----------------------------------------------\n")
+
+#esercizio 9-7. Admin: An administrator is a special kind of user. Write a class called Admin that inherits from the User class you wrote in Exercise 9-3 or Exercise 9-5. Add an attribute, privileges, that stores a list of strings like "can add post", "can delete post", "can ban user", and so on. Write a method called show_privileges() that lists the administrator’s set of privileges. Create an instance of Admin, and call your method. 
+
+class admin(user):
+    def __init__(self, nome: str, cogn: str, eta: int,privilegi : list[str]):
+
+        super().__init__(nome, cogn, eta)
+
+
+        self.privilegi = privilegi
+
+    def show_privileges(self):
+
+        for i in self.privilegi:
+            print(i)
+
+
+
+ad = admin("amministratore",
+            "am",
+           30,
+           ["può aggiungere post", "può eliminare post", "può eliminare i commenti l'utente"])
+
+ad.show_privileges()
+
+
+
+print("\n----------------------------------------------\n")
+#esercizio 9-8. Privileges: Write a separate Privileges class. The class should have one attribute, privileges, that stores a list of strings as described in Exercise 9-7. Move the show_privileges() method to this class. Make a Privileges instance as an attribute in the Admin class. Create a new instance of Admin and use your method to show its privileges.
+
+class Privilegio:
+    def __init__(self, privilegio : list[str]) -> None:
+        self.privilegio = privilegio
+
+    def show_privileges(self):
+
+        for i in self.privilegio:
+            print(i)
+
+
+        
+
+
+
+class admin(user):
+    def __init__(self, nome: str, cogn: str, eta: int):
+        self.nome = nome
+        self.cognome = cogn
+        self.eta = eta
+        self.priv = Privilegio(privilegio=[])
+
+    def show_privilege(self):
+
+        self.priv.show_privileges()
+
+
+
+ad1 = admin("gigi","proietti",70)
+
+
+ad1.priv.privilegio = ["può aggiungere post", "può eliminare post", "può bloccare l'utente"]
+
+
+ad1.show_privilege()
+
+print("\n----------------------------------------------\n")
+
+
 
 
 
