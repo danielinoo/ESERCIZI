@@ -222,19 +222,75 @@ class die:
         self.lati = lati
 
     def roll_die(self):
-        self.lati = random.random(1,6)
-        print(self.lati)
+
+        #6 lati 10 lanci
+        l : int = 10
+        for i in range(l):
+            n  : int = random.randint(1,self.lati)
+            print(n)
+        print("---")
+
+
+        #10 lati 10 lanci
+        self.lati = 10
+        for i in range(l):
+            n  : int = random.randint(1,self.lati)
+            print(n)
+
+        print("---")
+        #20 lati 10 lanci
+
+        self.lati = 20
+        for i in range(l):
+            n  : int = random.randint(1,self.lati)
+            print(n)
         
 
+dadi = die()
+
+dadi.roll_die()
+
+print("\n----------------------------------------------\n")
+#9-14. Lottery: Make a list or tuple containing a series of 10 numbers and 5 letters. Randomly select 4 numbers or letters from the list and print a message saying that any ticket matching these 4 numbers or letters wins a prize.
+#9-15. Lottery Analysis: You can use a loop to see how hard it might be to win the kind of lottery you just modeled. Make a list or tuple called my_ticket. Write a loop that keeps pulling numbers until your ticket wins. Print a message reporting how many times the loop had to run to give you a winning ticket.
+
+
+class lotteria:
+
+    def __init__(self,myTicket : list) -> None:
         
+        self.l : list = [1,4,"x",5,6,"a",9,2,7,"j","q",44,7,23,"f"]
+        self.myT : list = myTicket
+        self.tl : list = []
+        self.c : int = 0
+
+
+    def vincita(self):
+
+        print("biglietto vincente:\n")
+        self.tl = random.sample(self.l,4)
+        print(self.tl)
+
+        
+        while self.myT != self.tl:
+            self.tl = random.sample(self.l,4)
+            self.c += 1
+        print("Hai vinto dopo",self.c, "tentativi!")
 
 
 
 
 
+
+lu = lotteria(myTicket=[ 1,4,6,8,"q"])
+
+lu.vincita()
 
 print("\n----------------------------------------------\n")
 
+
+
+        
 
 
 
