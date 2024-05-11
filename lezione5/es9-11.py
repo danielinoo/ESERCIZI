@@ -3,8 +3,6 @@
 #9-11. Imported Admin: Start with your work from Exercise 9-8. Store the classes User, Privileges, and Admin in one module. Create a separate file, make an Admin instance, and call show_privileges() to show that everything is working correctly.
 
 
-
-
 class user:                                       
     def __init__(self,nome : str,cogn : str, eta : int):
 
@@ -34,7 +32,7 @@ class user:
         self.login_attempts = 0
 
 
-############################
+##################################################
 
 class Privilegio:
     def __init__(self, privilegio : list[str]) -> None:
