@@ -23,7 +23,7 @@ class restaurant:
 r1 = restaurant(ristorante= "Da Baffo",cucina="romana")
 
 r1.des_restaurant()
-r1.open_resaturant()
+r1.open_restaurant()
 
 
 print("\n----------------------------------------------\n")
@@ -93,7 +93,7 @@ class Restaurant:
 
     def des_Restaurant(self):
 
-        print(f"nome ristorante: {self.ris} co cucina di tipo {self.cuc}\n")
+        print(f"nome ristorante: {self.ris} con cucina di tipo {self.cuc}\n")
 
 
     def open_Restaurant(self):
