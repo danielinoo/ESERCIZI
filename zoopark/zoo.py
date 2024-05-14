@@ -26,9 +26,13 @@ class Fence:
     def __init__(self,animals : list[Animal],area : float,temperature :float,habitat : str):
 
         self.animals = animals
-        self.area = area
+        
         self.temperature = temperature
         self.habitat = habitat
+        self.area = area
+        if area < 0:
+            self.area = 0
+            
 
 
 
@@ -48,6 +52,7 @@ class ZooKeepers:
         self.surname = surname
         self.id = id
         
+
 
 
 
@@ -90,25 +95,29 @@ class ZooKeepers:
     def feed(self,animal: Animal):
 
 
+        if animal.rec != None:
 
-        if animal.rec.area >= animal.height * animal.width:
+            if animal.rec.area >= animal.height * animal.width:
 
             #variabili di appoggio
-            h : float = animal.height
-            w : float = animal.width
+                h : float = animal.height
+                w : float = animal.width
 
         #aumento salute animale del 1%
-            animal.health = animal.health * 1.01
+                animal.health = animal.health * 1.01
 
         #aumento altezza e larghezza del 2%
-            animal.height = animal.height * 1.02
-            animal.width = animal.width * 1.02
+                animal.height = animal.height * 1.02
+                animal.width = animal.width * 1.02
 
-            if animal.rec.area < animal.height * animal.width:
+                if animal.rec.area < animal.height * animal.width:
 
-            #se dopo averlo nutrito l' animale è troppo grande gli ritornano i valori iniziali
-                animal.height = h
-                animal.width = w
+                #sedopo averlo nutrito l' animale è troppo grande gli ritornano i valori iniziali
+                    animal.height = h
+                    animal.width = w
+                
+            else:
+                pass
 
         else: 
             pass
@@ -159,7 +168,11 @@ class Zoo:
             print("#" * 30,"\n")
 
 
+c1 = Animal("aaa","SSS",20,4,5,"bosco")
 
+c3 = ZooKeepers("A","b","!")
+
+c3.feed(c1)
 
 
 
