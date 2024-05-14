@@ -63,24 +63,26 @@ class zoo_keepers:
 
             #sottraggo all' area del recinto l'area del nuovo animale
             fence.area = fence.area - (animal.height * animal.width)
-        
-
             animal.rec = fence
 
-            return fence.animals, fence.area
+    
 
 
 
 
     def remove_animal(self,animal: Animal, fence: Fence):
 
-        #lista degli animali del recinto rimuove l animale
-        fence.animals.remove(animal)
 
-        #aggiungo all'area del recinto l'area dell'animale appena uscito
-        fence.area = fence.area + (animal.height*animal.width)
+        if not fence.animals :
+            pass
 
-        return fence.animals, fence.area
+        else:
+            #lista degli animali del recinto rimuove l animale
+            fence.animals.remove(animal)
+
+            #aggiungo all'area del recinto l'area dell'animale appena uscito
+            fence.area = fence.area + (animal.height*animal.width)
+
 
 
     
@@ -98,14 +100,15 @@ class zoo_keepers:
             animal.height = animal.height * 1.02
             animal.width = animal.width * 1.02
 
-            return  f"salute: {animal.health}, altezza e larghezza: {animal.height,animal.width}"
+        else: 
+            pass
+        
         
 
     def clean(self,fence: Fence) -> float:
 
 
-        if fence.area <= 0:
-            return "area occupata"
+        
 
         #area occupata dagli animali
         area_animali : float = 0
@@ -113,54 +116,11 @@ class zoo_keepers:
         for animal in fence.animals:
             area_animali += animal.height * animal.width
 
-        return area_animali
+        if fence.area == 0:
+            return area_animali
 
-        if fence.area / area_animali <= 0:
-            return "area occupata"
-        
-        else: 
-            return fence.area / area_animali
+        return area_animali / fence.area
 
-
-
-
-
-
-        
-
-
-
-
-#######################TEST PRINT######################
-
-c1 = Animal("pippo", "lupo",20,10,5,"bosco")
-c12 = Animal("francesco","volpe",10,4,2,"bosco")
-c13 = Animal("rana","anfibio",4,2,2,"palude")
-
-c2 = Fence(animals= [],area= 140, temperature= 20,habitat="bosco")
-c21 = Fence(animals= [],area= 120, temperature= 45,habitat="palude")
-#c22 = Fence()
-
-c3 = zoo_keepers("franco","rossi","1234")
-c31 = zoo_keepers("gigi","bianchi","6789")
-
-
-print("add animal",c3.add_animal(c1,c2)) 
-print("add animal",c3.add_animal(c12,c2))
-print("add animal",c3.add_animal(c12,c21))#1
-print("---")
-
-#print("remove",c3.remove_animal(c1,c2))#2
-print("---")
-
-print("feed",c3.feed(c1))
-print("feed",c3.feed(c12))
-print("feed",c3.feed(c13)) #3
-print("---")
-
-print("clean",c3.clean(c2))
-print("clean",c3.clean(c21))#4
-print("---")
 
 
 class zoo:
@@ -186,9 +146,7 @@ class zoo:
 
                 print(f"Animal(name={j.name},species={j.spieces},age={j.age})\n")
 
-            print("#""\n")
-
-
+            print("#" * 30,"\n")
 
 
 
