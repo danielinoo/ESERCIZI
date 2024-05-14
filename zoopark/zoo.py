@@ -15,7 +15,7 @@ class Animal:
         self.width = width
         self.prefer_habitat = prefer_habitat
 
-
+        self.rec = None #varabile di supporto che "collega Animal e Fence"
         self.health = round(100 * (1 /self.age), 3)
 
 
@@ -42,10 +42,10 @@ class zoo_keepers:
 
 
     
-    def __init__(self,nome : str,cognome : str,id : str):
+    def __init__(self,name : str,surname : str,id : str):
 
-        self.nome = nome
-        self.cognome = cognome
+        self.name = name
+        self.surname = surname
         self.id = id
         
 
@@ -63,8 +63,11 @@ class zoo_keepers:
 
             #sottraggo all' area del recinto l'area del nuovo animale
             fence.area = fence.area - (animal.height * animal.width)
-
         
+
+            animal.rec = fence
+
+            return fence.animals, fence.area
 
 
 
@@ -77,51 +80,45 @@ class zoo_keepers:
         #aggiungo all'area del recinto l'area dell'animale appena uscito
         fence.area = fence.area + (animal.height*animal.width)
 
-        
-
+        return fence.animals, fence.area
 
 
     
 
-    def feed(self,animal: Animal): 
+    def feed(self,animal: Animal):
 
 
-        while   >= animal.height * animal.width:
 
-            #aumento salute animale del 1%
+        if animal.rec.area >= animal.height * animal.width:
+
+        #aumento salute animale del 1%
             animal.health = animal.health * 1.01
 
-            #aumento altezza e larghezza del 2%
+        #aumento altezza e larghezza del 2%
             animal.height = animal.height * 1.02
             animal.width = animal.width * 1.02
 
-            return animal.health,animal.height
+            return  f"salute: {animal.health}, altezza e larghezza: {animal.height,animal.width}"
         
 
-    def clean(fence: Fence) -> float:
+    def clean(self,fence: Fence) -> float:
 
-        if fence.area == 0:
+
+        if fence.area <= 0:
             return "area occupata"
 
         #area occupata dagli animali
         area_animali : float = 0
-
-        #totale della altezza degli animali
-        tot_height : int = 0
-
-        #totale larghezza degli animali
-        tot_width : int = 0 
         
-        for i in range(len(fence.animals)):
-            tot_height = tot_height + fence.animals[i]
-            tot_width = tot_width + fence.animals[i]
+        for animal in fence.animals:
+            area_animali += animal.height * animal.width
 
-            area_animali = tot_height * tot_width
-
+        return area_animali
 
         if fence.area / area_animali <= 0:
             return "area occupata"
-        else:
+        
+        else: 
             return fence.area / area_animali
 
 
@@ -136,13 +133,34 @@ class zoo_keepers:
 
 #######################TEST PRINT######################
 
-c1 = Animal("pippo", "lupo",20,4,5,"bosco")
-c2 = Fence(animals= ["francesco"],area= 50, temperature= 20,habitat="bosco")
+c1 = Animal("pippo", "lupo",20,10,5,"bosco")
+c12 = Animal("francesco","volpe",10,4,2,"bosco")
+c13 = Animal("rana","anfibio",4,2,2,"palude")
+
+c2 = Fence(animals= [],area= 140, temperature= 20,habitat="bosco")
+c21 = Fence(animals= [],area= 120, temperature= 45,habitat="palude")
+#c22 = Fence()
+
 c3 = zoo_keepers("franco","rossi","1234")
+c31 = zoo_keepers("gigi","bianchi","6789")
 
-print(c3.feed(c1))
 
+print("add animal",c3.add_animal(c1,c2)) 
+print("add animal",c3.add_animal(c12,c2))
+print("add animal",c3.add_animal(c12,c21))#1
+print("---")
 
+#print("remove",c3.remove_animal(c1,c2))#2
+print("---")
+
+print("feed",c3.feed(c1))
+print("feed",c3.feed(c12))
+print("feed",c3.feed(c13)) #3
+print("---")
+
+print("clean",c3.clean(c2))
+print("clean",c3.clean(c21))#4
+print("---")
 
 
 class zoo:
@@ -155,19 +173,20 @@ class zoo:
     def describe_zoo(self):
 
         print("\nGuardians:\n")
-        print(f"{self.zoo_keepers}\n")
-
+    
+        for i in self.zoo_keepers:
+            print(f"ZooKeeper(name={i.name},surname={i.surname},id={i.id})\n")
 
         for i in self.fence:
             print("Fence:\n")
-            print(f"{self.fence[i.animals[i]]}")
+            print(f"Fence(area={i.area},temperature={i.temperature},habitat={i.habitat})\n")
+            print("with animals\n")
 
+            for j in i.animals:
 
+                print(f"Animal(name={j.name},species={j.spieces},age={j.age})\n")
 
-
-
-#-------------------------------#
-
+            print("#""\n")
 
 
 
