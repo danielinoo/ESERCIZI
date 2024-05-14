@@ -93,12 +93,22 @@ class zoo_keepers:
 
         if animal.rec.area >= animal.height * animal.width:
 
+            #variabili di appoggio
+            h : float = animal.height
+            w : float = animal.width
+
         #aumento salute animale del 1%
             animal.health = animal.health * 1.01
 
         #aumento altezza e larghezza del 2%
             animal.height = animal.height * 1.02
             animal.width = animal.width * 1.02
+
+            if animal.rec.area < animal.height * animal.width:
+
+            #se dopo averlo nutrito l' animale è troppo grande gli ritornano i valori iniziali
+                animal.height = h
+                animal.width = w
 
         else: 
             pass
