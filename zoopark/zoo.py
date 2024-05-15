@@ -167,12 +167,3 @@ class Zoo:
 
             print("#" * 30,"\n")
 
-
-c1 = Animal("aaa","SSS",20,4,5,"bosco")
-
-c3 = ZooKeepers("A","b","!")
-
-c3.feed(c1)
-
-
-
