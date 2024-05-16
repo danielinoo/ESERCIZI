@@ -1,15 +1,15 @@
 #daniele pietropaolo
-#5/05/24
+#16/05/24
 
 
 #-------------------------------#
 
 class Animal:
 
-    def __init__(self,name : str,spieces: str,eta : int,height : float,width : float,prefer_habitat : str):
+    def __init__(self,name : str,species: str,eta : int,height : float,width : float,prefer_habitat : str):
 
         self.name = name
-        self.spieces = spieces
+        self.species = species
         self.age = eta
         self.height = height
         self.width = width
@@ -25,7 +25,7 @@ class Animal:
 class Fence:
     def __init__(self,area : float,temperature :float,habitat : str):
 
-        self.animals : list[Animal]
+        self.animals : list[Animal] = []
         
         self.temperature = temperature
         self.habitat = habitat
@@ -152,7 +152,7 @@ class Zoo:
     def describe_zoo(self):
 
         print("\nGuardians:\n")
-    
+
         for i in self.zoo_keepers:
             print(f"ZooKeeper(name={i.name},surname={i.surname},id={i.id})\n")
 
@@ -163,7 +163,6 @@ class Zoo:
 
             for j in i.animals:
 
-                print(f"Animal(name={j.name},species={j.spieces},age={j.age})\n")
+                print(f"Animal(name={j.name},species={j.species},age={j.age})\n")
 
             print("#" * 30,"\n")
-
