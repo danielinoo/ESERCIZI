@@ -147,13 +147,6 @@ def time_difference(ore2 : int,minuti2: int,secondi2 : int,ore1 : int,minuti1: i
     return diff
 
 
-
-print("\n---------------------------\n")
-
-##################################################################
-
-
-
 def rimbalzo() -> None:
     
     tempo: int = 0
@@ -169,34 +162,23 @@ def rimbalzo() -> None:
         tempo += 1
 
         if altezza < 0:
-            altezza= altezza*-0,5 
-            velocità=velocità*-0,5
+            altezza= altezza*-0.5 
+            velocità=velocità*-0.5
 
         if altezza <= 0:
         
             print(f"Tempo: {tempo} Rimbalzo!")
             rimbalzi+=1
-
         else:
             print(f"Tempo: {tempo} Altezza: {altezza}")
 
 
 
+rimbalzo()
+            
+print("\n---------------------------\n")
 
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
+##################################################################
 
 
 
