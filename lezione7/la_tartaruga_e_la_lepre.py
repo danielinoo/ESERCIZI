@@ -123,23 +123,22 @@ def posizione(post, posl):
     
     if post == posl:
        
-       percorso[post] = "AUCH"
+       percorso[post-1] = "AUCH"
 
     else:
        
-       percorso[post] = "T"
-       percorso[posl] =  "L"
+       percorso[post-1] = "T"
+       percorso[posl-1] =  "L"
 
 
-    return percorso          
+    return percorso,post,posl          
                       
-
 
 
 
 def mossa_tartaruga():
 
-    t = random.randrange(1,10)
+    t = random.randrange(1,11)
     mossa : int = 0
 
     if t <= 5:
@@ -160,7 +159,7 @@ def mossa_tartaruga():
 
 def mossa_lepre():
 
-    t = random.randrange(1,10)
+    t = random.randrange(1,11)
     mossa : int = 0
 
     if t <= 2:
@@ -194,8 +193,7 @@ print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 while post <= 69 and posl <= 69:
 
     percorso, post, posl = posizione(post,posl)
-    print(posizione(post,posl))
-
+    print("".join(percorso))
 
 if post >= 69:
        
