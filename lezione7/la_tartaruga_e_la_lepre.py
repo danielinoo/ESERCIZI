@@ -84,8 +84,8 @@ def posizione(post, posl):
 
     percorso : list = ["_"] * 70
 
-    mt  = mossa_tartaruga()
-    ml = mossa_lepre()
+    mt  = mossa_tartaruga() + variazioni_ambientali()
+    ml = mossa_lepre() + variazioni_ambientali() + 1
 
 
     
@@ -186,14 +186,49 @@ def mossa_lepre():
     return mossa
 
 
+def variazioni_ambientali():
+   
+   v = random.randrange(1,3)
+   
+   pioggia = 0
+
+   if v == 1:
+      
+      pioggia = -1
+
+   else:
+      
+      pioggia = 0
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+tick : int = 0
+
+
 
 
 print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
-
 while post <= 69 and posl <= 69:
 
     percorso, post, posl = posizione(post,posl)
     print("".join(percorso))
+
+    tick += 1
+
+       
+
 
 if post >= 69:
        
