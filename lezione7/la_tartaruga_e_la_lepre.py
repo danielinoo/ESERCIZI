@@ -84,16 +84,36 @@ def posizione(post, posl):
 
     percorso : list = ["_"] * 70
 
-    mt  = mossa_tartaruga() + variazioni_ambientali()
-    ml = mossa_lepre() + variazioni_ambientali() + 1
+    #energia
+    stamina_tartaruga :  int = 100
+    stamina_lepre : int = 100
+    
+
+    #mosse
+    mt, energia_tartaruga = mossa_tartaruga()
+    ml, energia_lepre = mossa_lepre()
+
+
+    #variazione ambientale
+    if tick == 10:
+       mt += variazioni_ambientali()
+       ml += variazioni_ambientali() - 1
+
 
 
     
+    #tartaruga:
 
+    if mt != 0 and stamina_tartaruga  - energia_tartaruga <= 0:
 
-    if mt != 0:
+        stamina_tartaruga -= energia_tartaruga
+
+        if stamina_tartaruga > 100:
+           stamina_tartaruga = 100
+
 
         post = post + mt
+
 
         if post <= 0:
            
@@ -104,8 +124,20 @@ def posizione(post, posl):
            post = len(percorso)
 
 
+    #controllare ve va messo qua sotto o sopra il commento "#tartaruga"
+    """if stamina_tartaruga - energia_tartaruga <= 0:
+       
+       stamina_tartaruga += 10"""
+
+
     
-    if ml != 0:
+    if ml != 0 and stamina_lepre  - energia_lepre != 0:
+
+
+        stamina_lepre -= energia_lepre
+
+        if stamina_lepre > 100:
+           stamina_lepre = 100
             
 
         posl = posl + ml
@@ -131,7 +163,7 @@ def posizione(post, posl):
        percorso[posl-1] =  "L"
 
 
-    return percorso,post,posl          
+    return percorso,post,posl         
                       
 
 
@@ -142,17 +174,19 @@ def mossa_tartaruga():
     mossa : int = 0
 
     if t <= 5:
+      
       mossa = 3
+      return mossa,5
     
     elif t == 6 or t == 7:
       
       mossa = -6
+      return mossa,10
 
     else:
       
       mossa = 1
-
-    return mossa
+      return mossa,3
       
       
     
@@ -166,24 +200,28 @@ def mossa_lepre():
        
        mossa = 9
 
+       return mossa,15
+
     elif t == 3:
        
        mossa = -12
+       return mossa,20
 
     elif t > 3  and t <= 6:
        
        mossa = 1
+       return mossa,5
 
     elif t > 6 and t <= 8:
        
        mossa = -2
+       return mossa,8
     
     else:
        
        mossa = 0
+       return mossa,-10
 
-
-    return mossa
 
 
 def variazioni_ambientali():
@@ -199,13 +237,9 @@ def variazioni_ambientali():
    else:
       
       pioggia = 0
-      
+    
 
-      
-
-
-
-
+   return pioggia
 
 
 
@@ -222,10 +256,14 @@ tick : int = 0
 print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 while post <= 69 and posl <= 69:
 
-    percorso, post, posl = posizione(post,posl)
+    percorso, post, posl= posizione(post,posl)
     print("".join(percorso))
 
     tick += 1
+
+    if tick == 10:
+       
+       tick = 0
 
        
 
