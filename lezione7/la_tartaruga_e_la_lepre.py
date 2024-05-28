@@ -102,7 +102,7 @@ def posizione(post, posl):
         if post >= len(percorso):
            
            post = len(percorso)
-        percorso[post] = "T"
+
 
     
     if ml != 0:
@@ -119,16 +119,19 @@ def posizione(post, posl):
            
            posl = len(percorso)
 
-        percorso[posl] =  "L"
-
 
     
     if post == posl:
        
        percorso[post] = "AUCH"
 
+    else:
+       
+       percorso[post] = "T"
+       percorso[posl] =  "L"
 
-    return percorso,post,posl            
+
+    return percorso          
                       
 
 
@@ -190,8 +193,8 @@ print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 
 while post <= 69 and posl <= 69:
 
+    percorso, post, posl = posizione(post,posl)
     print(posizione(post,posl))
-    _, post, posl = posizione(post,posl)
 
 
 if post >= 69:
