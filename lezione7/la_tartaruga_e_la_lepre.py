@@ -87,16 +87,20 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
    percorso : list = ["_"] * 70
 
    #OSTACOLI
-   """ostacoli : dict = {}
+   ostacoli : dict = {percorso[15] : -3,
+                     percorso[30] : -5,
+                     percorso[45] :-7}
+   
 
-   for i in range(1,len(percorso),10):
-
-      ostacoli[percorso[i]] = for j in """
+   #BONUS:
+   bonus : dict = {percorso[10] : 5,
+                     percorso[25] : 3,
+                     percorso[50] : 10}
 
    
     
 
-    #mosse
+   #mosse
    mt, energia_tartaruga = mossa_tartaruga()
    ml, energia_lepre = mossa_lepre()
 
@@ -105,18 +109,24 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
    print("energia tartaruga",energia_tartaruga)
    #
 
-    #variazione ambientale
-   if tick == 10:
-         mt += variazioni_ambientali()
-         ml += variazioni_ambientali() - 1
+   #variazione ambientale
+   v : int = None
+   if tick == 10:   
+      v  : int = random.randrange(1,3)
+
+   if v == 2:
+      
+      mt = -1
+      ml = -2
+
+      print("\nensomma\n")
+      
+      
+
          
          
-
-
-
-
     
-    #tartaruga:
+   #tartaruga:
 
    if mt != 0 and stamina_tartaruga  - energia_tartaruga >= 0:
 
@@ -261,28 +271,6 @@ def mossa_lepre():
 
 ####################################################
 
-def variazioni_ambientali():
-   
-   v = random.randrange(1,3)
-   
-   pioggia = 0
-
-   if v == 1:
-      
-      pioggia = -1
-
-   else:
-      
-      pioggia = 0
-    
-
-   return pioggia
-
-############################################
-
-
-
-
 
 
 tick : int = 0
@@ -292,6 +280,8 @@ tick : int = 0
 
 print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 while post <= 69 and posl <= 69:
+    
+
     tick += 1
     percorso, post, posl,stamina_tartaruga,stamina_lepre = posizione(post,posl,stamina_tartaruga,stamina_lepre)
     print("".join(percorso))
