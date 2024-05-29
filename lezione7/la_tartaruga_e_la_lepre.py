@@ -86,20 +86,6 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
    percorso : list = ["_"] * 70
 
-   #OSTACOLI
-   ostacoli : dict = {percorso[15] : -3,
-                     percorso[30] : -5,
-                     percorso[45] :-7}
-   
-
-   #BONUS:
-   bonus : dict = {percorso[10] : 5,
-                     percorso[25] : 3,
-                     percorso[50] : 10}
-
-   
-    
-
    #mosse
    mt, energia_tartaruga = mossa_tartaruga()
    ml, energia_lepre = mossa_lepre()
@@ -121,10 +107,7 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
       print("\nensomma\n")
       
-      
 
-         
-         
     
    #tartaruga:
 
@@ -151,14 +134,9 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
          post = 1
 
       if post >= len(percorso):
-           
-           
+       
          post = len(percorso)
-
-
-    
    else:
-      
        
       stamina_tartaruga += 10
 
@@ -175,10 +153,8 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
          stamina_lepre = 100
 
       if stamina_lepre < 0:
-         stamina_lepre = 0
+         stamina_lepre = 0     
 
-      
-            
 
       posl = posl + ml
            
@@ -202,6 +178,22 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
       percorso[post-1] = "T"
       percorso[posl-1] =  "L"
 
+
+      #OSTACOLI e BONUS
+      ostacoli : dict = {percorso[15] : -3,
+                     percorso[30] : -5,
+                     percorso[45] :-7}
+   
+      bonus : dict = {percorso[10] : 5,
+                     percorso[25] : 3,
+                     percorso[50] : 10}
+   
+      if percorso[post-1] == ostacoli.keys():
+
+         pass
+
+      elif percorso[post-1] == ostacoli.keys():
+         pass
 
 
    #
