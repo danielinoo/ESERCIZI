@@ -100,6 +100,10 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
    mt, energia_tartaruga = mossa_tartaruga()
    ml, energia_lepre = mossa_lepre()
 
+   #
+   print("energia lepre:",energia_lepre)
+   print("energia tartaruga",energia_tartaruga)
+   #
 
     #variazione ambientale
    if tick == 10:
@@ -114,7 +118,7 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
     
     #tartaruga:
 
-   if mt != 0 and stamina_tartaruga  - energia_tartaruga <= 0:
+   if mt != 0 and stamina_tartaruga  - energia_tartaruga >= 0:
 
       stamina_tartaruga -= energia_tartaruga
 
@@ -128,7 +132,7 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
          stamina_tartaruga = 0
 
 
-
+      
       post = post + mt
 
 
@@ -194,7 +198,7 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
       print("stamina tartaruga",stamina_tartaruga)
       print("stamina lepre",stamina_lepre)
-      
+   # 
 
    return percorso,post,posl,stamina_tartaruga,stamina_lepre         
                       
