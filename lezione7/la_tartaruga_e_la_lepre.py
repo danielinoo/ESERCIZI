@@ -72,11 +72,11 @@ Dislocati strategicamente lungo la corsa (es. ai quadrati 10, 25, 50), i bonus a
 import random
 
 
-
+#posizioni
 post = 1
 posl = 1
 
-
+#stamina
 stamina_tartaruga :  int = 100
 stamina_lepre : int = 100
 
@@ -86,27 +86,29 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
    percorso : list = ["_"] * 70
 
+   ostacoli : dict = {15 : -3,
+                     30 : -5,
+                     45 :-7}
+   
+   bonus : dict = {10 : 5,
+                     25 : 3,
+                     50 : 10}
+   
+
    #mosse
    mt, energia_tartaruga = mossa_tartaruga()
    ml, energia_lepre = mossa_lepre()
 
-   #
-   print("energia lepre:",energia_lepre)
-   print("energia tartaruga",energia_tartaruga)
-   #
 
    #variazione ambientale
    v : int = None
    if tick == 10:   
       v  : int = random.randrange(1,3)
 
-   if v == 2:
+      if v == 1:
       
-      mt = -1
-      ml = -2
-
-      print("\nensomma\n")
-      
+         mt = mt -1
+         ml = ml - 2
 
     
    #tartaruga:
@@ -124,7 +126,6 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
          stamina_tartaruga = 0
 
-
       
       post = post + mt
 
@@ -141,9 +142,8 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
       stamina_tartaruga += 10
 
 
-
    #lepre:
-    
+
    if ml != 0 and stamina_lepre  - energia_lepre != 0:
 
 
@@ -179,28 +179,37 @@ def posizione(post, posl,stamina_tartaruga,stamina_lepre):
       percorso[posl-1] =  "L"
 
 
-      #OSTACOLI e BONUS
-      ostacoli : dict = {percorso[15] : -3,
-                     percorso[30] : -5,
-                     percorso[45] :-7}
-   
-      bonus : dict = {percorso[10] : 5,
-                     percorso[25] : 3,
-                     percorso[50] : 10}
-   
-      if percorso[post-1] == ostacoli.keys():
+      #OSTACOLI e BONUS:
+      if post in ostacoli:
 
-         pass
+         post += ostacoli[post]
+         percorso[post-1] = "T"
+         if post <= 0:
+            post = 1
+         
+      elif post in bonus:
+         post += bonus[post]
+         percorso[post-1] = "T"
+         
+         if post > len(percorso):
+            post = len(percorso)
+         
 
-      elif percorso[post-1] == ostacoli.keys():
-         pass
 
+      
+      if posl in ostacoli:
+        posl += ostacoli[posl]
+        if posl <= 0:
+            posl = 1
+        percorso[posl-1] = "L"
 
-   #
+      elif posl in bonus:
+         posl += bonus[posl]
+         percorso[posl-1] =  "L"
 
-      print("stamina tartaruga",stamina_tartaruga)
-      print("stamina lepre",stamina_lepre)
-   # 
+         if posl >= len(percorso):
+            posl = len(percorso)
+
 
    return percorso,post,posl,stamina_tartaruga,stamina_lepre         
                       
@@ -227,7 +236,7 @@ def mossa_tartaruga():
       mossa = 1
       return mossa,3
       
-      
+#####################################################     
     
 
 def mossa_lepre():
@@ -267,28 +276,26 @@ def mossa_lepre():
 
 tick : int = 0
 
-
-
-
 print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
+
 while post <= 69 and posl <= 69:
     
 
-    tick += 1
-    percorso, post, posl,stamina_tartaruga,stamina_lepre = posizione(post,posl,stamina_tartaruga,stamina_lepre)
-    print("".join(percorso))
+      tick += 1
+      percorso, post, posl,stamina_tartaruga,stamina_lepre = posizione(post,posl,stamina_tartaruga,stamina_lepre)
+      print("".join(percorso))
 
 
-    if tick == 10:
+      if tick == 10:
        
-       tick = 0
+         tick = 0
 
        
 
 
 if post >= 69:
        
-       print("DAJE HA VINTO LA TARTARUGA")
+       print("TORTOISE WINS! || VAY!!!")
        
 if posl >= 69:
     print("HARE WINS || YUCH!!!")
