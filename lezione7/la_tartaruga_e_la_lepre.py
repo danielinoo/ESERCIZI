@@ -67,8 +67,7 @@ Dettagli Implementativi:
 Posizionati a intervalli regolari sulla pista (es. ai quadrati 15, 30, 45), gli ostacoli riducono la posizione dell'animale di un numero specificato di quadrati (es: -3, -5, -7). Gli ostacoli sono rappresentati da un dizionario che mappa le posizioni degli ostacoli sul percorso (chiave) ed i relativi effetti (valore). Assicurarsi che nessun animale retroceda al di sotto del primo quadrato a seguito di un ostacolo.
 
 - Bonus:
-Dislocati strategicamente lungo la corsa (es. ai quadrati 10, 25, 50), i bonus aumentano la posizione dell'animale di un numero determinato di quadrati (es: 5, 3, 10). I bonus sono rappresentati da un dizionario che mappa le posizioni dei bonus sul percorso (chiave) ed i relativi effetti (valore). Consentire agli animali di beneficiare pienamente dei bonus, ma non oltrepassare il traguardo.
-Last modified: Monday, 27 May 2024, 10:08 AM"""
+Dislocati strategicamente lungo la corsa (es. ai quadrati 10, 25, 50), i bonus aumentano la posizione dell'animale di un numero determinato di quadrati (es: 5, 3, 10). I bonus sono rappresentati da un dizionario che mappa le posizioni dei bonus sul percorso (chiave) ed i relativi effetti (valore). Consentire agli animali di beneficiare pienamente dei bonus, ma non oltrepassare il traguardo."""
 
 import random
 
@@ -78,15 +77,23 @@ post = 1
 posl = 1
 
 
+stamina_tartaruga :  int = 100
+stamina_lepre : int = 100
 
 
-def posizione(post, posl):
+
+def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
    percorso : list = ["_"] * 70
 
-    #energia
-   stamina_tartaruga :  int = 100
-   stamina_lepre : int = 100
+   #OSTACOLI
+   """ostacoli : dict = {}
+
+   for i in range(1,len(percorso),10):
+
+      ostacoli[percorso[i]] = for j in """
+
+   
     
 
     #mosse
@@ -98,7 +105,7 @@ def posizione(post, posl):
    if tick == 10:
          mt += variazioni_ambientali()
          ml += variazioni_ambientali() - 1
-
+         
          
 
 
@@ -116,6 +123,11 @@ def posizione(post, posl):
          
          stamina_tartaruga = 100
 
+      if stamina_tartaruga < 0:
+
+         stamina_tartaruga = 0
+
+
 
       post = post + mt
 
@@ -131,9 +143,10 @@ def posizione(post, posl):
 
 
     
-   if stamina_tartaruga - energia_tartaruga <= 0:
+   else:
+      
        
-         stamina_tartaruga += 10
+      stamina_tartaruga += 10
 
 
 
@@ -142,22 +155,27 @@ def posizione(post, posl):
    if ml != 0 and stamina_lepre  - energia_lepre != 0:
 
 
-        stamina_lepre -= energia_lepre
+      stamina_lepre -= energia_lepre
 
-        if stamina_lepre > 100:
-            stamina_lepre = 100
+      if stamina_lepre > 100:
+         stamina_lepre = 100
+
+      if stamina_lepre < 0:
+         stamina_lepre = 0
+
+      
             
 
-        posl = posl + ml
+      posl = posl + ml
            
 
-        if posl <= 0:
+      if posl <= 0:
            
-           posl = 1
+         posl = 1
 
-        if posl >= len(percorso):
+      if posl >= len(percorso):
            
-           posl = len(percorso)
+         posl = len(percorso)
 
 
    #ASSEGNAZIONE POSIZIONI:
@@ -173,13 +191,12 @@ def posizione(post, posl):
 
 
    #
-      stamina_tartaruga = 10
 
       print("stamina tartaruga",stamina_tartaruga)
       print("stamina lepre",stamina_lepre)
       
 
-   return percorso,post,posl         
+   return percorso,post,posl,stamina_tartaruga,stamina_lepre         
                       
 
 ##########################################
@@ -271,13 +288,10 @@ tick : int = 0
 
 print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 while post <= 69 and posl <= 69:
-
-    percorso, post, posl= posizione(post,posl)
-    #print("".join(percorso))
-
-    posizione(post,posl)
-
     tick += 1
+    percorso, post, posl,stamina_tartaruga,stamina_lepre = posizione(post,posl,stamina_tartaruga,stamina_lepre)
+    print("".join(percorso))
+
 
     if tick == 10:
        
