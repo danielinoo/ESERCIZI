@@ -82,62 +82,70 @@ posl = 1
 
 def posizione(post, posl):
 
-    percorso : list = ["_"] * 70
+   percorso : list = ["_"] * 70
 
     #energia
-    stamina_tartaruga :  int = 100
-    stamina_lepre : int = 100
+   stamina_tartaruga :  int = 100
+   stamina_lepre : int = 100
     
 
     #mosse
-    mt, energia_tartaruga = mossa_tartaruga()
-    ml, energia_lepre = mossa_lepre()
+   mt, energia_tartaruga = mossa_tartaruga()
+   ml, energia_lepre = mossa_lepre()
 
 
     #variazione ambientale
-    if tick == 10:
-       mt += variazioni_ambientali()
-       ml += variazioni_ambientali() - 1
+   if tick == 10:
+         mt += variazioni_ambientali()
+         ml += variazioni_ambientali() - 1
+
+         
+
 
 
 
     
     #tartaruga:
 
-    if mt != 0 and stamina_tartaruga  - energia_tartaruga <= 0:
+   if mt != 0 and stamina_tartaruga  - energia_tartaruga <= 0:
 
-        stamina_tartaruga -= energia_tartaruga
-
-        if stamina_tartaruga > 100:
-           stamina_tartaruga = 100
+      stamina_tartaruga -= energia_tartaruga
 
 
-        post = post + mt
+      if stamina_tartaruga > 100:
+         
+         stamina_tartaruga = 100
 
 
-        if post <= 0:
+      post = post + mt
+
+
+      if post <= 0:
            
-           post = 1
+         post = 1
 
-        if post >= len(percorso):
+      if post >= len(percorso):
            
-           post = len(percorso)
-
-
-    #controllare ve va messo qua sotto o sopra il commento "#tartaruga"
-    """if stamina_tartaruga - energia_tartaruga <= 0:
-       
-       stamina_tartaruga += 10"""
+           
+         post = len(percorso)
 
 
     
-    if ml != 0 and stamina_lepre  - energia_lepre != 0:
+   if stamina_tartaruga - energia_tartaruga <= 0:
+       
+         stamina_tartaruga += 10
+
+
+
+   #lepre:
+    
+   if ml != 0 and stamina_lepre  - energia_lepre != 0:
 
 
         stamina_lepre -= energia_lepre
 
         if stamina_lepre > 100:
-           stamina_lepre = 100
+            stamina_lepre = 100
             
 
         posl = posl + ml
@@ -152,21 +160,29 @@ def posizione(post, posl):
            posl = len(percorso)
 
 
-    
-    if post == posl:
+   #ASSEGNAZIONE POSIZIONI:
+   if post == posl:
        
-       percorso[post-1] = "AUCH"
+      percorso[post-1] = "AUCH"
 
-    else:
+   else:
        
-       percorso[post-1] = "T"
-       percorso[posl-1] =  "L"
+      percorso[post-1] = "T"
+      percorso[posl-1] =  "L"
 
 
-    return percorso,post,posl         
+
+   #
+      stamina_tartaruga = 10
+
+      print("stamina tartaruga",stamina_tartaruga)
+      print("stamina lepre",stamina_lepre)
+      
+
+   return percorso,post,posl         
                       
 
-
+##########################################
 
 def mossa_tartaruga():
 
@@ -222,7 +238,7 @@ def mossa_lepre():
        mossa = 0
        return mossa,-10
 
-
+####################################################
 
 def variazioni_ambientali():
    
@@ -241,7 +257,7 @@ def variazioni_ambientali():
 
    return pioggia
 
-
+############################################
 
 
 
@@ -257,7 +273,9 @@ print("'BANG !!!!! AND THEY'RE OFF !!!!!'")
 while post <= 69 and posl <= 69:
 
     percorso, post, posl= posizione(post,posl)
-    print("".join(percorso))
+    #print("".join(percorso))
+
+    posizione(post,posl)
 
     tick += 1
 
