@@ -109,12 +109,16 @@ class ZooKeepers:
         #aumento altezza e larghezza del 2%
                 animal.height = animal.height * 1.02
                 animal.width = animal.width * 1.02
-
+            
                 if animal.rec.area < animal.height * animal.width:
 
                 #sedopo averlo nutrito l' animale è troppo grande gli ritornano i valori iniziali
                     animal.height = h
                     animal.width = w
+                
+                else: #aggiorno l area del recinto
+                    animal.rec.area = animal.rec.area - (animal.height * animal.width)
+
                 
             else:
                 pass
