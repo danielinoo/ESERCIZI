@@ -96,7 +96,7 @@ class MathOperations:
     def __init__(self) -> None:
         pass
 
-    @classmethod
+    @staticmethod
     def somma(n1 : int, n2 : int):
         
 
@@ -105,7 +105,7 @@ class MathOperations:
         return s
     
 
-    @classmethod
+    @staticmethod
     def moltiplica(n1 : int, n2 : int):
 
         m : int = n2 * n1
@@ -113,8 +113,8 @@ class MathOperations:
         return m
 
 
-# print("\n",MathOperations.moltiplica(2,3),"\n")
-# print("\n",MathOperations.somma(3,2),"\n")
+print("\n",MathOperations.moltiplica(2,3),"\n")
+print("\n",MathOperations.somma(3,2),"\n")
 
 
 
@@ -175,7 +175,6 @@ print("\n-----------------------------------------------------------------------
 
 
 
-
 class Book:
 
     def __init__(self,title : str, author : str, isbn : int) -> None:
@@ -201,24 +200,37 @@ class Book:
         return f"TITOLO: {self.titolo}, AUTORE: {self.autore}, ISBN: {self.isbn} " 
 
 
+class Member:
+
+    def __init__(self,name : str, member_id) -> None:
+        
+        self.name = name
+        self.member_id = member_id
+        self.borrowed_books : list[Book] = []
 
 
-book : Book = Book.from_string("Harry Potter,Jk ro,123456789")
+    @classmethod
+    def from_string(cls, member_str : str):
 
-print(book.__str__())
+        name,meber_id = member_str.split(",")
 
+        return cls(name,meber_id)
+    
+
+    def __str__(self) -> str:
+        
+        return f"NOME: {self.name}, ID: {self.member_id}"
     
 
 
+    def borrow_book(self,book : Book):
 
-class Member:
-
-    def __init__(self,id : str,nome : str,cognome : str) -> None:
-        pass
+        self.borrowed_books.append(book)
 
 
+    def remove_book(self,book : Book):
 
-
+        self.borrowed_books.remove(book)
 
 
 class Library:
@@ -229,7 +241,59 @@ class Library:
         self.total_books : int = 0
 
 
+    def add_book(self,book : Book):
 
+        self.books.append(book)
+        self.total_books += 1
+
+    
+    def remove_book(self,book : Book):
+
+        self.books.remove(book)
+        self.total_books -= 1
+
+
+    def lend_book(self,book : Book,member : Member):
+
+        if member in self.members \
+        and book in self.books \
+        and book not in self.members[member.borrowed_books]:
+            
+            pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#
+book_1 : Book = Book.from_string("Harry Potter,Jk ro,123456789")
+print(book_1.__str__(),"\n")
+
+book_2 : Book = Book.from_string("topolino,disney,34521")
+print(book_2.__str__(),"\n")
+print("---")
+
+
+
+member_1 : Member = Member.from_string("giggi,12345")
+print(member_1.__str__(),"\n")
+
+member_1.borrow_book(book_1)
+
+print("---")
+#
 
 
 
