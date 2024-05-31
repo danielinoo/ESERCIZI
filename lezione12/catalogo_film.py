@@ -19,3 +19,45 @@ Classe:
     - search_movies_by_title(title): Trova tutti i film che contengono una certa parola nel titolo. Restituisce un elenco dei registi e dei rispettivi film che contengono la parola cercata o un messaggio di errore se nessun film contiene la parola cercata nel titolo.
 """
 
+
+
+
+class MovieCatalog:
+
+    def __init__(self) -> None:
+
+        self.catalogo : dict[str,str] = {}
+
+    
+    def add_movies(self,director_name,movies):
+
+
+        if director_name in self.catalogo:
+
+            self.catalogo[director_name].extend(movies)
+
+        
+        else:
+
+            self.catalogo[director_name] = movies
+
+
+    def remove_film(self,director_name,name_film):
+
+        if director_name in self.catalogo:
+
+            if name_film in self.catalogo[director_name]:
+
+                    self.catalogo[director_name].remove(name_film)
+
+
+            
+                
+
+
+
+
+
+    
+
+
