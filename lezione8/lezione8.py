@@ -259,7 +259,7 @@ class Library:
         and book in self.books \
         and book not in self.members[member.borrowed_books]:
             
-            pass
+            member.borrowed_books.append(book)
 
 
 
