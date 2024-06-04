@@ -6,6 +6,8 @@
 
 from abc import ABC,abstractmethod
 
+from matplotlib.dviread import Page
+
 class Shape(ABC):
 
     @abstractmethod
@@ -235,9 +237,9 @@ class Member:
 
 class Library:
 
-    def __init__(self,books : list[Book],members : list[Member]) -> None:
-        self.books = books
-        self.members = members
+    def __init__(self )-> None:
+        self.books : list[Book]= []
+        self.members : list[Member]=[]
         self.total_books : int = 0
 
 
@@ -253,11 +255,16 @@ class Library:
         self.total_books -= 1
 
 
+    def register_member(self,member):
+
+        self.members.append(member)
+
+
     def lend_book(self,book : Book,member : Member):
 
         if member in self.members \
         and book in self.books \
-        and book not in self.members[member.borrowed_books]:
+        and book not in member.borrowed_books:
             
             member.borrowed_books.append(book)
 
@@ -280,6 +287,21 @@ print(member_1.__str__(),"\n")
 member_1.borrow_book(book_1)
 
 print("---")
+
+
+lib = Library()
+
+lib.add_book(book_1)
+lib.add_book(book_2)
+
+lib.register_member(member_1)
+
+
+lib.lend_book(book_1,member_1)
+lib.remove_book(book_2)
+
+
+print(lib.books,lib.members)
 #
 
 
@@ -377,30 +399,129 @@ print("\n-----------------------------------------------------------------------
 
 
 
-
-class Person:
-
-    pass
-
-
-class Student(Person):
-    pass
-
-
-
-class Professor(Person):
-    pass
-
-
-
 class Course:
-    pass
+    def __init__(self,course_name : str,course_code : str) -> None:
+        
+        self.course_name = course_name
+        self.course_code = course_code
+        self.students : list[Student] = []
+        self.professors : list[Professor] = []
+
+
+
+    def add_student(self,student):
+
+        self.students.append(student)
+
+    def set_professor(self,professor):
+
+        self.professors.append(professor)
+
+
+    def __str__(self) -> str:
+        
+        return f"NOME CORSO: {self.course_name} ID: {self.course_code}" \
+            f"LISTA STUDENTI: {self.students}, LISTA PROFESSORI DEL CORSO: {self.professors}"
+
+
 
 class Department:
 
     pass
 
+
+
+
+class Person(ABC):
+
+    def __init__(self,name : str,age : int) -> None:
+
+        self.name = name
+        self.age = age
+
+    @abstractmethod
+    def get_role():
+
+        pass
+
+    def __str__(self) -> str:
+
+
+        return f"Nome : {self.name}, Eta : {self.age} "
+    
+    
+
+    
+
+class Student(Person):
+    def __init__(self,student_id : str,name : str,age : int) -> None:
+        super().__init__(name,age)
+
+
+        self.student_id = student_id
+        self.courses = list[Course] = []
+        self.name = name
+        self.age = age
+
+
+
+    def get_role():
+        
+        return "Student"
+
+
+
+    def enroll(self,course):
+
+        self.courses.append(course)
+
+
+
+
+class Professor(Person):
+    def __init__(self,name : str,age : int, professor_id : str, department : str)-> None:
+        super().__init__(name, age)
+
+        self.professor_id  : str = professor_id
+        self.department  : str = department
+        self.courses : list[Course] = []
+        self.name = name
+        self.age = age
+
+
+
+
+    def assign_to_course(self,course):
+
+        self.courses.append(course)
+
+
+    def get_role():
+        
+        return "Professor"
+
+
 class University:
 
     pass
 
+
+
+
+corso_1 = Course("ingenieria","12334")
+corso_2 = Course("medicina","45678")
+
+
+
+persona = Person("giggi",20)
+
+
+studente_1 = Student("sjsjsjs")
+studente_2 = Student("jsjsjsjs")
+studente_3 = Student("jdjdfjfd")
+studente_4 = Student("ajdiofn")
+studente_5 = Student("dijfier")
+studente_6 = Student("hikjbhgg")
+
+
+print()
