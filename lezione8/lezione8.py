@@ -6,8 +6,6 @@
 
 from abc import ABC,abstractmethod
 
-from matplotlib.dviread import Page
-
 class Shape(ABC):
 
     @abstractmethod
@@ -273,16 +271,16 @@ class Library:
 
 #
 book_1 : Book = Book.from_string("Harry Potter,Jk ro,123456789")
-print(book_1.__str__(),"\n")
+print(book_1,"\n")
 
 book_2 : Book = Book.from_string("topolino,disney,34521")
-print(book_2.__str__(),"\n")
+print(book_2)
 print("---")
 
 
 
 member_1 : Member = Member.from_string("giggi,12345")
-print(member_1.__str__(),"\n")
+print(member_1,"\n")
 
 member_1.borrow_book(book_1)
 
@@ -398,7 +396,7 @@ print("\n-----------------------------------------------------------------------
 
 
 
-
+###
 class Course:
     def __init__(self,course_name : str,course_code : str) -> None:
         
@@ -424,14 +422,33 @@ class Course:
             f"LISTA STUDENTI: {self.students}, LISTA PROFESSORI DEL CORSO: {self.professors}"
 
 
-
+###
 class Department:
 
-    pass
+    def __init__(self,department_name = str) -> None:
+        
+        self.department_name : str = department_name
+        self.courses : list[Course] = []
+        self.professors : list[Professor] = []
+
+
+    def add_course(self,course):
+
+        self.courses.append(course)
+
+    def set_professor(self,professor):
+
+        self.professors.append(professor)
+
+
+    def __str__(self) -> str:
+        
+        return f"NOME DIPARTIMENTO: {self.department_name}" \
+            f"LISTA CORSI: {self.courses}, LISTA PROFESSORI DEL CORSO: {self.professors}"
 
 
 
-
+###
 class Person(ABC):
 
     def __init__(self,name : str,age : int) -> None:
@@ -452,14 +469,14 @@ class Person(ABC):
     
 
     
-
+###
 class Student(Person):
     def __init__(self,student_id : str,name : str,age : int) -> None:
         super().__init__(name,age)
 
 
         self.student_id = student_id
-        self.courses = list[Course] = []
+        self.courses : list[Course] = []
         self.name = name
         self.age = age
 
@@ -477,7 +494,7 @@ class Student(Person):
 
 
 
-
+###
 class Professor(Person):
     def __init__(self,name : str,age : int, professor_id : str, department : str)-> None:
         super().__init__(name, age)
@@ -501,27 +518,98 @@ class Professor(Person):
         return "Professor"
 
 
+
+
+###
 class University:
 
-    pass
+    def __init__(self,name : str) -> None:
+        
+        self.name = name
+        self.departments : list[Department] = []
+        self.students : list[Student] = []
+
+
+    
+    def add_student(self,student):
+
+        self.students.append(student)
+
+
+    def add_student(self,student):
+
+        self.students.append(student)
+
+
+    def add_department(self,department):
+
+        self.departments.append(department)
 
 
 
 
+    def __str__(self) -> str:
+        
+        return f"nome Universita: {self.name},\ndipartimenti: {self.departments},\nStudenti: {self.students}"
+
+
+"""
+    def __str__(self) -> str:
+        
+        
+        l_dip = [i.department_name for i in self.departments]
+
+        l_cor = [j.course_name for i in self.departments for j in i.courses]
+
+        dipartimenti = " ".join(l_dip)
+        corsi = " ".join(l_cor)
+        return f"Nome universita: {self.name},\nNome dipartimenti: {dipartimenti},\nNome corsi: {corsi}"""
+
+
+
+
+        
+        
+
+
+
+
+
+
+
+
+#
 corso_1 = Course("ingenieria","12334")
 corso_2 = Course("medicina","45678")
 
+studente_1 = Student("sjsjsjs","111111",22)
+studente_2 = Student("jsjsjsjs","22222",12)
+studente_3 = Student("jdjdfjfd","3333",23)
+studente_4 = Student("ajdiofn","4444",21)
+studente_5 = Student("dijfier","55555",32)
+studente_6 = Student("hikjbhgg","66666",26)
+
+professore_1 = Professor("1111",45,"1234","dipartimento 1")
+professore_2 = Professor("2222",46,"9876","dipartimento_2")
+
+diparimento_1 = Department()
+dipartimento_2 = Department()
 
 
-persona = Person("giggi",20)
+uni = University("ltsgooo")
+
+uni.add_student(studente_1)
+uni.add_student(studente_2)
+uni.add_student(studente_3)
+uni.add_student(studente_4)
+uni.add_student(studente_5)
+uni.add_student(studente_6)
+
+uni.add_department(diparimento_1)
+uni.add_department(dipartimento_2)
 
 
-studente_1 = Student("sjsjsjs")
-studente_2 = Student("jsjsjsjs")
-studente_3 = Student("jdjdfjfd")
-studente_4 = Student("ajdiofn")
-studente_5 = Student("dijfier")
-studente_6 = Student("hikjbhgg")
+print(uni)
 
 
 print()
