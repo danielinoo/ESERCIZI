@@ -548,22 +548,25 @@ class University:
 
 
 
-    def __str__(self) -> str:
-        
-        return f"nome Universita: {self.name},\ndipartimenti: {self.departments},\nStudenti: {self.students}"
-
-
+    """def __str__(self) -> str:
+        lista_nomi:list[str]=[]
+        for i in self.departments:
+            lista_nomi.append(i.department_name)
+        return f"nome Universita: {self.name},\ndipartimenti: {lista_nomi},\nStudenti: {self.students}"
 """
+
+
     def __str__(self) -> str:
         
         
         l_dip = [i.department_name for i in self.departments]
 
         l_cor = [j.course_name for i in self.departments for j in i.courses]
+        print(l_cor)
 
         dipartimenti = " ".join(l_dip)
         corsi = " ".join(l_cor)
-        return f"Nome universita: {self.name},\nNome dipartimenti: {dipartimenti},\nNome corsi: {corsi}"""
+        return f"Nome universita: {self.name},\nNome dipartimenti: {dipartimenti},\nNome corsi: {corsi}"
 
 
 
@@ -590,10 +593,10 @@ studente_5 = Student("dijfier","55555",32)
 studente_6 = Student("hikjbhgg","66666",26)
 
 professore_1 = Professor("1111",45,"1234","dipartimento 1")
-professore_2 = Professor("2222",46,"9876","dipartimento_2")
+professore_2 = Professor("2222",46,"9876","dipartimento 2")
 
-diparimento_1 = Department()
-dipartimento_2 = Department()
+diparimento_1 = Department("dipartimento 1")
+dipartimento_2 = Department("dipartimento 2")
 
 
 uni = University("ltsgooo")
