@@ -42,7 +42,7 @@ class Fence:
 
 
 
-class ZooKeepers:
+class ZooKeeper:
 
 
     
@@ -147,7 +147,7 @@ class ZooKeepers:
 
 
 class Zoo:
-    def __init__(self,fences : list[Fence],zoo_keepers : list[ZooKeepers]):
+    def __init__(self,fences : list[Fence],zoo_keepers : list[ZooKeeper]):
 
         self.fence = fences
         self.zoo_keepers = zoo_keepers
