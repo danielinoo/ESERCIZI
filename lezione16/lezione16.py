@@ -81,7 +81,6 @@ class RecipeManager:
 
     def __init__(self) -> None:
         self.collezione : dict[str: list[str]] = {}
-        self.l : list[str] = []
 
 
     def create_recipe(self,name, ingredients):
@@ -89,23 +88,26 @@ class RecipeManager:
         if name not in self.collezione:
 
             self.collezione[name] = self.l.append(ingredients)
+            return self.collezione[name]
 
         else:
 
-            print("errore")
+            return "errore"
 
 
 
     def add_ingredient(self,recipe_name, ingredient):
 
         if recipe_name in self.collezione:
-            self.collezione[recipe_name] = self.l.append(ingredient)
+            self.collezione[recipe_name].append(ingredient)
+            return self.collezione[recipe_name]
 
 
     def remove_ingredient(self,recipe_name, ingredient):
 
         if recipe_name in self.collezione:
-            self.collezione[recipe_name] = self.l.remove(ingredient)
+            self.collezione[recipe_name].remove(ingredient)
+            return self.collezione[recipe_name]
 
 
     def update_ingredient(self,recipe_name, old_ingredient, new_ingredient):
@@ -117,6 +119,7 @@ class RecipeManager:
 
                 self.collezione[recipe_name] = self.l.remove(old_ingredient)
                 self.collezione[recipe_name] = self.l.append(new_ingredient)
+                return self.collezione[recipe_name]
         
             else:
                 return "l ingrediente non esiste"
@@ -127,7 +130,9 @@ class RecipeManager:
 
 
     def list_recipes(self): 
-        return f"{self.collezione.keys()}"
+
+        l2 : list[str] = []
+        return f"{l2}"
 
     def list_ingredients(self,recipe_name):
 
@@ -156,5 +161,17 @@ class RecipeManager:
 
             return "errore la ricetta non esiste"
 
+
+
+#
+ 	
+
+manager = RecipeManager()
+print(manager.create_recipe("Torta di mele", ["Farina", "Uova", "Mele"]))
+print(manager.add_ingredient("Torta di mele", "Zucchero"))
+print(manager.list_recipes()) # ['Torta di mele']
+print(manager.list_ingredients("Torta di mele"))
+print(manager.search_recipe_by_ingredient("Uova"))
+#
 
 
