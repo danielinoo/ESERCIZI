@@ -88,9 +88,15 @@ class Biblioteca:
 
 # Esempio di utilizzo del programma
 biblioteca = Biblioteca()
-biblioteca.aggiungi_libro('Il Signore degli Anelli')
-biblioteca.aggiungi_libro('1984')
-biblioteca.aggiungi_libro('To Kill a Mockingbird')
+libro_1 = Libro('Il Signore degli Anelli',"gang")
+libro_2 = Libro('1984',"hhhh")
+libro_3 = Libro('To Kill a Mockingbird',"444")
+
+
+
+biblioteca.aggiungi_libro(libro_1)
+biblioteca.aggiungi_libro(libro_2)
+biblioteca.aggiungi_libro(libro_3)
 
 biblioteca.mostra_libri_disponibili()
 
