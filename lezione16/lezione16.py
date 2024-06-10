@@ -83,11 +83,10 @@ class RecipeManager:
         self.collezione : dict[str: list[str]] = {}
 
 
-    def create_recipe(self,name, ingredients):
+    def create_recipe(self,name : str, ingredients : list):
 
         if name not in self.collezione:
-
-            self.collezione[name] = self.l.append(ingredients)
+            self.collezione[name] = ingredients
             return self.collezione[name]
 
         else:
@@ -96,7 +95,7 @@ class RecipeManager:
 
 
 
-    def add_ingredient(self,recipe_name, ingredient):
+    def add_ingredient(self,recipe_name : str, ingredient : str):
 
         if recipe_name in self.collezione:
             self.collezione[recipe_name].append(ingredient)
@@ -117,8 +116,8 @@ class RecipeManager:
 
             if old_ingredient in self.collezione[recipe_name]:
 
-                self.collezione[recipe_name] = self.l.remove(old_ingredient)
-                self.collezione[recipe_name] = self.l.append(new_ingredient)
+                self.collezione[recipe_name] = self.collezione.remove(old_ingredient)
+                self.collezione[recipe_name] = self.collezione.append(new_ingredient)
                 return self.collezione[recipe_name]
         
             else:
@@ -131,13 +130,12 @@ class RecipeManager:
 
     def list_recipes(self): 
 
-        l2 : list[str] = []
-        return f"{l2}"
+        return list(self.collezione.keys())
 
-    def list_ingredients(self,recipe_name):
+    def list_ingredients(self,recipe_name : str):
 
         if recipe_name in self.collezione:
-            return f"{self.collezione.values(recipe_name)}"
+            return list(self.collezione.values())
         
         else:
             return "la ricetta non esiste"
@@ -150,7 +148,7 @@ class RecipeManager:
 
             if ingredient in k:
 
-                l1.append(k)
+                l1.append(v)
 
 
         if len(l1) != 0:
