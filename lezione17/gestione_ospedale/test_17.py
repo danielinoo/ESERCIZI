@@ -50,8 +50,6 @@ class TestPersona(unittest.TestCase):
 
     def test_attributi(self):
 
-        
-
         self.assertEqual(self.persona_1.getName(),"riccardo")
         self.assertEqual(self.persona_1.getLastname(),"bianchi")
         self.assertEqual(self.persona_1.age,0)
@@ -63,6 +61,25 @@ class TestPersona(unittest.TestCase):
         self.assertEqual(self.persona_1.getName(),"marco")
         self.assertEqual(self.persona_1.getLastname(),"rossi")
         self.assertEqual(self.persona_1.age,20)
+
+
+import unittest
+from dottore import Dottore
+
+class TestDottore(unittest.TestCase):
+
+        def setUp(self) -> None:
+            self.dottore_1 : Dottore = Dottore("riccardo","bianchi","dietologo",15.5)
+
+            self.dottore_1.setAge(35)
+
+        def test_attributi(self):
+
+            self.assertEqual(self.dottore_1.getName(),"riccardo")
+            self.assertEqual(self.dottore_1.getLastname(),"bianchi")
+            self.assertEqual(self.dottore_1.getParcel())
+
+    
 
 
         
