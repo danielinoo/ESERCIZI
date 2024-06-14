@@ -44,9 +44,8 @@ from persona import Persona
 
 class TestPersona(unittest.TestCase):
 
-
-    def SetUp(self):
-        self.persona_1 = Persona("riccardo","bianchi")
+    def setUp(self) -> None:
+        self.persona_1 : Persona = Persona("riccardo","bianchi")
 
 
     def test_attributi(self):
@@ -57,10 +56,16 @@ class TestPersona(unittest.TestCase):
         self.assertEqual(self.persona_1.getLastname(),"bianchi")
         self.assertEqual(self.persona_1.age,0)
 
-
         self.persona_1.setName("marco")
         self.persona_1.setLastName("rossi")
-        self.persona_1.setAge("20")
+        self.persona_1.setAge(20)
+
+        self.assertEqual(self.persona_1.getName(),"marco")
+        self.assertEqual(self.persona_1.getLastname(),"rossi")
+        self.assertEqual(self.persona_1.age,20)
+
+
+        
 
 
 
@@ -73,3 +78,5 @@ class TestPersona(unittest.TestCase):
 
     
 
+if __name__ == "__main__":
+    unittest.main()
