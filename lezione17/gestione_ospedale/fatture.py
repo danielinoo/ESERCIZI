@@ -14,8 +14,8 @@
 #     removePatient(idCode): consente di rimuovere un paziente alla lista di pazienti di un dottore ricevendo in input il codice identificativo del paziente da rimuovere, aggiornando poi il numero di fatture e il salario, richiamando il metodo get Fatture() e getSalary(). Stampare "Alla lista del Dottor cognome è stato rimosso il paziente {codice_identificativo}".
 
 
-from paziente import Paziente
-from dottore import Dottore
+from lezione17.gestione_ospedale.paziente import Paziente
+from lezione17.gestione_ospedale.dottore import Dottore
 
 
 
