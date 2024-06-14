@@ -18,8 +18,6 @@
 
 
 
-
-
 class Contatore:
     def __init__(self) -> None:
         self.conteggio = 0
@@ -47,7 +45,7 @@ class Contatore:
         return self.conteggio
 
     def mostra(self):
-        print( f"Conteggio attuale: {self.conteggio}")
+        print(f"Conteggio attuale: {self.conteggio}")
 
 
     
@@ -73,8 +71,6 @@ class Contatore:
 #     - list_ingredients(recipe_name): Mostra gli ingredienti di una specifica ricetta. Restituisce un elenco di ingredienti o un messaggio di errore se la ricetta non esiste.
 
 #     - search_recipe_by_ingredient(ingredient): Trova e restituisce tutte le ricette che contengono un determinato ingrediente. Restituisce un elenco di ricette o un messaggio di errore se nessuna ricetta contiene l'ingrediente.
-
-
 
 
 class RecipeManager:
@@ -115,9 +111,9 @@ class RecipeManager:
         if recipe_name in self.collezione:
 
             if old_ingredient in self.collezione[recipe_name]:
-
+                posizione=self.collezione[recipe_name].index(old_ingredient)
                 self.collezione[recipe_name].remove(old_ingredient)
-                self.collezione[recipe_name].append(new_ingredient)
+                self.collezione[recipe_name].insert(posizione,new_ingredient)
                 return self.collezione
         
             else:
@@ -226,7 +222,6 @@ class RecipeManager:
 
 
 
-
 class Veicolo:
     def __init__(self,marca : str,modello : str,anno : int) -> None:
 
@@ -326,10 +321,61 @@ class Moto(Veicolo):
 
 
 
+class Specie:
+
+    def __init__(self,nome : str,popolazione_iniziale : int,tasso_crescita : float) -> None:
+        self.nome = nome
+        self.popolazione = popolazione_iniziale
+        self.tasso_crescita = tasso_crescita
 
 
 
+    def cresci(self):
 
+        self.popolazione = self.popolazione * (1 + self.tasso_crescita/100)
+
+    
+
+    def anni_per_superare(self, altra_specie: 'Specie') -> int: 
+
+        anno = 1
+        max_anni = 1000
+
+        while self.popolazione <= altra_specie.popolazione and anno < max_anni:
+
+            self.cresci()
+
+        return anno if anno < max_anni else -1
+
+    def getDensita(self, area_kmq: float) -> int:
+
+        max_anni = 1000
+
+        for anno in range(max_anni):
+
+            if self.popolazione / area_kmq >1:
+                return anno -1
+            
+            self.cresci()
+
+        return -1
+
+
+class BufaloKlingon(Specie):
+    def __init__(self, popolazione_iniziale, tasso_crescita) -> None:
+        super().__init__("bufalo", popolazione_iniziale, tasso_crescita)
+
+
+class Elefante(Specie):
+    def __init__(self, popolazione_iniziale, tasso_crescita) -> None:
+        super().__init__("elefante", popolazione_iniziale, tasso_crescita)
+
+
+
+        
+
+
+    
 
 
 
