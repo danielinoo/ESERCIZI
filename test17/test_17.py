@@ -45,5 +45,23 @@ from lezione17.persona import Persona
 class TestPersona(unittest.TestCase):
 
 
+    def SetUp(self):
+        self.persona_1 = Persona("riccardo","bianchi")
+
+
+    def test_attributi(self):
+
+        self.assertEqual(self.persona_1.getName(),"riccardo")
+        self.assertEqual(self.persona_1.getLastname(),"rossi")
+        self.assertEqual(self.persona_1.age,0)
+
+
+        
+
+
+
+
+
+
     
 
