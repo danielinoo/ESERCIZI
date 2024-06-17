@@ -63,7 +63,7 @@ class TestPersona(unittest.TestCase):
         self.assertEqual(self.persona_1.age,20)
 
 
-import unittest
+
 from dottore import Dottore
 
 class TestDottore(unittest.TestCase):
@@ -82,7 +82,26 @@ class TestDottore(unittest.TestCase):
     
 
 
-        
+
+
+from paziente import Paziente
+
+class TestPaziente(unittest.TestCase):
+     
+    def setUp(self) -> None:
+         
+        self.paziente_1 = Paziente("frenk","verdi","12345")
+        self.paziente_1.setAge(20)
+
+
+
+    def test_attributi(self):
+
+        self.assertEqual(self.paziente_1.getName(),"frenk")
+        self.assertEqual(self.paziente_1.getLastname(),"verdi")
+        self.assertEqual(self.paziente_1.age,20)
+
+
 
 
 
