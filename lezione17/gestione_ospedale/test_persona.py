@@ -40,7 +40,7 @@
 
 
 import unittest
-from gestione_ospedale.persona import Persona
+from persona import Persona
 
 class TestPersona(unittest.TestCase):
 
@@ -64,7 +64,7 @@ class TestPersona(unittest.TestCase):
 
 
 
-from gestione_ospedale.dottore import Dottore
+from dottore import Dottore
 
 class TestDottore(unittest.TestCase):
 
@@ -84,7 +84,7 @@ class TestDottore(unittest.TestCase):
 
 
 
-from gestione_ospedale.paziente import Paziente
+from paziente import Paziente
 
 class TestPaziente(unittest.TestCase):
      
