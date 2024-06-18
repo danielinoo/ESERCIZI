@@ -137,15 +137,6 @@ class TestFattura(unittest.TestCase):
         self.fattura_1.removePatient(self.paziente_1)
         self.assertEqual(len(len(self.fattura_1.pazienti),1))
 
-
-
-
-
-
-
-
-
-
     
 
 if __name__ == "__main__":
