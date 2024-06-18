@@ -6,6 +6,11 @@ def mergeSort(input_list : list[list]):
 
 
     #punto medio
+    if len(input_list) == 1:
+        
+        return input_list
+
+    
     mid_point : int  = len(input_list) // 2
 
 
