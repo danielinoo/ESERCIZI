@@ -122,15 +122,13 @@ class TestFattura(unittest.TestCase):
         self.fattura_1 = Fattura(pazienti=[self.paziente_1],doctor=self.dottore_1)
 
     
-    def TestFattura(self):
+    def test_fattura(self):
 
         self.fattura_1.addPatient(self.paziente_2)
-
         self.assertEqual(len(self.fattura_1.pazienti),2)
 
         self.fattura_1.getFatture(self)
         self.fattura_1.getSalary(self)
-
         self.assertNotEqual(self.fattura_1.salary,0)
         self.assertNotEqual(self.fattura_1.fatture,0)
 
