@@ -19,7 +19,7 @@
 
 
 
-from lezione17.gestione_ospedale.persona import Persona
+from gestione_ospedale.persona import Persona
 
 
 class Paziente(Persona):
