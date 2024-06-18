@@ -36,7 +36,11 @@ def merge(list_1 : list[int], list_2 : list[int]):
 
             result[k] = list_2[j] #assegno all' indice di k J e incremento di 1 j
 
+
+            """aggiungere i controlli pe i e j vanno fuori dalla lunghezza della lista"""
             j += 1
+
+        
 
 
         else:
