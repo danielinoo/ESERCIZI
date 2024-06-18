@@ -90,14 +90,12 @@ class TestPaziente(unittest.TestCase):
      
     def setUp(self) -> None:
          
-        self.paziente_1 = Paziente("frenk","verdi","12345")
+        self.paziente_1 = Paziente("frank","verdi","12345")
         self.paziente_1.setAge(20)
-
-
 
     def test_attributi(self):
 
-        self.assertEqual(self.paziente_1.getName(),"frenk")
+        self.assertEqual(self.paziente_1.getName(),"frank")
         self.assertEqual(self.paziente_1.getLastname(),"verdi")
         self.assertEqual(self.paziente_1.age,20)
 
@@ -105,7 +103,36 @@ class TestPaziente(unittest.TestCase):
 
 
 
+from gestione_ospedale.fatture import Fattura
+
+class TestFattura(unittest.TestCase):
+
+    def setUp(self) -> None:
+
+        self.paziente_1 = Paziente("frank","verdi","12345")
+        self.paziente_1.setAge(20)
+        self.paziente_2 = Paziente("maurizio","bianchi","56783")
+        self.paziente_2.setAge(40)
+
+        self.dottore_1 : Dottore = Dottore("riccardo","esposito","dietologo",30)
+        self.dottore_1.setAge(35)
         
+
+
+        self.fattura_1 = Fattura(pazienti=[self.paziente_1],doctor=self.dottore_1)
+
+    
+    def TestFattura(self):
+
+        self.fattura_1.addPatient(self.paziente_2)
+
+        self.assertEqual(len(self.fattura_1.pazienti),1)
+
+        self.fattura_1.getFatture(self)
+
+
+
+
 
 
 
