@@ -30,6 +30,29 @@ class Noleggio:
         self.film_list : list[Film] = film_list
         self.rented_film : dict[int: list[Film]] = {}
 
+    def isAvaible(self,film):
+        
+        if film in self.film_list:
+            print(f"Il film scelto è disponibile: {film.title}!")
+
+        else:
+
+            print(f"Il film scelto non è disponibile: {film.title}!")
+
+
+    def  rentAMovie(film, clientID):
+        pass
+        
+
+
+    def giveBack(film, clientID, days):
+        pass
+
+    def  printMovies():
+        pass
+
+    def printRentMovies(clientID):
+        pass
         
 
 
