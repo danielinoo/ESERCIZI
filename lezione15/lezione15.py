@@ -66,6 +66,37 @@ class FileManager:
 
 
 
+class Timer:
+
+    def __enter__(self):
+
+        import time
+
+        self.time = time.time()
+
+    
+
+    def __exit__(self,exc_type,exc_value,traceback):
+
+    
+        import time
+        print(f"Time Elapsed : {time.time() - self.time} ")
+
+        if exc_type is not None:
+
+            print(f"Exception type: {exc_type}")
+            print(f"Exception value: {exc_value}")
+            print(f"Traceback:{traceback}")
+            return False
+        
+
+
+with Timer():
+
+    """tutto quello dentro with Timer() viene eseguito"""
+
+
+
 
 
     
