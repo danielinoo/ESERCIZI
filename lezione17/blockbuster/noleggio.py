@@ -20,32 +20,34 @@
 
 
 
-from blockbuster.film import Film
+from blockbuster.movie_genere import Drama,Commedia,Azione
 
 
 class Noleggio:
 
-    def __init__(self,film_list : list[Film]) -> None:
+    def __init__(self,film_list : list[Commedia | Drama | Azione ]) -> None:
 
-        self.film_list : list[Film] = film_list
-        self.rented_film : dict[int: list[Film]] = {}
+        self.film_list : list[Commedia | Drama | Azione ] = film_list
+        self.rented_film : dict[int: list[Commedia | Drama | Azione ]] = {}
 
-    def isAvaible(self,film):
+    def isAvaible(self,film : Commedia | Drama | Azione):
         
         if film in self.film_list:
             print(f"Il film scelto è disponibile: {film.title}!")
+            return True
 
         else:
 
             print(f"Il film scelto non è disponibile: {film.title}!")
+            return False
 
 
-    def  rentAMovie(film, clientID):
+    def  rentAMovie(film : Commedia | Drama | Azione, clientID):
         pass
         
 
 
-    def giveBack(film, clientID, days):
+    def giveBack(film : Commedia | Drama | Azione, clientID, days):
         pass
 
     def  printMovies():
