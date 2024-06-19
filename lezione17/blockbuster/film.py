@@ -18,6 +18,7 @@ class Film:
     def __init__(self,id,title : str) -> None:
         self.id = id
         self.title  : str = title
+        self.disponibile : bool = True
 
 
     def setID(self,id):
