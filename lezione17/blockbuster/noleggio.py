@@ -26,7 +26,9 @@ from blockbuster.film import Film
 class Noleggio:
 
     def __init__(self,film_list : list[Film]) -> None:
+
         self.film_list : list[Film] = film_list
+        self.rented_film : dict[int: list[Film]] = {}
 
         
 
