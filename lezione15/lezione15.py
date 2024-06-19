@@ -90,7 +90,6 @@ class Timer:
             return False
         
 
-
 with Timer():
 
     """tutto quello dentro with Timer() viene eseguito"""
