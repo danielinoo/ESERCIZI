@@ -18,11 +18,11 @@ from blockbuster.film import Film
 
 
 class Azione(Film):
-    def __init__(self, id, title: str,genere : str = "azione") -> None:
+    def __init__(self, id, title: str) -> None:
         super().__init__(id, title)
 
 
-        self.genere : str = genere
+        self.genere : str = "azione"
         self.penale : float = 3
 
 
@@ -42,11 +42,11 @@ class Azione(Film):
 ############################################################
 
 class Commedia(Film):
-    def __init__(self, id, title: str,genere : str = "commedia") -> None:
+    def __init__(self, id, title: str) -> None:
         super().__init__(id, title)
 
 
-        self.genere : str = genere
+        self.genere : str ="commedia"
         self.penale : float = 2.50
 
     def getGenere(self):
@@ -64,11 +64,11 @@ class Commedia(Film):
 #############################################################
 
 class Drama(Film):
-    def __init__(self, id, title: str,genere : str = "drama") -> None:
+    def __init__(self, id, title: str,) -> None:
         super().__init__(id, title)
 
 
-        self.genere : str = genere
+        self.genere : str = "drama"
         self.penale : float = 2
 
     def getGenere(self):
