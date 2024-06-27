@@ -70,6 +70,9 @@ print(sys.getrefcount(a))
 print("\n--------------\n")
 
 
+
+threads : list = []
+
 import time
 def thread_funcion(name):
 
@@ -80,15 +83,22 @@ def thread_funcion(name):
 
 import threading
 
+for i in range(3):
+    x = threading.Thread(target=thread_funcion,args=(1, ))
+    threads.append(x)
+    x.start()
 
-x = threading.Thread(target=thread_funcion,args=(1, ))
 
 
+for t in threads:
 
+    t.join()
+
+    
 print("prima di thread")
 x.start()
 print(f"thread partito")
-
+x.join()
 print("thread finito?????")
 
 
