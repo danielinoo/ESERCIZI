@@ -71,6 +71,7 @@ Dislocati strategicamente lungo la corsa (es. ai quadrati 10, 25, 50), i bonus a
 
 import random
 
+# from lezione19.decorator_e_funzioni import Analisi
 
 #posizioni
 post = 1
@@ -81,7 +82,7 @@ stamina_tartaruga :  int = 100
 stamina_lepre : int = 100
 
 
-
+# @Analisi.decorator
 def posizione(post, posl,stamina_tartaruga,stamina_lepre):
 
    percorso : list = ["_"] * 70
@@ -290,7 +291,9 @@ while post <= 69 and posl <= 69:
        
          tick = 0
 
-       
+
+
+
 
 
 if post >= 69:

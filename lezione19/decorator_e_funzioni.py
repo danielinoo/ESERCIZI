@@ -66,19 +66,21 @@ print("\n ---------------------------------------\n")
 
 """esempio decorator:"""
 
+class Analisi:
 
-def decorator(func):
+    @staticmethod
+    def decorator(func):
 
-    def wrapper():  #modifica la funzione ciao
-       import time
+        def wrapper(*args):  #modifica la funzione ciao
+            import time
 
-       start = time.time()
- 
-       func()
-       
-       print(f"tempo: {time.time() - start}")
-       
-    return wrapper
+            start = time.time()
+    
+            func(*args)
+        
+            print(f"tempo: {time.time() - start}")
+        
+        return wrapper
 
 
 ciao = decorator(ciao)
@@ -87,7 +89,14 @@ ciao()
 
 
 
+# @decorator#basta fare questo per modificare una funzione
+# def area_cerchio(raggio : float):
 
+#     return raggio * raggio * 3.14
+
+
+# @analisi.tempo
+# funzione
 
     
 
