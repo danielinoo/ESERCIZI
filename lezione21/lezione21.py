@@ -34,29 +34,29 @@
 # print(next(prova_generator
 
 
-from contextlib import contextmanager
+# from contextlib import contextmanager
 
-@contextmanager
-def conterxt_manager_decorator():
-    import time
+# @contextmanager
+# def conterxt_manager_decorator():
+#     import time
 
-    start_time : float = time.time()
+#     start_time : float = time.time()
 
-    yield
+#     yield
 
-    end_time : float = time.time()
+#     end_time : float = time.time()
 
-    elapsed_time = end_time - start_time
+#     elapsed_time = end_time - start_time
 
-    print(f"{elapsed_time=}")
+#     print(f"{elapsed_time=}")
 
 
-@conterxt_manager_decorator
-def area_cerchio(raggio : float):
+# @conterxt_manager_decorator
+# def area_cerchio(raggio : float):
 
-    return raggio * raggio *3.14
+#     return raggio * raggio *3.14
 
-area_cerchio(1)
+# area_cerchio(1)
 
 
 ################################
@@ -67,8 +67,31 @@ a = []
 b = a
 print(sys.getrefcount(a))
 
+print("\n--------------\n")
+
+
+import time
 def thread_funcion(name):
 
-    print(f"{}")
+    print(f"time - {time.time()}")
+    time.sleep(2)
+    print(f"time - {time.time()}")
+
+
+import threading
+
+
+x = threading.Thread(target=thread_funcion,args=(1, ))
+
+
+
+print("prima di thread")
+x.start()
+print(f"thread partito")
+
+print("thread finito?????")
+
+
+
 
 
