@@ -25,8 +25,40 @@ def funzione():
 
 funzione()
 
+print("\n---------------------\n")
 
 #Esercizio 2 - Crea un decorator che calcola il tempo di esecuzione della funzione che viene decorata.
+
+import time
+
+
+def decorator(func):
+
+    def wrapped():
+
+        a = time.time()
+        func()
+
+        print("calcolo tempo esecuzione funzione: ",time.time() - a)
+    return wrapped
+
+funzione = decorator(funzione)
+
+funzione()
+print("\n---------------------\n")
+
+
+
+
+
+
+#Esercizio 3 - Crea un decorator che permette di memorizzare informazioni sulla fibonacci in modo tale che non sia necessario ricalcolare i valori gia 
+
+
+
+
+
+
 
 
 
