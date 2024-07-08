@@ -52,7 +52,7 @@ print("\n---------------------\n")
 
 
 
-#Esercizio 3 - Crea un decorator che permette di memorizzare informazioni sulla fibonacci in modo tale che non sia necessario ricalcolare i valori gia 
+#Esercizio 3 - Crea un decorator che permette di memorizzare informazioni sulla fibonacci in modo tale che non sia necessario ricalcolare i valori gia calcolati
 
 
 
