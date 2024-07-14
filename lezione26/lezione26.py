@@ -82,42 +82,63 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
         self.chiave  : int= chiave
 
 
-    def sposta_carattere(self,c : str):
+    # def sposta_carattere(self,c : str):
 
-            import string
+    #         import string
 
-            alfabeto = list[string.ascii_lowercase]
+    #         alfabeto = list[string.ascii_lowercase]
             
-            c = c.lower()
-            if c in alfabeto:
+    #         c = c.lower()
+    #         if c in alfabeto:
 
-                c = ord(c)
+    #             c = ord(c)
 
-                c += self.chiave
+    #             c += self.chiave
 
-                c = chr(c)
+    #             c = chr(c)
 
-                return c
+    #             return c
         
 
     
-    def codifica(self,testoInChiaro : str):
+    # def codifica(self,testoInChiaro : str):
 
-        testoInChiaro : list= list(testoInChiaro)
-        testoCodificato : list = []
+    #     testoInChiaro : list= list(testoInChiaro)
+    #     testoCodificato : list = []
+
+    #     for i in range(len(testoInChiaro)):
+    #         c = testoInChiaro[i]
+    #         ci = self.sposta_carattere(c)
+    #         testoCodificato.append(ci)
+
+    #     testoCodificato = str(testoCodificato)
+    #     print(testoCodificato)
+
+    def sposta_carattere(self,c):
+        import string
+        alfabeto = list(string.ascii_lowercase)
+        c = c.lower()
+        if c in alfabeto:
+            c = ord(c)
+            c += self.chiave
+            c = chr(c)
+            return c
+
+    def codifica(self,testoInChiaro):
+        testoInChiaro = list(testoInChiaro)
+        testoCodificato = []
 
         for i in range(len(testoInChiaro)):
-
-            ci = self.sposta_carattere(self,c = testoInChiaro[i])
-
+            c = testoInChiaro[i]
+            ci = self.sposta_carattere(c)
             testoCodificato.append(ci)
 
-        testoCodificato = str(testoCodificato)
-
+        testoCodificato = "".join(testoCodificato)
         print(testoCodificato)
 
 
-        
+
+            
 
     def decodifica(testoCodificato):
         testoCodificato : list= list(testoCodificato)
@@ -130,7 +151,7 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
             import string
 
             alfabeto = list[string.ascii_lowercase]
-            
+                
             c = c.lower()
             if c in alfabeto:
 
@@ -142,28 +163,21 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
 
                 return c
 
-        for i in range(len(testoInChiaro)):
+            for i in range(len(testoInChiaro)):
 
-            ci = sposta_carattere(c = testoInChiaro[i])
+                ci = sposta_carattere(c = testoInChiaro[i])
 
-            testoInChiaro.append(ci)
+                testoInChiaro.append(ci)
 
-        testoInChiaro = str(testoInChiaro)
-
-
-
+            testoInChiaro = str(testoInChiaro)
 
 
     
 
 
 
-
-
-
-a = CifratoreAScorrimento(3)
-
-a.codifica("a")
+a = CifratoreAScorrimento(chiave=1)
+a.codifica("ciao")
 
 
 
