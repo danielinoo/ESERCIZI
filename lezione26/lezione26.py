@@ -225,28 +225,41 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
  
 
     def codifica(self,testoInChiaro):
+
+        import copy
         
         testo : list = list(testoInChiaro)
 
         testoCodificato : list= []
 
-        parte1,parte2 = self.combinazione(testo)
+        for i in range(self.chiave):
 
-        if len(parte1) > len(parte2):
+            p1,p2 = self.combinazione(testo)
 
-            parte2.append("0")
-            testo.append("0")
+            testo.reverse()
 
+            testoCodificato = []
 
-        for i in range(len(testo) // 2):
+            t  : int= len(testo)
 
-            testoCodificato.append(parte1[i])
-            testoCodificato.append(parte2[i])
+            for j in range(len(p1)):
 
-        if "0" in testoCodificato:
-            testoCodificato.remove("0")
-        
+                
+                    testoCodificato.append(p1[j])
+                    testoCodificato.append(p2[j])
+
+            
+            testo = copy.deepcopy(testoCodificato)
+
+        testoCodificato = "".join(testoCodificato)
+
+    
+
         print(testoCodificato)
+
+            
+
+
 
         
     def decodifica(testoCodificato):
@@ -256,11 +269,11 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
 
 
-a = CodificaACombinazione(chiave= 1)
+a = CodificaACombinazione(chiave= 5)
 
-a.codifica(testoInChiaro ="ciao")
+a.codifica(testoInChiaro ="ciao come stai")
 
-#caio
+#'caio
 
 
 
