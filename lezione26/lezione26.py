@@ -134,50 +134,50 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
             testoCodificato.append(ci)
 
         testoCodificato = "".join(testoCodificato)
+
         print(testoCodificato)
 
 
 
-            
 
-    def decodifica(testoCodificato):
+    def decodifica_carattere(self,c : str):
+        import string
+        alfabeto = list(string.ascii_lowercase)
+        c = c.lower()
+        if c in alfabeto:
+            c = ord(c)
+            c -= self.chiave
+            c = chr(c)
+            return c
+
+
+            
+    def decodifica(self,testoCodificato):
         testoCodificato : list= list(testoCodificato)
         testoInChiaro : list = []
 
+        for i in range(len(testoCodificato)):
+            c = testoCodificato[i]
+            ci = self.decodifica_carattere(c)
+            testoInChiaro.append(ci)
+        testoInChiaro = "".join(testoInChiaro)
 
 
-        def sposta_carattere(self,c : str):
-
-            import string
-
-            alfabeto = list[string.ascii_lowercase]
-                
-            c = c.lower()
-            if c in alfabeto:
-
-                c = ord(c)
-
-                c -= self.chiave
-
-                c = chr(c)
-
-                return c
-
-            for i in range(len(testoInChiaro)):
-
-                ci = sposta_carattere(c = testoInChiaro[i])
-
-                testoInChiaro.append(ci)
-
-            testoInChiaro = str(testoInChiaro)
-
-
+        print(testoInChiaro)
     
 
 
+class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
-a = CifratoreAScorrimento(chiave=1)
-a.codifica("ciao")
+    def __init__(self,chiave : int) -> None:
+        super().__init__()
+
+        self.chiave = chiave
+
+    def combinazione(testo : str):
+
+        pass
+    
 
 
 
