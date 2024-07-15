@@ -174,12 +174,93 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
         self.chiave = chiave
 
-    def combinazione(testo : str):
+    def combinazione(self,testo):
 
+        parte1 : list = []
+        parte2 : list = []
+
+        
+
+        if len(testo) % 2 == 0:
+
+            for i in range(len(testo) // 2):
+
+                parte1.append(testo[i])
+
+
+            testo.reverse()
+
+            for i in range(len(testo)// 2):
+
+                parte2.append(testo[i])
+
+        else:
+
+
+            #se il testo è disparo 
+
+            testo.append("0")
+
+            for i in range(len(testo) // 2):
+                parte1.append(testo[i])
+
+            testo.remove("0")
+            testo.reverse()
+
+            for i in range(len(testo) // 2):
+
+                if testo[i] not in parte1:
+
+                    parte2.append(testo[i])
+
+                else:
+                    break
+
+        parte2.reverse()
+
+        return parte1,parte2
+
+
+
+ 
+
+    def codifica(self,testoInChiaro):
+        
+        testo : list = list(testoInChiaro)
+
+        testoCodificato : list= []
+
+        parte1,parte2 = self.combinazione(testo)
+
+        if len(parte1) > len(parte2):
+
+            parte2.append("0")
+            testo.append("0")
+
+
+        for i in range(len(testo) // 2):
+
+            testoCodificato.append(parte1[i])
+            testoCodificato.append(parte2[i])
+
+        if "0" in testoCodificato:
+            testoCodificato.remove("0")
+        
+        print(testoCodificato)
+
+        
+    def decodifica(testoCodificato):
+        
         pass
-    
 
 
+
+
+a = CodificaACombinazione(chiave= 1)
+
+a.codifica(testoInChiaro ="ciao")
+
+#caio
 
 
 
