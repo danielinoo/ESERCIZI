@@ -82,38 +82,6 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
         self.chiave  : int= chiave
 
 
-    # def sposta_carattere(self,c : str):
-
-    #         import string
-
-    #         alfabeto = list[string.ascii_lowercase]
-            
-    #         c = c.lower()
-    #         if c in alfabeto:
-
-    #             c = ord(c)
-
-    #             c += self.chiave
-
-    #             c = chr(c)
-
-    #             return c
-        
-
-    
-    # def codifica(self,testoInChiaro : str):
-
-    #     testoInChiaro : list= list(testoInChiaro)
-    #     testoCodificato : list = []
-
-    #     for i in range(len(testoInChiaro)):
-    #         c = testoInChiaro[i]
-    #         ci = self.sposta_carattere(c)
-    #         testoCodificato.append(ci)
-
-    #     testoCodificato = str(testoCodificato)
-    #     print(testoCodificato)
-
     def sposta_carattere(self,c):
         import string
         alfabeto = list(string.ascii_lowercase)
@@ -209,12 +177,7 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
             for i in range(len(testo) // 2):
 
-                if testo[i] not in parte1:
-
                     parte2.append(testo[i])
-
-                else:
-                    break
 
         parte2.reverse()
 
@@ -240,7 +203,7 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
             testoCodificato = []
 
-            t  : int= len(testo)
+            
 
             for j in range(len(p1)):
 
@@ -260,18 +223,65 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
             
 
 
+    def decodifica_combinazione(self,testo):
+        p2 : list = []
+        p1 : list = []
+
+
+        #seconda parte a,o
+        x = range(1, len(testo), 2)
+
+        #prima parte c,i
+        y= range(0, len(testo),2)
 
         
-    def decodifica(testoCodificato):
+        for i in range(0, len(testo),2):
+            
+            try:
+                p1.append(p1[i])
+            except:
+                break
+            
         
-        pass
+        
+        for i in range(1, len(testo), 2):
+            try:
+                p2.append(p2[i])
+            except:
+
+                break
+
+        return p1,p2
+
+
+        
+    def decodifica(self,testoCodificato):
+        
+        testoCodificato : list = list(testoCodificato)
+        testoInChiaro : list = []
+
+        for i in range(self.chiave):
+            parte1,parte2 = self.decodifica_combinazione(testo = testoCodificato)
+
+            testoInChiaro = parte1 + parte2
+
+        testoInChiaro = "".join(testoInChiaro)
+
+        print(testoInChiaro)
 
 
 
 
-a = CodificaACombinazione(chiave= 5)
 
-a.codifica(testoInChiaro ="ciao come stai")
+
+a = CodificaACombinazione(chiave= 3)
+
+b = a.codifica(testoInChiaro ="ciao come stai")
+#ccsama  iotoei
+
+a.decodifica(testoCodificato= "ccsama  iotoei")
+
+
 
 #'caio
 
