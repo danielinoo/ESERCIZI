@@ -1,16 +1,16 @@
 #Daniele Pietropao
 
 
-from unittest import TestCase
+import unittest
 
-import lezione26
-import lezione26.lezione26
+from lezione26 import lezione26
 
 
-class Test_cifraturaAscorrimento(TestCase):
+
+class Test_cifraturaAscorrimento(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.a = lezione26.lezione26.CifratoreAScorrimento(chiave= 3)
+        self.a = lezione26.CifratoreAScorrimento(chiave= 3)
 
     def test_codifica(self):
 
@@ -22,3 +22,6 @@ class Test_cifraturaAscorrimento(TestCase):
         decodif = self.a.decodifica(testoCodificato= "fldr")
         self.assertEqual("ciao",decodif,"decodifica sbagliata")
 
+
+if __name__ == "__main__":
+    unittest.main()
