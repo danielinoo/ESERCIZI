@@ -147,8 +147,6 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
         parte1 : list = []
         parte2 : list = []
 
-        
-
         if len(testo) % 2 == 0:
 
             for i in range(len(testo) // 2):
@@ -156,9 +154,7 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
                 parte1.append(testo[i])
 
 
-            testo.reverse()
-
-            for i in range(len(testo)// 2):
+            for i in range(len(testo) // 2,len(testo)):
 
                 parte2.append(testo[i])
 
@@ -167,19 +163,13 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
             #se il testo è disparo 
 
-            testo.append("0")
-
-            for i in range(len(testo) // 2):
+            for i in range(len(testo) // 2 +1):
                 parte1.append(testo[i])
 
-            testo.remove("0")
-            testo.reverse()
-
-            for i in range(len(testo) // 2):
+        
+            for i in range(len(testo) //2,len(testo)):
 
                     parte2.append(testo[i])
-
-        parte2.reverse()
 
         return parte1,parte2
 
@@ -190,20 +180,12 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
     def codifica(self,testoInChiaro):
 
         import copy
-        
-        testo : list = list(testoInChiaro)
-
-        testoCodificato : list= []
 
         for i in range(self.chiave):
 
-            p1,p2 = self.combinazione(testo)
-
-            testo.reverse()
+            p1,p2 = self.combinazione(testoInChiaro)
 
             testoCodificato = []
-
-            
 
             for j in range(len(p1)):
 
@@ -212,11 +194,9 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
                     testoCodificato.append(p2[j])
 
             
-            testo = copy.deepcopy(testoCodificato)
+            testoInChiaro = copy.deepcopy(testoCodificato)
 
         testoCodificato = "".join(testoCodificato)
-
-    
 
         print(testoCodificato)
 
@@ -227,29 +207,14 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
         p2 : list = []
         p1 : list = []
 
-
-        #seconda parte a,o
-        x = range(1, len(testo), 2)
-
-        #prima parte c,i
-        y= range(0, len(testo),2)
-
         
-        for i in range(0, len(testo),2):
+        for i in range(len(testo)):
+                
+            if i % 2 == 0:
+                p1.append(testo[i])
             
-            try:
-                p1.append(p1[i])
-            except:
-                break
-            
-        
-        
-        for i in range(1, len(testo), 2):
-            try:
-                p2.append(p2[i])
-            except:
-
-                break
+            else:
+                p2.append(testo[i])
 
         return p1,p2
 
@@ -257,11 +222,10 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
         
     def decodifica(self,testoCodificato):
         
-        testoCodificato : list = list(testoCodificato)
-        testoInChiaro : list = []
+        testoInChiaro : list = list(testoCodificato)
 
         for i in range(self.chiave):
-            parte1,parte2 = self.decodifica_combinazione(testo = testoCodificato)
+            parte1,parte2 = self.decodifica_combinazione(testo = testoInChiaro)
 
             testoInChiaro = parte1 + parte2
 
@@ -273,17 +237,6 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
 
 
-
-a = CodificaACombinazione(chiave= 3)
-
-b = a.codifica(testoInChiaro ="ciao come stai")
-#ccsama  iotoei
-
-a.decodifica(testoCodificato= "ccsama  iotoei")
-
-
-
-#'caio
 
 
 
