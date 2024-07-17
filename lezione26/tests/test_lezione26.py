@@ -16,6 +16,9 @@ class Test_cifraturaAscorrimento(TestCase):
 
         codif = self.a.codifica(testoInChiaro = "ciao")
         self.assertEqual("fldr",codif,"errore codifica sbagliata")
+        
+    def test_decodifica(self):
 
         decodif = self.a.decodifica(testoCodificato= "fldr")
         self.assertEqual("ciao",decodif,"decodifica sbagliata")
+
