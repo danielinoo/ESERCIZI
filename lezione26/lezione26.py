@@ -235,6 +235,15 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
 
 
+    
+a = CifratoreAScorrimento(chiave=3)
+
+a.codifica("ciao")
+
+a.decodifica("fldr")
+
+
+
 
 
 
