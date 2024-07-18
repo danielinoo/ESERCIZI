@@ -3,14 +3,14 @@
 
 import unittest
 
-from lezione26 import lezione26
+from lezione26.cifratura import CifratoreAScorrimento
 
 
 
 class Test_cifraturaAscorrimento(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.a = lezione26.CifratoreAScorrimento(chiave= 3)
+        self.a = CifratoreAScorrimento(chiave= 3)
 
     def test_codifica(self):
 
