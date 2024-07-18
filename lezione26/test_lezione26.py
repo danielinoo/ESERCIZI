@@ -23,7 +23,7 @@ class Test_cifraturaAscorrimento(unittest.TestCase):
         self.assertEqual("ciao",decodif,"decodifica sbagliata")
 
 
-class Test_codificaACombinazione(unittest.test):
+class Test_codificaACombinazione(unittest.TestCase):
 
     def setUp(self):
 
@@ -31,9 +31,15 @@ class Test_codificaACombinazione(unittest.test):
 
     def test_codifica(self):
 
-        codif = self.a.codifica(testoInChiaro=)
+        codif = self.a.codifica(testoInChiaro="ciao come stai")
 
-        self.
+        self.assertEqual("ccsama  iotoei",codif,"errore in codifica a combinazione")
+    
+    def test_decodifica(self):
+
+        decodif = self.a.decodifica(testoCodificato="ccsama  iotoei")
+
+        self.assertEqual("ciao come stai",decodif,"errore durante la decodifica a combinazione")
 
 
 if __name__ == "__main__":
