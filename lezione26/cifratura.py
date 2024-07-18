@@ -198,7 +198,7 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
         testoCodificato = "".join(testoCodificato)
 
-        print(testoCodificato)
+        return testoCodificato
 
             
 
@@ -231,16 +231,12 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
 
         testoInChiaro = "".join(testoInChiaro)
 
-        print(testoInChiaro)
+        return testoInChiaro
 
 
 
     
-a = CifratoreAScorrimento(chiave=3)
 
-a.codifica("ciao")
-
-a.decodifica("fldr")
 
 
 

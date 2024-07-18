@@ -1,9 +1,9 @@
-#Daniele Pietropao
+#Daniele Pietropaolo
 
 
 import unittest
 
-from lezione26.cifratura import CifratoreAScorrimento
+from cifratura import CifratoreAScorrimento
 
 
 
