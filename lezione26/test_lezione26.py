@@ -3,7 +3,7 @@
 
 import unittest
 
-from cifratura import CifratoreAScorrimento
+from cifratura import CifratoreAScorrimento,CodificaACombinazione
 
 
 
@@ -21,6 +21,19 @@ class Test_cifraturaAscorrimento(unittest.TestCase):
 
         decodif = self.a.decodifica(testoCodificato= "fldr")
         self.assertEqual("ciao",decodif,"decodifica sbagliata")
+
+
+class Test_codificaACombinazione(unittest.test):
+
+    def setUp(self):
+
+        self.a = CodificaACombinazione(chiave = 3)
+
+    def test_codifica(self):
+
+        codif = self.a.codifica(testoInChiaro=)
+
+        self.
 
 
 if __name__ == "__main__":

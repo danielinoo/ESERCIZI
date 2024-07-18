@@ -103,7 +103,7 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
 
         testoCodificato = "".join(testoCodificato)
 
-        print(testoCodificato)
+        return testoCodificato
 
 
 
@@ -131,7 +131,7 @@ class CifratoreAScorrimento(DecodificatoreMessaggio, CodificatoreMessaggio):
         testoInChiaro = "".join(testoInChiaro)
 
 
-        print(testoInChiaro)
+        return testoInChiaro
     
 
 
@@ -141,6 +141,7 @@ class CodificaACombinazione(DecodificatoreMessaggio, CodificatoreMessaggio):
         super().__init__()
 
         self.chiave = chiave
+        
 
     def combinazione(self,testo):
 
