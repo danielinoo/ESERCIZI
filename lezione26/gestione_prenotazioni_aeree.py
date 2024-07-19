@@ -113,8 +113,8 @@ class VoloCommerciale(Volo):
     def __init__(self, codice_volo, posti_aereo) -> None:
         super().__init__(codice_volo, posti_aereo)
 
-        self.posti_economica : int = (self.posti_tot * 70) / 100
-        self.posti_business : int = (self.posti_tot * 20) / 100
+        self.posti_economica : int = self.posti_tot-(self.posti_tot * 70) / 100
+        self.posti_business : int =self.posti_tot- (self.posti_tot * 20) / 100
         self.posti_prima_classe : int = self.posti_tot - (self.posti_economica + self.posti_business)
 
         self.prenotazione_economica : int = 0
