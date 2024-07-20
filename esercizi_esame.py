@@ -248,8 +248,6 @@ class  VideoRentalStore:
             return l
     
 
-videonoleggio = VideoRentalStore()
-
 
 
 
