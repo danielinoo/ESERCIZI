@@ -250,4 +250,198 @@ class  VideoRentalStore:
 
 
 
+"""-------------------------------------------------"""
+
+# n questo esercizio, creeremo una gerarchia di classi per rappresentare diversi tipi di veicoli.
+ 
+# 1. Classe Base: Veicolo
+# Crea una classe base chiamata Veicolo con i seguenti attributi e metodi:
+ 
+# Attributi:
+# - marca (stringa)
+# - modello (stringa)
+# - anno (intero)
+
+# Metodi:
+# - __init__(self, marca, modello, anno): metodo costruttore che inizializza gli attributi marca, modello e anno.
+# - descrivi_veicolo(self): metodo che stampa una descrizione del veicolo nel formato "Marca: [marca], Modello: [modello], Anno: [anno]".
+
+# 2. Classe Derivata: Auto
+# Crea una classe derivata chiamata Auto che eredita dalla classe Veicolo e aggiunge i seguenti attributi e metodi:
+ 
+# Attributi:
+# - numero_porte (intero)
+
+# Metodi:
+# - __init__(self, marca, modello, anno, numero_porte): metodo costruttore che inizializza gli attributi della classe base e numero_porte.
+# - descrivi_veicolo(self): metodo che sovrascrive quello della classe base per includere anche il - numero di porte nella descrizione, nel formato "Marca: [marca], Modello: [modello], Anno: [anno], Numero di porte: [numero_porte]".
+
+# 3. Classe Derivata: Moto
+# Crea una classe derivata chiamata Moto che eredita dalla classe Veicolo e aggiunge i seguenti attributi e metodi:
+ 
+# Attributi:
+# - tipo (stringa, ad esempio "sportiva", "cruiser", ecc.)
+
+# Metodi:
+# - __init__(self, marca, modello, anno, tipo): metodo costruttore che inizializza gli attributi della classe base e tipo.
+# - descrivi_veicolo(self): metodo che sovrascrive quello della classe base per includere anche il tipo di moto nella descrizione, nel formato "Marca: [marca], Modello: [modello], Anno: [anno], Tipo: [tipo]".
+
+
+
+
+
+
+class Veicolo:
+
+    def __init__(self,marca,modello,anno) -> None:
+            self.marca : str = marca
+            self.modello : str = modello
+            self.anno : int = anno
+
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}")
+
+
+class Auto(Veicolo):
+
+    def __init__(self, marca, modello, anno,numero_porte) -> None:
+        super().__init__(marca, modello, anno)
+
+        self.num_porte = numero_porte
+
+    def descrivi_veicolo(self):
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Numero di porte: {self.num_porte}")
+
+
+class Moto(Veicolo):
+
+    def __init__(self, marca, modello, anno,tipo) -> None:
+        super().__init__(marca, modello, anno)
+
+        self.tipo = tipo
+
+
+    def descrivi_veicolo(self): 
+
+        print(f"Marca: {self.marca}, Modello: {self.modello}, Anno: {self.anno}, Tipo: {self.tipo}")
+
+
+"""--------------------------------------------------"""
+
+# Sviluppa un sistema per la gestione delle ricette in Python che permetta agli utenti di creare, modificare, e cercare ricette basate sugli ingredienti. Il sistema dovrà essere capace di gestire una collezione (dizionario) di ricette e i loro ingredienti.
+# Classe:
+# - RecipeManager:
+#     Gestisce tutte le operazioni legate alle ricette.
+#     Metodi:
+#     - create_recipe(name, ingredients): Crea una nuova ricetta con il nome specificato e una lista di ingredienti. Restituisce un nuovo dizionario con la sola ricetta appena creata o un messaggio di errore se la ricetta esiste già.
+#     - add_ingredient(recipe_name, ingredient): Aggiunge un ingrediente alla ricetta specificata. Restituisce la ricetta aggiornata o un messaggio di errore se l'ingrediente esiste già o la ricetta non esiste.
+#     - remove_ingredient(recipe_name, ingredient): Rimuove un ingrediente dalla ricetta specificata. Restituisce la ricetta aggiornata o un messaggio di errore se l'ingrediente non è presente o la ricetta non esiste.
+#     - update_ingredient(recipe_name, old_ingredient, new_ingredient): Sostituisce un ingrediente con un altro nella ricetta specificata. Restituisce la ricetta aggiornata o un messaggio di errore se l'ingrediente non è presente o la ricetta non esiste.
+#     - list_recipes(): Elenca tutte le ricette esistenti.
+#     - list_ingredients(recipe_name): Mostra gli ingredienti di una specifica ricetta. Restituisce un elenco di ingredienti o un messaggio di errore se la ricetta non esiste.
+#     - search_recipe_by_ingredient(ingredient): Trova e restituisce tutte le ricette che contengono un determinato ingrediente. Restituisce un elenco di ricette o un messaggio di errore se nessuna ricetta contiene l'ingrediente.
+
+class RecipeManager:
+
+    def __init__(self) -> None:
+        self.ricette : dict[str,list[str]] = {}
+
+    def create_recipe(self,name, ingredients):
+
+        if name not in self.ricette:
+            self.ricette[name] = ingredients
+            return self.ricette
+
+        else:
+            return "errore la ricetta è gia esistente"
+        
+    def add_ingredient(self,recipe_name, ingredient):
+
+        if recipe_name in self.ricette and ingredient not in self.ricette[recipe_name]:
+
+            self.ricette[recipe_name].append(ingredient)
+            return self.ricette
+        else:
+            return"errore la ricetta non esiste o esiste già l ingrediente"
+        
+
+    def remove_ingredient(self,recipe_name, ingredient):
+
+        if recipe_name in self.ricette and ingredient in self.ricette[recipe_name]:
+
+            self.ricette[recipe_name].remove(ingredient)
+            return self.ricette
+        
+        else:
+            return"errore la ricetta non esiste o non esiste l ingrediente da rimuovere dentro la ricetta"
+        
+
+    def update_ingredient(self,recipe_name, old_ingredient, new_ingredient):
+
+        if recipe_name in self.ricette \
+        and old_ingredient in self.ricette[recipe_name]:
+                    
+            for k,v in self.ricette.items():
+
+                for i in range(len(v)):
+
+                    if v[i] == old_ingredient:
+
+                        v.insert(i,new_ingredient)
+                        v.remove(old_ingredient)
+                return self.ricette
+        else:
+
+            return"errore la ricetta non esiste o l inngrediente da modificare non esiste"
+        
+
+    def list_recipes(self):
+        a : list = []
+        for i in self.ricette.keys():
+            a.append(i)
+
+        return a
+    
+
+    def list_ingredients(self,recipe_name):
+
+        if recipe_name in self.ricette:
+
+            return self.ricette[recipe_name]
+        
+    
+        else:
+            return"errore la ricetta non esiste"
+        
+
+
+    def search_recipe_by_ingredient(self,ingredient):
+
+        a : list = []
+
+        for k,v in self.ricette.items():
+
+            if ingredient in v:
+                return self.ricette
+
+
+manager = RecipeManager()
+print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
+print(manager.add_ingredient("Pizza Margherita", "Basilico"))
+print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
+print(manager.remove_ingredient("Pizza Margherita", "Acqua"))
+print(manager.list_ingredients("Pizza Margherita"))
+
+	
+
+
+
+
+
+
+
+
+
+
+
 
