@@ -154,7 +154,7 @@ class Movie:
             self.is_rented = True
 
         else:
-            print(f"Il film {self.title} è già noleggiato.")
+            print(f"Il film \'{self.title}\' è già noleggiato.")
 
 
     def return_movie(self):
@@ -163,7 +163,7 @@ class Movie:
             self.is_rented = False
 
         else:
-            print(f"Il film {self.title} non è attualmente noleggiato.")
+            print(f"Il film \'{self.title}\' non è stato noleggiato da questo cliente.")
 
 
 
@@ -182,7 +182,7 @@ class Customer:
             self.rented_movies.append(movie)
 
         else:
-            print(f"Il film {movie.title} non è stato noleggiato da questo cliente.")
+            print(f"Il film \'{movie.title}\' non è stato noleggiato da questo cliente.")
 
     def return_movie(self,movie: Movie):
 
@@ -191,7 +191,7 @@ class Customer:
             movie.return_movie()
 
         else:
-            print(f"Il film {movie.title} non è stato noleggiato da questo cliente.")
+            print(f"Il film \'{movie.title}\' non è stato noleggiato da questo cliente.")
 
 
 
@@ -211,9 +211,9 @@ class  VideoRentalStore:
 
     def register_customer(self,customer_id: str, name: str):
 
-        if customer_id not in self.movies:
+        if customer_id not in self.customers:
 
-            self.movies[customer_id] = Customer(customer_id,name)
+            self.customers[customer_id] = Customer(customer_id,name)
 
         else:
             print(f"Il cliente con ID {customer_id} è già registrato.")
@@ -234,13 +234,17 @@ class  VideoRentalStore:
         if customer_id in self.customers and \
         movie_id in self.movies:
             self.customers[customer_id].return_movie(movie = self.movies[movie_id])
+        
+        else:
+
+            print("Cliente o film non trovato.")
 
 
     def get_rented_movies(self,customer_id: str):
 
         if customer_id in self.customers:
 
-            print(self.customers[customer_id].rented_movies)
+            return self.customers[customer_id].rented_movies
 
         else:
             print( "Cliente non trovato.")
