@@ -65,5 +65,3 @@ def sum_above_threshold(numbers: list[int],threshold : int) -> int:
            
     return s
 
-a : int = 0
-input(a )
