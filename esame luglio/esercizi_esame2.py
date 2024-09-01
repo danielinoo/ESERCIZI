@@ -164,4 +164,4 @@ def time_difference(ore1 : int,minuti1 : int,secondi1 : int,ore2 : int,minuti2 :
     orario2 = seconds_since_noon(ore2,minuti2,secondi2)
 
     quantita_tempo = orario1 - orario2
-    return quantita_tempo
+    return abs(quantita_tempo)
