@@ -147,10 +147,21 @@ class RecipeManager:
 
 
 
-	
-manager = RecipeManager()
-print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
-print(manager.add_ingredient("Pizza Margherita", "Basilico"))
-print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
-print(manager.remove_ingredient("Pizza Margherita", "Acqua"))
-print(manager.list_ingredients("Pizza Margherita"))
+############################################
+
+def seconds_since_noon(ore : int,minuti : int,secondi : int):
+
+    ore = ore - 12
+
+    #calcolo secondi
+    ris : int = (ore * 3600) + (minuti * 60) + secondi
+
+    return ris
+
+def time_difference(ore1 : int,minuti1 : int,secondi1 : int,ore2 : int,minuti2 : int,secondi2 : int):
+
+    orario1 = seconds_since_noon(ore1,minuti1,secondi1)
+    orario2 = seconds_since_noon(ore2,minuti2,secondi2)
+
+    quantita_tempo = orario1 - orario2
+    return quantita_tempo
