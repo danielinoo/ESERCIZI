@@ -4,3 +4,4 @@ cp requirements.txt $home/cercastringa
 cd $home/cercastringa
 pip install virtualenv
 pip source myenv/bin/activate
+pip install -r requirement.txt
