@@ -5,7 +5,6 @@ api = Flask(__name__)
 utenti = [["mario","rossi","via tiburtina","Roma","2000-09-25","0"],["gigi","bianchi","via nomentana","Roma","2002-10-01","0"],["pasquale","verdi","via navigli","Milano","1999-16-04","0"]]
 
 
-
 @api.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
@@ -19,6 +18,7 @@ def regOk():
 @api.route('/regko', methods=['GET'])
 def regKo():
     return render_template('reg_ko.html')
+
 
 
 @api.route('/registrazione', methods=['GET'])
