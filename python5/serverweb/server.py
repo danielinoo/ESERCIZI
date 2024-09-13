@@ -16,8 +16,9 @@ def regOk():
 def regKo():
     return render_template('reg_ko.html')
 
-@api.route('/pippo', methods=['GET'])
-def index2():
-    return render_template('index2.html')
+
+@api.route('/registrazione', methods=['GET'])
+def registrazione():
+    return render_template('reg_ko.html')
 
 api.run(host ="0.0.0.0",port=8085)
