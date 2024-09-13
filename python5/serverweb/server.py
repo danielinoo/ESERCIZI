@@ -6,6 +6,16 @@ api = Flask(__name__)
 def index():
     return render_template('index.html')
 
+
+@api.route('/regok', methods=['GET'])
+def regOk():
+    return render_template('reg_ok.html')
+
+
+@api.route('/regko', methods=['GET'])
+def regKo():
+    return render_template('reg_ko.html')
+
 @api.route('/pippo', methods=['GET'])
 def index2():
     return render_template('index2.html')
