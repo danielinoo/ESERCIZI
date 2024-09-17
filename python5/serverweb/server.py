@@ -14,7 +14,6 @@ def index():
 def regOk():
     return render_template('reg_ok.html')
 
-
 @api.route('/regko', methods=['GET'])
 def regKo():
     return render_template('reg_ko.html')
@@ -38,7 +37,9 @@ def registrazione():
         
     return render_template('reg_ko.html')
 
-
+@api.route('/accesso',methods= ['GET'])
+def accesso():
+    return render_template('accesso.html')
 
 
 api.run(host ="0.0.0.0",port=8085)
