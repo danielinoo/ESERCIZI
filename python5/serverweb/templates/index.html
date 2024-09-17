@@ -26,6 +26,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 80%;
             max-width: 900px;
+            
         }
         .form-container h2 {
             margin-bottom: 20px;
@@ -40,14 +41,41 @@
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            border-color: red;
+            border-width: 4px;
+        }
+
+        
+        .form-container input:focus, .form-container select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+
+        .form-container input:valid, .form-container select:valid {
+            border-color: rgb(96, 236, 96);
+
         }
 
         .form-container .row {
             margin-bottom: 15px;
+            
         }
         .form-container input[type="submit"] {
             background-color: #28d25b;
             color: #fff;
+            border-color: #28d25b;
+        }
+
+        a {
+            color: red;
+            min-height: 10px;
+        }
+
+        .row label::before{
+            content: "*";
+            color: red;
+            margin-left: 0.5em;
         }
         </style>
 
@@ -57,27 +85,26 @@
             <div class="row">
             <div class="col-md-6">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="solo caratteri alfabetici" style="border: solid black;" required>
+                <input type="text" id="nome" name="nome" placeholder="solo caratteri alfabetici" required>
             </div>
             <div class="col-md-6">
                 <label for="cognome">Cognome</label>
-                <input type="text" id="cognome" name="cognome" placeholder="solo caratteri alfabetici" style="border: solid black;" required>
+                <input type="text" id="cognome" name="cognome" placeholder="solo caratteri alfabetici"  required>
             </div>
             </div>
             <div class="row">
             <div class="col-md-6">
                 <label for="dataNascita">Data di Nascita</label>
-                <input type="date" id="dataNascita" name="dataNascita" style="border: solid black;" required>
+                <input type="date" id="dataNascita" name="dataNascita" required>
             </div>
             <div class="col-md-6">
                 <label for="indirizzo">Indirizzo</label>
-                <input type="text" id="indirizzo" name="indirizzo" placeholder="inserire l'indirizzo" style="border: solid black;" required>
+                <input type="text" id="indirizzo" name="indirizzo" placeholder="inserire l'indirizzo" required>
             </div>
             </div>
-            <div class="row">
-            <div class="col-md-6">
+    
                 <label for="citta">Città</label>
-                <select id="citta" name="citta" style="border: solid black;" required>
+                <select id="citta" name="citta" required>
                 <option value="">Seleziona una città</option>
                 <option value="Roma">Roma</option>
                 <option value="Milano">Milano</option>
@@ -85,12 +112,17 @@
                 <option value="Torino">Torino</option>
                 <option value="Palermo">Palermo</option>
                 </select>
+            <div class="row">
+            <div class="col-md-6">
+                <br>
+                <input type="submit" value="Registrati" style="height: 60px;">
             </div>
             <div class="col-md-6">
                 <br>
-                <input type="submit" value="Invia" style="height: 60px;">
+                <input type="submit" value="Accedi" style="height: 60px;">
             </div>
             </div>
+            <a class="a">* campo obbligatorio</a>
         </form>
         </div>
     </form>
