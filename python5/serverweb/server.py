@@ -39,9 +39,7 @@ def registrazione():
     return render_template('reg_ko.html')
 
 
-@api.route('/accesso', methods=['GET'])
-def accesso():
-    return render_template('accesso.html')
+
 
 
 
