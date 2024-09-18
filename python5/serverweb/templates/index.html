@@ -66,10 +66,10 @@
             margin-bottom: 15px;
             
         }
-        .form-container input[type="submit"] {
+        .reg {
             background-color: #28d25b;
             color: #fff;
-            border-color: #28d25b;
+            border-color: #28d25b;    
         }
 
         a {
@@ -86,52 +86,48 @@
 
         <div class="form-container">
         <h2>Modulo di registrazione</h2>
-        <form id="registrationForm">
-            <div class="row">
-            <div class="col-md-6">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="solo caratteri alfabetici" required>
-            </div>
-            <div class="col-md-6">
-                <label for="cognome">Cognome</label>
-                <input type="text" id="cognome" name="cognome" placeholder="solo caratteri alfabetici"  required>
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-md-6">
-                <label for="dataNascita">Data di Nascita</label>
-                <input type="date" id="dataNascita" name="dataNascita" required>
-            </div>
-            <div class="col-md-6">
-                <label for="indirizzo">Indirizzo</label>
-                <input type="text" id="indirizzo" name="indirizzo" placeholder="inserire l'indirizzo" required>
-            </div>
-            </div>
-    
-                <label for="citta">Città</label>
-                <select id="citta" name="citta" required>
-                <option value="">Seleziona una città</option>
-                <option value="Roma">Roma</option>
-                <option value="Milano">Milano</option>
-                <option value="Napoli">Napoli</option>
-                <option value="Torino">Torino</option>
-                <option value="Palermo">Palermo</option>
-                </select>
-            <div class="row">
-            <div class="col-md-6">
-                <br>
-                <input type="submit" value="Registrati" style="height: 60px;">
-            </div>
-            <form action="/accedi" method="get">
-            <div class="col-md-6">
-                <br>
-                <input type="submit" value="Accedi" style="height: 60px;">
-            </div>
+                <form id="registrationForm">
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="solo caratteri alfabetici" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cognome">Cognome</label>
+                        <input type="text" id="cognome" name="cognome" placeholder="solo caratteri alfabetici"  required>
+                    </div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-6">
+                        <label for="dataNascita">Data di Nascita</label>
+                        <input type="date" id="dataNascita" name="dataNascita" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="indirizzo">Indirizzo</label>
+                        <input type="text" id="indirizzo" name="indirizzo" placeholder="inserire l'indirizzo" required>
+                    </div>
+                    </div>
+            
+                        <label for="citta">Città</label>
+                        <select id="citta" name="citta" required>
+                        <option value="">Seleziona una città</option>
+                        <option value="Roma">Roma</option>
+                        <option value="Milano">Milano</option>
+                        <option value="Napoli">Napoli</option>
+                        <option value="Torino">Torino</option>
+                        <option value="Palermo">Palermo</option>
+                        </select>
+                    <div class="row">
+                        <br>
+                        <input class="reg" type="submit" value="Registrati" style="height: 60px;">
+                </form>
+                </div>
             </form>
-            </div>
-            <a class="a">* campo obbligatorio</a>
-        </form>
-        </div>
-    </form>
+            <form action="/accedi" method="get">
+                <input class="reg" type="submit" value="Accedi" style="height: 60px;">
+                <a class="a">* campo obbligatorio</a>
+                </div>
+            </form>
+            
   </body>
 </html>
