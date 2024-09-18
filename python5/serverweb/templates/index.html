@@ -35,7 +35,7 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-container input, .form-container select {
+        .form-container input,.form-container select {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -45,17 +45,21 @@
             border-width: 3px;
         }
 
-        
-        .form-container input:focus, .form-container select:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-
         .form-container input:valid,
         .form-container select:valid{
             border-color: rgb(96, 236, 96);
 
+        }
+        
+        .form-container input:focus, 
+        .form-container select:focus{
+            border-color:#007bff;
+            outline: none;
+            
+        }
+
+        .form-container {
+            border-color:  #007bff;
         }
 
         .form-container .row {
