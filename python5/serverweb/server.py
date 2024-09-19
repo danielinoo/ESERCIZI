@@ -19,6 +19,12 @@ def regKo():
     return render_template('reg_ko.html')
 
 
+@api.route('/accedi', methods=['GET'])
+def accedi():
+    return render_template('accesso.html')
+
+
+
 
 @api.route('/registrazione', methods=['GET'])
 def registrazione():
@@ -29,18 +35,28 @@ def registrazione():
     indirizzo = request.args.get("indirizzo")
     citta = request.args.get("citta")
 
-    l : list[str] = [nome,cognome,indirizzo,citta,dataNascita,"0"]
+    lr : list[str] = [nome,cognome,indirizzo,citta,dataNascita,"0"]
     for i in utenti:
-        if l == i:
+        if lr == i:
                 i[-1] = "1"
                 return render_template('reg_ok.html')
         
     return render_template('reg_ko.html')
 
+
 @api.route('/accesso',methods= ['GET'])
 def accesso():
-    return render_template('accesso.html')
 
+    nome = request.args.get("nome")
+    cognome = request.args.get("cognome")
+    la : list[str] = [nome,cognome]
+
+    for i in utenti:
+        if la[0] == i[0] and la[1] == i[1] and i[-1] == "1":
+             
+            return render_template('acc_ok.html')
+    
+        return render_template('acc_ko.html')
 
 
 
