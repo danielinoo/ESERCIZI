@@ -54,7 +54,7 @@ def accesso():
     for i in utenti:
         if la[0] == i[0] and la[1] == i[1] and i[-1] == "1":
              
-            return render_template('acc_ok.html')
+            return render_template('acc_ok.html',nome=nome,cognome=cognome)
     
         return render_template('acc_ko.html')
 
