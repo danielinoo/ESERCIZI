@@ -7,16 +7,19 @@ utenti = [["mario","rossi","via tiburtina","Roma","2000-09-25","0"],["gigi","bia
 
 @api.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('primapagina.html')
 
+@api.route('/registra', methods=['GET'])
+def index():
+    return render_template('registra.html')
 
 @api.route('/regok', methods=['GET'])
 def regOk():
     return render_template('reg_ok.html')
 
-@api.route('/regko', methods=['GET'])
+@api.route('/ordini', methods=['GET'])
 def regKo():
-    return render_template('reg_ko.html')
+    return render_template('ordini.html')
 
 
 @api.route('/accedi', methods=['GET'])
