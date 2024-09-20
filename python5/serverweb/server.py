@@ -6,31 +6,28 @@ utenti = [["mario","rossi","via tiburtina","Roma","2000-09-25","0"],["gigi","bia
 
 
 @api.route('/', methods=['GET'])
-def index():
+def primapagina():
     return render_template('primapagina.html')
 
 @api.route('/registra', methods=['GET'])
-def index():
+def registra():
     return render_template('registra.html')
 
 @api.route('/regok', methods=['GET'])
 def regOk():
     return render_template('reg_ok.html')
 
-@api.route('/ordini', methods=['GET'])
-def regKo():
-    return render_template('ordini.html')
-
 
 @api.route('/accedi', methods=['GET'])
 def accedi():
     return render_template('accesso.html')
 
+@api.route('/ordini', methods=['GET'])
+def regKo():
+    return render_template('ordini.html')
 
-
-
-@api.route('/registrazione', methods=['GET'])
-def registrazione():
+@api.route('/controllo_registrazione', methods=['GET'])
+def controllo_reg():
 
     nome = request.args.get("nome")
     cognome = request.args.get("cognome")
@@ -47,8 +44,8 @@ def registrazione():
     return render_template('reg_ko.html')
 
 
-@api.route('/accesso',methods= ['GET'])
-def accesso():
+@api.route('/controllo_accesso',methods= ['GET'])
+def controllo_accesso():
 
     nome = request.args.get("nome")
     cognome = request.args.get("cognome")
