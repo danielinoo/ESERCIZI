@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordini in Corso</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #6dfacd, #28de47);
+}
+
+.container {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+thead {
+    background-color: #007bff;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #218838;
+}
+
+.logout-button {
+                background-color: #b94b29;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+            
+.logout-button:hover {
+                background-color: #faa16d;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ordini in Corso</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Ordine</th>
+                    <th>Prodotto</th>
+                    <th>Quantità</th>
+                    <th>Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#12345</td>
+                    <td>Smartphone</td>
+                    <td>1</td>
+                    <td>In Consegna</td>
+                </tr>
+                <tr>
+                    <td>#12346</td>
+                    <td>Televisore 4K</td>
+                    <td>1</td>
+                    <td>Preparazione</td>
+                </tr>
+                <tr>
+                    <td>#12347</td>
+                    <td>Cuffie Wireless</td>
+                    <td>2</td>
+                    <td>Spedito</td>
+                </tr>
+            </tbody>
+        </table>
+        <form action="/passati" method="get">
+            <button type="submit" class="button">vai agli ordini passati</button>
+        </form>
+        <br><br>        
+        <a href="/" class="logout-button">Esci</a>
+</body>
+</html>

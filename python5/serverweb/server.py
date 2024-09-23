@@ -13,18 +13,23 @@ def primapagina():
 def registra():
     return render_template('registra.html')
 
-@api.route('/regok', methods=['GET'])
-def regOk():
-    return render_template('reg_ok.html')
-
 
 @api.route('/accedi', methods=['GET'])
 def accedi():
     return render_template('accesso.html')
 
 @api.route('/ordini', methods=['GET'])
-def regKo():
+def ordini():
     return render_template('ordini.html')
+
+#creare serie di controlli per far visualizzare all utente la propria lista di ordini
+@api.route('/passati', methods=['GET'])
+def passati():
+    return render_template('ordini_passati.html')
+
+@api.route('/attuali', methods=['GET'])
+def attuali():
+    return render_template('ordini_attuali.html')
 
 @api.route('/controllo_registrazione', methods=['GET'])
 def controllo_reg():
@@ -39,7 +44,7 @@ def controllo_reg():
     for i in utenti:
         if lr == i:
                 i[-1] = "1"
-                return render_template('reg_ok.html')
+                return render_template('reg_ok.html',nome=nome,cognome=cognome)
         
     return render_template('reg_ko.html')
 
