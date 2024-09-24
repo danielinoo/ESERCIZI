@@ -34,24 +34,53 @@ mydict_2 = "{ 'brand':   'Ford'," + \
 "'year': 1964," + \
 "'colors': ['red', 'white', 'blue']}"
 
-def serializza_json(file_path)-> bool:
+def serializza_json(dData,file_path)-> bool:
     try: 
-            # primo modo
         with open(file_path, "w")as fp:
-            json.dump(mydict_1,fp)
+            json.dump(dData,fp)
         return True
     
     except:
         return False
+    
+
 
 def deserializza_json(file_path)-> dict:
     with open(file_path, "r")as fp:
         return json.load(fp)
+
+def deserializza2_json(file_path)-> dict:
+    sData = ""
+    sAppo =  ""
+    try:
+        
+        with open(file_path, "r")as fp:
+            sAppo = fp.read(500)
+            while len(sAppo) == 500:
+                sData += sAppo
+                sAppo = fp.read(500)
+            if len(sAppo) > 0:
+                sData += sAppo
+            
+    except:
+        return None
+
+
+       
+def serializza2_json(dData,file_path)-> bool:
+    try:             
+        sData = json.dumps(dData)
+        with open(file_path, "w")as fp:
+            fp.write(sData)
+
+        return True
     
+    except:
+        return False    
 
 file_path = "./json/mydict.json"
 
-md1 = serializza_json(file_path)
+md1 = serializza_json(mydict_1,file_path)
 print(md1)
 
 md2 = deserializza_json(file_path)
