@@ -52,6 +52,7 @@ def deserializza_json(file_path)-> dict:
 def deserializza2_json(file_path)-> dict:
     sData = ""
     sAppo =  ""
+    dData = {}
     try:
         
         with open(file_path, "r")as fp:
@@ -61,7 +62,12 @@ def deserializza2_json(file_path)-> dict:
                 sAppo = fp.read(500)
             if len(sAppo) > 0:
                 sData += sAppo
-            
+        if len(sData)>0:
+            dData = json.loads(sData)
+            return dData
+    
+        else:
+            return None
     except:
         return None
 
