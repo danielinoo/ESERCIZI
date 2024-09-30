@@ -73,7 +73,7 @@ def GestisciModifica():
 
            #controlla se non ce sta
         if sCodiceFiscale in dAnagrafe:
-            for k,v in jRequest:
+            for k,v in jRequest.items():
                 if v != "salta":
                     dAnagrafe[sCodiceFiscale][k] = v
 
