@@ -105,6 +105,13 @@ def GestisciEliminazione():
            #controlla se non ce sta e esegue l operazione
         if sCodiceFiscale in dAnagrafe:
             del dAnagrafe[sCodiceFiscale]
+            serializza_json(dAnagrafe,sFileAnagrafe)
+            jResponse = {"Error" : "000", "Msg" : "ok"}
+            return json.dumps(jResponse),200
+        else:
+
+            jResponse = {"Error" : "001", "Msg" : "ERRORE DURANTE LA MODIFICA"}
+            return json.dumps(jResponse),200
         
         
 
