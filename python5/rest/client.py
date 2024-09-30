@@ -15,6 +15,16 @@ def Gestisci_Dati():
     jRequest = input("inserisci il codice fiscale del cittadino per vedere i suoi dati\n")
     return jRequest
 
+def modifica_cit():
+    print("\nse non vuoi modificare scrivi \"salta\"\n")
+    codFiscale = input("inserisci il codice fiscale del cittadino che vuoi modificare i dati\n")
+    nome = input("\ninserisci il nuovo nome: \n")
+    cognome = input("\ninserisci il nuovo cognome: \n")
+    dataNascita = input("\ninserisci la nuova data di nascita: \n")
+
+    jRequest = {"nome" : nome, "cognome" : cognome, "data di nascita" : dataNascita, "codice fiscale" : codFiscale}
+    return jRequest 
+
 
 
 def CreaInterfaccia():
@@ -49,6 +59,20 @@ while (SOper != "5"):
     if SOper == "2":
         api_url = base_url + "/gestisci_dati"
         jsonDataRequest = Gestisci_Dati()
+
+        try:
+            response = requests.post(api_url,json=jsonDataRequest)
+            print(response.status_code)
+            print(response.headers["Content-Type"])
+            data1 = response.json()
+            print(data1)
+
+        except:
+            print("attenzione problemi")
+
+    if SOper == "3":
+        api_url = base_url + "/modifica_cittadino"
+        jsonDataRequest = modifica_cit()
 
         try:
             response = requests.post(api_url,json=jsonDataRequest)

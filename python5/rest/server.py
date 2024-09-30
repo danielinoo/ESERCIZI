@@ -58,6 +58,39 @@ def GestisciDati():
         return json.dumps(jResponse),200
 
 
+@api.route("/modifica_cittadino", methods= ["POST"])
+def GestisciModifica():
+    #prendi dati della richiesta
+    content_type = request.headers.get('Content_Type')
+    print("\n Ricevuta chiamata" + content_type)
+    if content_type == "application/json":
+        jRequest = request.json
+        sCodiceFiscale = jRequest["codice fiscale"]
+        print("codice fiscale ricevuto: " + sCodiceFiscale)
+
+        #carico l anagrafe
+        dAnagrafe = deserializza_json(sFileAnagrafe)
+
+           #controlla se non ce sta
+        if sCodiceFiscale in dAnagrafe:
+            for k,v in jRequest:
+                if v != "salta":
+                    dAnagrafe[sCodiceFiscale][k] = v
+
+
+
+            serializza_json(dAnagrafe,sFileAnagrafe)
+            jResponse = {"Error" : "000", "Msg" : "ok"}
+            return json.dumps(jResponse),200
+        
+        else:
+
+            jResponse = {"Error" : "001", "Msg" : "ERRORE DURANTE LA MODIFICA"}
+            return json.dumps(jResponse),200
+        
+        
+        
+
 
 
 api.run(host= "127.0.0.1", port="8080")
