@@ -88,6 +88,23 @@ def GestisciModifica():
             jResponse = {"Error" : "001", "Msg" : "ERRORE DURANTE LA MODIFICA"}
             return json.dumps(jResponse),200
         
+
+"/elimina_cittadino"
+@api.route("/elimina_cittadino", methods= ["POST"])
+def GestisciEliminazione():
+    #prendi dati della richiesta
+    content_type = request.headers.get('Content_Type')
+    print("\n Ricevuta chiamata" + content_type)
+    if content_type == "application/json":
+        jRequest = request.json
+        sCodiceFiscale = jRequest
+
+        #carico l anagrafe
+        dAnagrafe = deserializza_json(sFileAnagrafe)
+
+           #controlla se non ce sta e esegue l operazione
+        if sCodiceFiscale in dAnagrafe:
+            del dAnagrafe[sCodiceFiscale]
         
         
 
