@@ -73,6 +73,7 @@ while (SOper != "5"):
             print("attenzione problemi")
 
     if SOper == "3":
+        #collegamento al server
         api_url = base_url + "/modifica_cittadino"
         jsonDataRequest = modifica_cit()
 
