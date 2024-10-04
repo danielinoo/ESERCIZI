@@ -14,7 +14,8 @@ def GetDatiCittadino():
         "dataNascita": dataN, 
         "codFiscale": codF
     }
-    return datiCittadino
+    utente = {"username": sUsername,"password": sPassword , "datiCittadino": datiCittadino}
+    return utente
 
 
 def GetCodicefiscale():
@@ -40,6 +41,44 @@ def EseguiOperazione(iOper, sServizio, dDatiToSend):
     except:
         print("Problemi di comunicazione con il server, riprova più tardi.")
 
+    
+
+def EffettuaPrimoLogin():
+    #inserisci username
+    #inserisci password
+    #componi Jrequest
+    #invia richesta al server
+    global iPrimoLoginEffetuato
+    global sUsername
+    global sPassword
+    
+    sUsername = input("\ninserisci  username utente \n")
+    sPassword = input("\ninserisci la password\n ")
+    jsonDataRequest = {"email" : sUsername ,"password" : sPassword}
+    print(f"login con {sUsername}")
+    #collegamento col server
+    api_url = base_url + "/login_cittadino"
+    response = requests.post(api_url, json=jsonDataRequest)
+    #risposta del server
+    if response.status_code==200:
+        jsonResponse = response.json()
+        if jsonResponse["Esito"]=="000":
+            print("login effetuato correttamente")
+            iPrimoLoginEffetuato = 1
+        else:
+            print("\nerrore durante il login\n")
+    else: 
+        print("Problemi di comunicazione con il server, riprova più tardi.")
+
+    
+            
+   
+
+sUsername = ""
+sPassword = ""
+iPrimoLoginEffetuato = 0
+while  iPrimoLoginEffetuato == 0:
+    iPrimoLoginEffetuato = EffettuaPrimoLogin()
 
 while True:
     print("\nOperazioni disponibili:")
