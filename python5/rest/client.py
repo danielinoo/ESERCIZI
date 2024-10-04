@@ -39,68 +39,58 @@ def CreaInterfaccia():
 
 CreaInterfaccia()
 
+def EseguiOperazione(iOper,sServizio,dDatiToSend):
+    try:
+        if iOper == 1:
+            response = requests.post(sServizio, json= dDatiToSend)
+        if iOper == 2:
+            response = requests.get(sServizio)
+        if iOper == 3:
+            response = requests.put(sServizio, json= dDatiToSend)
+        if iOper == 4:
+            response = requests.delete(sServizio, json= dDatiToSend)
+        if response.status_code==200:
+            print(response.json())
+        else:
+            print("attenzione problemi"+ str(response.status_code))
+    except:
+        print("\nproblemi di comunicazione col server\n")
+
 SOper = (input("seleziona operazione\n"))
 
 while (SOper != "5"):
+
+    try:
+        SOper = int(input("seleziona operazione\n"))
+    except ValueError:
+        print("numero non valido")
+        continue
     
-    if SOper =="1":
+    if SOper ==1:
         api_url = base_url + "/add_cittadino"
         jsonDataRequest =  RichiediDatiCittadino()
-
-        try:
-            response = requests.post(api_url,json=jsonDataRequest)
-            print(response.status_code)
-            print(response.headers["Content-Type"])
-            data1 = response.json()
-            print(data1)
-
-        except:
-            print("attenzione problemi")
+        EseguiOperazione(1,api_url,jsonDataRequest)
 
     
-    if SOper == "2":
-        api_url = base_url + "/gestisci_dati"
+    elif SOper == 2:
+        api_url = base_url + "/read_cittadino"
         jsonDataRequest = Gestisci_Dati()
+        EseguiOperazione(2,api_url,jsonDataRequest)
 
-        try:
-            response = requests.post(api_url,json=jsonDataRequest)
-            print(response.status_code)
-            print(response.headers["Content-Type"])
-            data1 = response.json()
-            print(data1)
 
-        except:
-            print("attenzione problemi")
 
-    if SOper == "3":
-        #collegamento al server
-        api_url = base_url + "/modifica_cittadino"
+
+    elif SOper == 3:
+        print("Modifica cittadino")
+        api_url = base_url + "/update_cittadino"
         jsonDataRequest = modifica_cit()
-
-        try:
-            response = requests.post(api_url,json=jsonDataRequest)
-            print(response.status_code)
-            print(response.headers["Content-Type"])
-            data1 = response.json()
-            print(data1)
-
-        except:
-            print("attenzione problemi")
+        EseguiOperazione(3,api_url,jsonDataRequest)
 
     
-    if SOper == "4":
+    elif SOper == 4:
         api_url = base_url + "/elimina_cittadino"
         jsonDataRequest = elimina_cit()
-
-        try:
-            response = requests.post(api_url,json=jsonDataRequest)
-            print(response.status_code)
-            print(response.headers["Content-Type"])
-            data1 = response.json()
-            print(data1)
-
-        except:
-            print("attenzione problemi")
+        EseguiOperazione(4,api_url,jsonDataRequest)
 
 
 
