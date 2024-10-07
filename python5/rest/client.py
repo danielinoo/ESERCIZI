@@ -32,6 +32,7 @@ def EseguiOperazione(iOper, sServizio, dDatiToSend):
         if iOper == 3:
             response = requests.put(sServizio, json=dDatiToSend)
         if iOper == 4:
+            dDatiToSend = {"username": sUsername,"password": sPassword ,"codice fiscale" : dDatiToSend}
             response = requests.delete(sServizio, json=dDatiToSend)
 
         if response.status_code==200:

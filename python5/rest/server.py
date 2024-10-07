@@ -81,16 +81,28 @@ def read_cittadino(codice_fiscale):
 @api.route('/update_cittadino', methods=['PUT'])
 def update_cittadino():
     content_type = request.headers.get('Content-Type')
-
     if content_type == 'application/json':
         jsonReq = request.json
-        codice_fiscale = jsonReq.get('codFiscale')
-        if codice_fiscale in cittadini:
-            cittadini[codice_fiscale] = jsonReq
-            serializza_json(cittadini, file_path)  
-            return jsonify({"Esito": "000", "Msg": "Cittadino aggiornato con successo"}), 200
+
+        #controllo privilegi
+        user = jsonReq["username"]
+        password = jsonReq["password"]
+
+        if user in utenti \
+        and utenti[user]["password"] == password \
+        and utenti[user]["privilegi"] == "w":
+
+            codice_fiscale = jsonReq["datiCittadino"]["codFiscale"]
+            if codice_fiscale in cittadini:
+                cittadini[codice_fiscale] = jsonReq
+                serializza_json(cittadini, file_path)  
+                return jsonify({"Esito": "000", "Msg": "Cittadino aggiornato con successo"}), 200
+            else:
+                return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
+                
         else:
-            return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
+            return jsonify({"Esito": "003", "Msg": "permesso non accettato"}), 200
+        
     else:
         return jsonify({"Esito": "002", "Msg": "content-tyoe non supportato"}), 200
 
@@ -99,13 +111,25 @@ def update_cittadino():
 def elimina_cittadino():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
-        cod = request.json.get('codFiscale')
-        if cod in cittadini:
-            del cittadini[cod]
-            serializza_json(cittadini, file_path)  
-            return jsonify({"Esito": "000", "Msg": "Cittadino rimosso con successo"}), 200
+        jsonReq = request.json
+
+        #controllo privilegi
+        user = jsonReq["username"]
+        password = jsonReq["password"]
+
+        if user in utenti \
+        and utenti[user]["password"] == password \
+        and utenti[user]["privilegi"] == "w":
+
+            cod = jsonReq["codFiscale"]
+            if cod in cittadini:
+                del cittadini[cod]
+                serializza_json(cittadini, file_path)  
+                return jsonify({"Esito": "000", "Msg": "Cittadino rimosso con successo"}), 200
+            else:
+                return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
         else:
-            return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
+            return jsonify({"Esito": "003", "Msg": "permesso non accettato"}), 200
     else:
         return jsonify({"Esito": "002", "Msg": "content-tyoe non supportato"}), 200
 
