@@ -80,6 +80,11 @@ def read_cittadino(codice_fiscale):
 #put -> serve per modificare
 @api.route('/update_cittadino', methods=['PUT'])
 def update_cittadino():
+
+    # update cittadini
+    # set nome = 'giuseppe'
+    # where codice_fiscale = 'ahdo45swo16h501s'
+
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
