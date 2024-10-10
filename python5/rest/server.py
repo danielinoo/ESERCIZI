@@ -135,4 +135,7 @@ def elimina_cittadino():
 
 
     
-api.run(host="127.0.0.1", port=8080)
+api.run(host="127.0.0.1", port=8080,ssl_context = "adhoc")
+
+#crittografia messaggio -> ssl_contexT = "adhoc"
+

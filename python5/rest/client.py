@@ -1,6 +1,6 @@
 import requests, json, sys
 
-base_url = "http://127.0.0.1:8080"
+base_url = "https://127.0.0.1:8080"
 
 
 def GetDatiCittadino():
@@ -26,14 +26,14 @@ def GetCodicefiscale():
 def EseguiOperazione(iOper, sServizio, dDatiToSend):
     try:
         if iOper == 1:
-            response = requests.post(sServizio, json=dDatiToSend)
+            response = requests.post(sServizio, json=dDatiToSend,verify = False)
         if iOper == 2:
-            response = requests.get(sServizio)
+            response = requests.get(sServizio,verify = False)
         if iOper == 3:
-            response = requests.put(sServizio, json=dDatiToSend)
+            response = requests.put(sServizio, json=dDatiToSend,verify = False)
         if iOper == 4:
             dDatiToSend = {"username": sUsername,"password": sPassword ,"codice fiscale" : dDatiToSend}
-            response = requests.delete(sServizio, json=dDatiToSend)
+            response = requests.delete(sServizio, json=dDatiToSend,verify = False)
 
         if response.status_code==200:
             print(response.json())
@@ -59,7 +59,10 @@ def EffettuaPrimoLogin():
     print(f"login con {sUsername}")
     #collegamento col server
     api_url = base_url + "/login_cittadino"
-    response = requests.post(api_url, json=jsonDataRequest)
+    response = requests.post(api_url, json=jsonDataRequest,verify = False) 
+    #verify = False -> dice di non verficicare il cerificato del server
+    
+    
     #risposta del server
     if response.status_code==200:
         jsonResponse = response.json()
