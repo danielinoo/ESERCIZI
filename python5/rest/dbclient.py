@@ -42,7 +42,7 @@ def connect():
         print(error)
         return None
 
-
+#scrive sul database
 def write_in_db(cur,sql_insert):
     global conn
     try:

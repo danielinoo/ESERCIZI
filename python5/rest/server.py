@@ -48,34 +48,29 @@ def GestisciAccesso():
 
 @api.route('/add_cittadino', methods=['POST'])
 def GestisciAddCittadino():
+    global cur
     #prendo dati della richiesta
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
+        nome = jsonReq.get('nome')
+        cognome = jsonReq.get('cognome')
+        codice_fiscale= jsonReq.get('codFiscale')
+        dataNascita = jsonReq.get('dataNascita')
 
-        #controllo privilegi
-        user = jsonReq["username"]
-        password = jsonReq["password"]
+        squery = f"insert into anagrafe(codice_fiscale,nome,cognome,data di nascita)\
+                values ('{codice_fiscale}','{nome}','{cognome}','{dataNascita}')"
 
-        if user in utenti \
-        and utenti[user]["password"] == password \
-        and utenti[user]["privilegi"] == "w":
-
-            codice_fiscale = jsonReq["datiCittadino"]["codFiscale"]
-            #controllo se il codice fiscale è presente nell' anagrafe
-            if codice_fiscale in cittadini:
+        #controllo dati
+        iRet = db.write_in_db(cur,squery)
+        if iRet == -2:
                 return jsonify({"Esito": "001", "Msg": "Cittadino già esistente"}), 200
-            else:
-                cittadini[codice_fiscale] = jsonReq["datiCittadino"]
-                serializza_json(cittadini, file_path) 
-                return jsonify({"Esito": "000", "Msg": "Cittadino aggiunto con successo"}), 200
-        else:
+        elif iRet == -1:
             return jsonify({"Esito": "003", "Msg": "permesso non accettato"}), 200
-            
-    
+        else:
+            return jsonify({"Esito": "000", "Msg": "Cittadino aggiunto con successo"}), 200
     else:
        return jsonify({"Esito": "002", "Msg": "content-tyoe non supportato"}), 200
-
 
 
 #la url che sta dopo read_cittadino diventa na stringa e flask la usa
