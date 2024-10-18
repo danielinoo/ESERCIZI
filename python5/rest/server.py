@@ -1,32 +1,44 @@
 from flask import Flask, jsonify, request
 from myjson import deserializza_json, serializza_json
 
+import sys
+import dbclient as db #import connessione database
 api = Flask(__name__)
 
-
+#connessione database
+cur = db.connect()
+if cur is None:
+	print("Errore connessione al DB")
+	sys.exit()
+    
 file_path = "anagrafe.json"
 file2 = "utenti.json"
 cittadini = deserializza_json(file_path)
-
-
 utenti = deserializza_json(file2)
+
 
 @api.route('/login_cittadino', methods=['POST'])
 def GestisciAccesso():
+    global cur #prendo cur globale
     #prendo i dati dal client
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
         jEmail= jsonReq.get('email')
         jPassword = jsonReq.get('password')
+        
+        #creo query
+        squery = f"select privilegi \
+                from utenti \
+                where username = '{jEmail}' and password = '{jPassword}';"
+        
+        iNumrows = db.read_in_db(cur,squery)#esegue la query
 
-    #controllo accesso
-        if jEmail in utenti:
-            if utenti[jEmail]["password"] == jPassword:
-                serializza_json(utenti, file2)  
-                return jsonify({"Esito": "000", "Msg": "login effettuato"}), 200
-            else:
-                return jsonify({"Esito": "001", "Msg": "Password sbagliata"}), 404
+        #controllo risultato della query
+        if iNumrows ==1:
+            lrow = db.read_next_row(cur) #risultato query
+            sPriv = lrow[1][0]#prende il primo dato (privilegi)
+            return jsonify({"Esito": "000", "Msg": "login effettuato","Privilegi" : sPriv}), 200
         else:
             return jsonify({"Esito": "001", "Msg": "utente non esiste"}), 404
     else:
