@@ -73,25 +73,23 @@ def GestisciAddCittadino():
        return jsonify({"Esito": "002", "Msg": "content-tyoe non supportato"}), 200
 
 
+
 #la url che sta dopo read_cittadino diventa na stringa e flask la usa
 @api.route('/read_cittadino/<codice_fiscale>', methods=['GET'])
-
 def read_cittadino(codice_fiscale):
     global cur
-
-        #creo query
-    squery = f"select * \
-        from cittadini \
-        where '{codice_fiscale} = codice_fiscale;"
+    squery = f"select *\
+                from cittadini \
+                where codice_fiscale = '{codice_fiscale}';"
         
     iNumrows = db.read_in_db(cur,squery)#esegue la query
 
     if iNumrows ==1:
         lrow = db.read_next_row(cur)
-    #eseguo la richiesta
         return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": lrow}), 200
     else:
         return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
+
 
 
 #put -> serve per modificare
@@ -105,19 +103,28 @@ def update_cittadino():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
-
         #controllo privilegi
-        user = jsonReq["username"]
-        password = jsonReq["password"]
+        jEmail= jsonReq.get('email')
+        jPassword = jsonReq.get('password')
+        squery = f"select privilegi \
+                from utenti \
+                where username = '{jEmail}' and password = '{jPassword}' \
+                    and privilegi = 'w;"
+        iNumrows = db.read_in_db(cur,squery)#esegue la query
+        if iNumrows ==1:
+            nome = jsonReq.get('nome')
+            cognome = jsonReq.get('cognome')
+            codice_fiscale= jsonReq.get('codFiscale')
+            dataNascita = jsonReq.get('dataNascita')
 
-        if user in utenti \
-        and utenti[user]["password"] == password \
-        and utenti[user]["privilegi"] == "w":
-
-            codice_fiscale = jsonReq["datiCittadino"]["codFiscale"]
-            if codice_fiscale in cittadini:
-                cittadini[codice_fiscale] = jsonReq
-                serializza_json(cittadini, file_path)  
+            squery= f"    update cittadini \
+                    set nome = '{nome}'\
+                    set cognome = '{cognome}'\
+                    set data_nascita= '{dataNascita}'\
+                     where codice_fiscale = '{codice_fiscale}';"
+            
+            iRet = db.write_in_db(cur,squery)
+        
                 return jsonify({"Esito": "000", "Msg": "Cittadino aggiornato con successo"}), 200
             else:
                 return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
