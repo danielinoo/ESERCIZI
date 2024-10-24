@@ -75,11 +75,21 @@ def GestisciAddCittadino():
 
 #la url che sta dopo read_cittadino diventa na stringa e flask la usa
 @api.route('/read_cittadino/<codice_fiscale>', methods=['GET'])
+
 def read_cittadino(codice_fiscale):
-    cittadino = cittadini.get(codice_fiscale)
+    global cur
+
+        #creo query
+    squery = f"select * \
+        from cittadini \
+        where '{codice_fiscale} = codice_fiscale;"
+        
+    iNumrows = db.read_in_db(cur,squery)#esegue la query
+
+    if iNumrows ==1:
+        lrow = db.read_next_row(cur)
     #eseguo la richiesta
-    if cittadino:
-        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": cittadino}), 200
+        return jsonify({"Esito": "000", "Msg": "Cittadino trovato", "Dati": lrow}), 200
     else:
         return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
 
