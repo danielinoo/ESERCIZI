@@ -126,7 +126,7 @@ def update_cittadino():
                     WHERE codice_fiscale = '{codice_fiscale}';"
             
             iRet = db.write_in_db(cur,squery)
-            print(squery)
+            
             if iRet != -1 or iRet != -2:
                 return jsonify({"Esito": "000", "Msg": "Cittadino aggiornato con successo"}), 200
             else:
@@ -144,19 +144,22 @@ def elimina_cittadino():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
-
         #controllo privilegi
-        user = jsonReq["username"]
-        password = jsonReq["password"]
+        jEmail= jsonReq.get('username')
+        jPassword = jsonReq.get('password')
+        squery = f"select *\
+                from utenti \
+                where username = '{jEmail}' and password = '{jPassword}' \
+                    and privilegi = 'w';"
+        iNumrows = db.read_in_db(cur,squery)#esegue la query
+        if iNumrows ==1:
 
-        if user in utenti \
-        and utenti[user]["password"] == password \
-        and utenti[user]["privilegi"] == "w":
-
-            cod = jsonReq["codFiscale"]
-            if cod in cittadini:
-                del cittadini[cod]
-                serializza_json(cittadini, file_path)  
+            codice_fiscale = jsonReq.get('codice_fiscale')
+            squery= f"UPDATE cittadini \
+                    WHERE codice_fiscale = '{codice_fiscale}';"
+            
+            iRet = db.write_in_db(cur,squery)
+            if iRet != -1 or iRet != -2:
                 return jsonify({"Esito": "000", "Msg": "Cittadino rimosso con successo"}), 200
             else:
                 return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
