@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from myjson import deserializza_json, serializza_json
+
 
 import sys
 import dbclient as db #import connessione database
@@ -10,11 +10,7 @@ cur = db.connect()
 if cur is None:
 	print("Errore connessione al DB")
 	sys.exit()
-    
-file_path = "anagrafe.json"
-file2 = "utenti.json"
-cittadini = deserializza_json(file_path)
-utenti = deserializza_json(file2)
+
 
 
 @api.route('/login_cittadino', methods=['POST'])
@@ -58,7 +54,7 @@ def GestisciAddCittadino():
         codice_fiscale= jsonReq.get('codFiscale')
         dataNascita = jsonReq.get('dataNascita')
 
-        squery = f"insert into anagrafe(codice_fiscale,nome,cognome,data di nascita)\
+        squery = f"insert into cittadini(codice_fiscale,nome,cognome,data_nascita)\
                 values ('{codice_fiscale}','{nome}','{cognome}','{dataNascita}')"
 
         #controllo dati
@@ -155,7 +151,7 @@ def elimina_cittadino():
         if iNumrows ==1:
 
             codice_fiscale = jsonReq.get('codice_fiscale')
-            squery= f"UPDATE cittadini \
+            squery= f"DELETE FROM cittadini \
                     WHERE codice_fiscale = '{codice_fiscale}';"
             
             iRet = db.write_in_db(cur,squery)
