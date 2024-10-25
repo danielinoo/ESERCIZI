@@ -104,27 +104,30 @@ def update_cittadino():
     if content_type == 'application/json':
         jsonReq = request.json
         #controllo privilegi
-        jEmail= jsonReq.get('email')
+        jEmail= jsonReq.get('username')
         jPassword = jsonReq.get('password')
-        squery = f"select privilegi \
+        squery = f"select *\
                 from utenti \
                 where username = '{jEmail}' and password = '{jPassword}' \
-                    and privilegi = 'w;"
+                    and privilegi = 'w';"
         iNumrows = db.read_in_db(cur,squery)#esegue la query
         if iNumrows ==1:
-            nome = jsonReq.get('nome')
-            cognome = jsonReq.get('cognome')
-            codice_fiscale= jsonReq.get('codFiscale')
-            dataNascita = jsonReq.get('dataNascita')
+            daticit = jsonReq.get('datiCittadino') #entro in datiCittadino
+            nome = daticit.get('nome')
+            cognome = daticit.get('cognome')
+            codice_fiscale= daticit.get('codFiscale')
+            dataNascita = daticit.get('dataNascita')
 
-            squery= f"    update cittadini \
-                    set nome = '{nome}'\
-                    set cognome = '{cognome}'\
-                    set data_nascita= '{dataNascita}'\
-                     where codice_fiscale = '{codice_fiscale}';"
+            #modifica cittadino
+            squery= f"UPDATE cittadini \
+                    SET nome = '{nome}', \
+                        cognome = '{cognome}', \
+                        data_nascita = '{dataNascita}' \
+                    WHERE codice_fiscale = '{codice_fiscale}';"
             
             iRet = db.write_in_db(cur,squery)
-        
+            print(squery)
+            if iRet != -1 or iRet != -2:
                 return jsonify({"Esito": "000", "Msg": "Cittadino aggiornato con successo"}), 200
             else:
                 return jsonify({"Esito": "001", "Msg": "Cittadino non trovato"}), 404
