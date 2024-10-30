@@ -47,22 +47,33 @@ def GestisciAddCittadino():
     content_type = request.headers.get('Content-Type')
     if content_type == 'application/json':
         jsonReq = request.json
-        nome = jsonReq.get('nome')
-        cognome = jsonReq.get('cognome')
-        codice_fiscale= jsonReq.get('codFiscale')
-        dataNascita = jsonReq.get('dataNascita')
+        #controllo privilegi
+        jEmail= jsonReq.get('username')
+        jPassword = jsonReq.get('password')
+        squery = f"select *\
+                from utenti \
+                where username = '{jEmail}' and password = '{jPassword}' \
+                    and privilegi = 'w';"
+        
+        iNumrows = db.read_in_db(cur,squery)#esegue la query
+        if iNumrows ==1:
+                jsonReq = jsonReq.get('datiCittadino')
+                nome = jsonReq.get('nome')
+                cognome = jsonReq.get('cognome')
+                codice_fiscale= jsonReq.get('codFiscale')
+                dataNascita = jsonReq.get('dataNascita')
 
-        squery = f"insert into cittadini(codice_fiscale,nome,cognome,data_nascita)\
-                values ('{codice_fiscale}','{nome}','{cognome}','{dataNascita}')"
+                squery = f"insert into cittadini(codice_fiscale,nome,cognome,data_nascita)\
+                        values ('{codice_fiscale}','{nome}','{cognome}','{dataNascita}')"
 
-        #controllo dati
-        iRet = db.write_in_db(cur,squery)
-        if iRet == -2:
-                return jsonify({"Esito": "001", "Msg": "Cittadino già esistente"}), 200
-        elif iRet == -1:
-            return jsonify({"Esito": "003", "Msg": "permesso non accettato"}), 200
-        else:
-            return jsonify({"Esito": "000", "Msg": "Cittadino aggiunto con successo"}), 200
+                #controllo dati
+                iRet = db.write_in_db(cur,squery)
+                if iRet == -2:
+                        return jsonify({"Esito": "001", "Msg": "Cittadino già esistente"}), 200
+                elif iRet == -1:
+                    return jsonify({"Esito": "003", "Msg": "permesso non accettato"}), 200
+                else:
+                    return jsonify({"Esito": "000", "Msg": "Cittadino aggiunto con successo"}), 200
     else:
        return jsonify({"Esito": "002", "Msg": "content-tyoe non supportato"}), 200
 
@@ -149,9 +160,10 @@ def elimina_cittadino():
         if iNumrows ==1:
 
             codice_fiscale = jsonReq.get('codice_fiscale')
+            codice_fiscale = codice_fiscale['codFiscale']
             squery= f"DELETE FROM cittadini \
                     WHERE codice_fiscale = '{codice_fiscale}';"
-            
+
             iRet = db.write_in_db(cur,squery)
             if iRet != -1 or iRet != -2:
                 return jsonify({"Esito": "000", "Msg": "Cittadino rimosso con successo"}), 200
