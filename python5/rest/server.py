@@ -1,6 +1,4 @@
 from flask import Flask, jsonify, request
-
-
 import sys
 import dbclient as db #import connessione database
 api = Flask(__name__)
