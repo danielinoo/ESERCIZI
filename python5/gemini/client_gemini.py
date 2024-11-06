@@ -1,5 +1,5 @@
 import requests, json, sys
-
+# AIzaSyCo1uqjaqpyx-6a04ow5dEL7c6uVacdjY4
 
 #base api google
 sGoogleApiKey = "AIzaSyCo1uqjaqpyx-6a04ow5dEL7c6uVacdjY4"
