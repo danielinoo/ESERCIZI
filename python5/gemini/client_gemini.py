@@ -1,6 +1,7 @@
 
 import requests
 import sys
+import myjson as mj
 
 #modello di AI che sto usando
 sModel = "gemini-1.5-pro-exp-0827"
@@ -27,10 +28,17 @@ while True:
         response = requests.post(api_url, json=jsonDataRequest, verify= True) # VERIFY true ---> verifica il certificato  VERIFY false ---> non verifica il certificato
 
         if response.status_code == 200:
-            print(response.json())
-            print(f"Il tipo di response : ", type(response.json()))
+            a = response.json()
+            #restituisce in maniera pulita la risposta
+            answer = {"answer": a["candidates"][0]["content"]["parts"][0]["text"]}
+
+            #salva le risposte nel file json
+            mj.serializza_json(answer, "answer.json")
+
+            #stampo risposta
+            print(f"\n{answer["answer"]}")
         else:
-            print('ATTENZIONE,PROBLEMI')
+            print("ATTENZIONE,ERRORE")
 
     elif iOper == 2:
         print("Servizio da gestire")
