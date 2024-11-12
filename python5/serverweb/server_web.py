@@ -27,7 +27,7 @@ def ordini():
 def passati():
     return render_template('ordini_passati.html')
 
-@api.route('/attuali', methods=['GET'])
+@api.route('/attuali', methods=['GET']) #methods = ['GET', 'POST'] --> se si vuole usare pure post 
 def attuali():
     return render_template('ordini_attuali.html')
 
@@ -35,6 +35,7 @@ def attuali():
 def controllo_reg():
 
     nome = request.args.get("nome")
+    #nome = request.form['nome'] --> con metodo post
     cognome = request.args.get("cognome")
     dataNascita = request.args.get("dataNascita")
     indirizzo = request.args.get("indirizzo")
