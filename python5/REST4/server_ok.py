@@ -74,17 +74,15 @@ def GestisciAddCittadino():
         #prima di tutto verifico utente, password e privilegio 
         #dove utente e password me l'ha inviato il client
         #mentre il privilegio lo vado a leggere nel mio file  (utenti.json)
-
+        jsonReq = jsonReq.get('datiCittadino')
         codice_fiscale = jsonReq.get('codFiscale')
         nome = jsonReq.get('nome')
         cognome = jsonReq.get('cognome')
         dataNascita = jsonReq.get('dataNascita')
+
+        sQuery = f"insert into cittadini(codice_fiscale,nome,cognome,data_nascita)\
+                        values ('{codice_fiscale}','{nome}','{cognome}','{dataNascita}')"
         
-        sQuery = "insert into anagrafe(codice_fiscale,nome,cognome,data_nascita) values ("
-        sQuery += "'" + codice_fiscale + "','" + nome + "','" + cognome + "','" + dataNascita + "');"
-        
-        
-        print(sQuery)
         
         
         
