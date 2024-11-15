@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu principale</title>
+
+    <style >/* Stile base per il corpo */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        
+        /* Stile per il contenitore del menu */
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Stile per i pulsanti */
+        .menu-button {
+            padding: 15px 25px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        /* Cambia il colore al passaggio del mouse */
+        .menu-button:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+        
+        /* Effetto di clic sui pulsanti */
+        .menu-button:active {
+            transform: translateY(2px);
+        }
+        </style>
+
+</head>
+<body>
+
+    <div class="menu">
+        <form action="/1" method="get">
+            <button class="menu-button">chiedi una domanda</button>
+        </form>
+        <button class="menu-button">Inserisci una coppia(file, domanda)</button>
+        <button class="menu-button">Contatti</button>
+    </div>
+
+</body>
+</html>

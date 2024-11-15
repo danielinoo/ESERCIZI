@@ -36,7 +36,7 @@ while True:
             mj.serializza_json(answer, "answer.json")
 
             #stampo risposta
-            print(f"\n{answer["answer"]}")
+            print(answer["answer"])
         else:
             print("ATTENZIONE,ERRORE")
 
