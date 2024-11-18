@@ -1,4 +1,4 @@
-from flask import Flask, render_template ,request
+from flask import Flask, render_template ,request,jsonify
 import requests
 
 
@@ -8,7 +8,7 @@ sModel = "gemini-1.5-pro-exp-0827"
 base_url = "https://generativelanguage.googleapis.com/v1beta/models/" + sModel + ":generateContent?key="
 
 #api key di google
-sGoogleApiKey = "AIzaSyCo1uqjaqpyx-6a04ow5dEL7c6uVacdjY4"
+sGoogleApiKey = "AIzaSyAAs2zpIStk9hHteZz0M8CRkwdbPPK6GBQ"
 
 api_url = base_url + sGoogleApiKey
 
@@ -25,24 +25,17 @@ def registra():
 
 @api.route('/risposta', methods = ['GET'])
 def risposta():
-    domanda = request.args.get['domanda']
-    jsonDataRequest = {"contents": [{"parts": [{"text" : domanda}]}]}
-    response = requests.post(api_url, json=jsonDataRequest, verify= True) # VERIFY true ---> verifica il certificato  VERIFY false ---> non verifica il certificato
+    domanda = request.args.get('domanda')
+    jsonDataRequest = {"contents": [{"parts": [{"text": domanda}]}]}
+    response = requests.post(api_url, json=jsonDataRequest, verify=True)
 
     if response.status_code == 200:
-
-            a = response.json()
-            #restituisce in maniera pulita la risposta
-            answer = {"answer": a["candidates"][0]["content"]["parts"][0]["text"]}
-            #salva le risposte nel file json
-            # mj.serializza_json(answer, "answer.json")
-
-            context = {'risposta' : answer,
-                       'chiesto' : True}
-            #stampo risposta
-            return render_template('domanda.html',**context)
+        a = response.json()
+        answer = a["candidates"][0]["content"]["parts"][0]["text"]
+        return jsonify({'answer': answer})
     else:
-            print("ATTENZIONE,ERRORE")
+        return jsonify({'answer': 'Mi dispiace, si è verificato un errore con la richiesta.'}), 500
+
 
 
 

@@ -103,28 +103,59 @@
 </head>
 <body>
     <div class="chat-container">
-        {% if chiesto == False %}
+
             <div class="chat-box">
                 <div class="messages" id="messages">
                     <div class="message bot-message">Ciao! Come posso aiutarti oggi?</div>
                 </div>
 
                 <div class="input-area">
-                <form action=" /risposta"  method="get">
+
                     <input type="text" name = "domanda" id="user-input" placeholder="Scrivi un messaggio..." />
                     <button id="send-button">Invia</button>
-                </form>
+
                 </div>
-        {% else %}
+
                 <div class="messages" id="messages">
-                    <div class="message bot-message">{{ risposta }}</div>
+                    <div class="message bot-message"></div>
                 </div>
             </div>
-        {% endif %}
+
+            <script>
+                function appendMessage(text, sender) {
+                    const chatBox = document.getElementById('chat-box');
+                    const messageDiv = document.createElement('div');
+                    messageDiv.classList.add('message', sender);
+                    messageDiv.textContent = text;
+                    chatBox.appendChild(messageDiv);
+                    chatBox.scrollTop = chatBox.scrollHeight;  // Scorri in basso quando viene aggiunta una nuova risposta
+                }
+        
+                function sendQuestion() {
+                    const userInput = document.getElementById('user-question').value;
+                    if (!userInput.trim()) return;
+        
+                    // Aggiungi la domanda dell'utente nella chat
+                    appendMessage(userInput, 'user');
+        
+                    // Pulire il campo di input
+                    document.getElementById('user-question').value = '';
+        
+                    // Fai una richiesta AJAX al server Flask
+                    fetch(`/risposta?domanda=${encodeURIComponent(userInput)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const answer = data.answer || "Mi dispiace, non ho trovato una risposta.";
+                            appendMessage(answer, 'ai');
+                        })
+                        .catch(error => {
+                            console.error("Errore nella richiesta:", error);
+                            appendMessage("Errore nel recuperare la risposta. Riprova più tardi.", 'ai');
+                        });
+                }
+            </script>
+
     </div>
-
-
-
-          
+     
 </body>
 </html>
