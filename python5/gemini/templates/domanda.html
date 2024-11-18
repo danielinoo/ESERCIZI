@@ -4,158 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interfaccia AI</title>
-<style>/* Stili generali */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        border-radius: 8px;
-    }
-    
-    body {
-        font-family: 'Arial', sans-serif;
-        background: linear-gradient(to right, #6dc6fa, #2487c9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    /* Contenitore principale della chat */
-    .chat-container {
-        display: flex;
-        height: 80vh;
-        width: 70vw;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(to right, #a9ddf0, #2672a5);
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #f1f1f1;
+            max-width: 90%;
+        }
+        .user {
+            background: #a1d3ff;
+            text-align: right;
+        }
+        .ai {
+            background: #d6e7e9;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
 
-    /* Finestra di chat */
-    .chat-box {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        border-radius: 8px;
-    }
-    
-    /* Area messaggi */
-    .messages {
-        padding: 20px;
-        flex: 1;
-        overflow-y: auto;
-        background-color: #f9f9f9;
 
-    }
-    
-    .message {
-        margin-bottom: 15px;
-        padding: 10px;
-        border-radius: 5px;
-        max-width: 70%;
+        .main-title {
+            font-size: 4rem;
+  font-weight: bold;
+  color: #41232a;
+  text-align: center;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
 
-    }
-    
-    .bot-message {
-        background-color: #e1f7d5;
-        align-self: flex-start;
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+        }
 
-    }
-    
-    .user-message {
-        background-color: #cce4ff;
-        align-self: flex-end;
-        border-radius: 8px;
-    }
-    
-    /* Area input */
-    .input-area {
-        display: flex;
-        padding: 10px;
-        background-color: #fff;
-        border-top: 1px solid #ddd;
-    }
-    
-    #user-input {
-        flex: 1;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-size: 1em;
-    }
-    
-    #send-button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        margin-left: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    
-    #send-button:hover {
-        background-color: #45a049;
-    }
     </style>
 </head>
 <body>
+
+    <h1 class = "main-title"> AI GEMINI COPY</h1>
+    <BR>
+
     <div class="chat-container">
-
-            <div class="chat-box">
-                <div class="messages" id="messages">
-                    <div class="message bot-message">Ciao! Come posso aiutarti oggi?</div>
-                </div>
-
-                <div class="input-area">
-
-                    <input type="text" name = "domanda" id="user-input" placeholder="Scrivi un messaggio..." />
-                    <button id="send-button">Invia</button>
-
-                </div>
-
-                <div class="messages" id="messages">
-                    <div class="message bot-message"></div>
-                </div>
-            </div>
-
-            <script>
-                function appendMessage(text, sender) {
-                    const chatBox = document.getElementById('chat-box');
-                    const messageDiv = document.createElement('div');
-                    messageDiv.classList.add('message', sender);
-                    messageDiv.textContent = text;
-                    chatBox.appendChild(messageDiv);
-                    chatBox.scrollTop = chatBox.scrollHeight;  // Scorri in basso quando viene aggiunta una nuova risposta
-                }
+        <div id="chat-box">
+            <!-- Le risposte e domande saranno visualizzate qui -->
+        </div>
         
-                function sendQuestion() {
-                    const userInput = document.getElementById('user-question').value;
-                    if (!userInput.trim()) return;
-        
-                    // Aggiungi la domanda dell'utente nella chat
-                    appendMessage(userInput, 'user');
-        
-                    // Pulire il campo di input
-                    document.getElementById('user-question').value = '';
-        
-                    // Fai una richiesta AJAX al server Flask
-                    fetch(`/risposta?domanda=${encodeURIComponent(userInput)}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            const answer = data.answer || "Mi dispiace, non ho trovato una risposta.";
-                            appendMessage(answer, 'ai');
-                        })
-                        .catch(error => {
-                            console.error("Errore nella richiesta:", error);
-                            appendMessage("Errore nel recuperare la risposta. Riprova più tardi.", 'ai');
-                        });
-                }
-            </script>
-
+        <div class="input-container">
+            <input type="text" id="user-question" placeholder="Fai una domanda...">
+            <button onclick="sendQuestion()">Invia</button>
+        </div>
     </div>
-     
+
+    <script>
+        function appendMessage(text, sender) {
+            const chatBox = document.getElementById('chat-box');
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;  // Scorri in basso quando viene aggiunta una nuova risposta
+        }
+
+        function sendQuestion() {
+            const userInput = document.getElementById('user-question').value;
+            if (!userInput.trim()) return;
+
+            // Aggiungi la domanda dell'utente nella chat
+            appendMessage(userInput, 'user');
+
+            // Pulire il campo di input
+            document.getElementById('user-question').value = '';
+
+            // Fai una richiesta AJAX al server Flask
+            fetch(`/risposta?domanda=${encodeURIComponent(userInput)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const answer = data.answer || "Mi dispiace, non ho trovato una risposta.";
+                    appendMessage(answer, 'ai');
+                })
+                .catch(error => {
+                    console.error("Errore nella richiesta:", error);
+                    appendMessage("Errore nel recuperare la risposta. Riprova più tardi.", 'ai');
+                });
+        }
+    </script>
 </body>
 </html>
